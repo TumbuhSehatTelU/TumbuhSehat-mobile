@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:mobile_tumbuh_sehat/pages/beranda.dart';
+import 'package:mobile_tumbuh_sehat/pages/chatbot.dart';
+import 'package:mobile_tumbuh_sehat/pages/komunitas.dart';
 import 'package:mobile_tumbuh_sehat/pages/profil.dart';
-import 'package:mobile_tumbuh_sehat/pages/prediksi%20gizi/scanMakanan.dart';
+import 'package:mobile_tumbuh_sehat/pages/prediksi%20gizi/scan_makanan.dart';
 import 'package:mobile_tumbuh_sehat/theme/color.dart';
 
 class MainPage extends StatefulWidget {
@@ -17,7 +19,9 @@ class _MainPageState extends State<MainPage> {
 
   final List<Widget> _pages = [
     Beranda(),
+    Chatbot(),
     ScanMakanan(),
+    Komunitas(),
     Profil(),
   ];
 
@@ -44,11 +48,10 @@ class _MainPageState extends State<MainPage> {
         height: 70,
         child: Container(
           // height: 10, // Sesuaikan tinggi navbar
-          padding: const EdgeInsets.symmetric(horizontal: 16.0),
+          // padding: const EdgeInsets.symmetric(horizontal: 16.0),
           child: Padding(
-            padding: const EdgeInsets.only(
-              left: 24,
-              right: 24,
+            padding: EdgeInsets.symmetric(
+              horizontal: MediaQuery.of(context).size.width * 0.01,
             ),
             child: Row(
               mainAxisSize: MainAxisSize.max,
@@ -61,13 +64,27 @@ class _MainPageState extends State<MainPage> {
                           : Monochrome.lightGrey),
                   onPressed: () => _onItemTapped(0),
                 ),
-                SizedBox(width: 40), // Ruang untuk FAB
                 IconButton(
-                  icon: Icon(Icons.person,
-                      color: _currentIndex == 2
+                  icon: Icon(Icons.home,
+                      color: _currentIndex == 1
                           ? Monochrome.white
                           : Monochrome.lightGrey),
-                  onPressed: () => _onItemTapped(2),
+                  onPressed: () => _onItemTapped(1),
+                ),
+                SizedBox(width: 40),
+                IconButton(
+                  icon: Icon(Icons.home,
+                      color: _currentIndex == 3
+                          ? Monochrome.white
+                          : Monochrome.lightGrey),
+                  onPressed: () => _onItemTapped(3),
+                ),
+                IconButton(
+                  icon: Icon(Icons.person,
+                      color: _currentIndex == 4
+                          ? Monochrome.white
+                          : Monochrome.lightGrey),
+                  onPressed: () => _onItemTapped(4),
                 ),
               ],
             ),
@@ -82,11 +99,15 @@ class _MainPageState extends State<MainPage> {
         child: Padding(
           padding: EdgeInsets.all(8),
           child: FloatingActionButton(
+            backgroundColor: Colors.cyan,
             shape: const CircleBorder(
               side: BorderSide(color: Colors.black, width: 2),
             ),
             hoverElevation: 10,
-            child: Icon(Icons.camera),
+            child: Icon(
+              Icons.camera,
+              color: Colors.white,
+            ),
             onPressed: () {
               Navigator.push(
                 context,

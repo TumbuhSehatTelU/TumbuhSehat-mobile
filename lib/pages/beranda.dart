@@ -13,7 +13,7 @@ class _BerandaState extends State<Beranda> {
     return const MaterialApp(
       home: Scaffold(
         body: Center(
-          child: Text('Beranda'),
+          child: Text('Beranda test'),
         ),
       ),
     );

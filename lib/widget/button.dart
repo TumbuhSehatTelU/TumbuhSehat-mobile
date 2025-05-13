@@ -1,0 +1,104 @@
+import 'package:flutter/material.dart';
+
+enum ButtonSize { large, medium, small }
+enum ButtonStyleType { leftIcon, rightIcon, textOnly, iconOnly }
+
+class CustomButton extends StatelessWidget {
+  final VoidCallback onPressed;
+  final String? text;
+  final IconData? icon;
+  final Color backgroundColor;
+  final Color borderColor;
+  final Color contentColor;
+  final ButtonSize size;
+  final ButtonStyleType style;
+  final double? customBorderRadius;
+  final TextStyle? textStyle;
+
+  const CustomButton({
+    Key? key,
+    required this.onPressed,
+    this.text,
+    this.icon,
+    required this.backgroundColor,
+    required this.borderColor,
+    required this.contentColor,
+    this.textStyle,
+    this.size = ButtonSize.medium,
+    this.style = ButtonStyleType.textOnly,
+    this.customBorderRadius,
+  }) : super(key: key);
+
+  EdgeInsets get _padding {
+    switch (size) {
+      case ButtonSize.large:
+        return const EdgeInsets.symmetric(vertical: 12, horizontal: 24);
+      case ButtonSize.medium:
+        return const EdgeInsets.symmetric(vertical: 8, horizontal: 16);
+      case ButtonSize.small:
+        return const EdgeInsets.symmetric(vertical: 6, horizontal: 12);
+    }
+  }
+
+  double get _defaultRadius {
+    switch (size) {
+      case ButtonSize.large:
+        return 12;
+      case ButtonSize.medium:
+        return 8;
+      case ButtonSize.small:
+        return 6;
+    }
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    final borderRadius =
+        BorderRadius.circular(customBorderRadius ?? _defaultRadius);
+
+    Widget content;
+
+    switch (style) {
+      case ButtonStyleType.leftIcon:
+        content = Row(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            if (icon != null) Icon(icon, color: contentColor),
+            const SizedBox(width: 8),
+            if (text != null)
+              Text(text!, style: textStyle?.copyWith(color: contentColor)),
+          ],
+        );
+        break;
+      case ButtonStyleType.rightIcon:
+        content = Row(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            if (text != null)
+              Text(text!, style: textStyle?.copyWith(color: contentColor)),
+            const SizedBox(width: 8),
+            if (icon != null) Icon(icon, color: contentColor),
+          ],
+        );
+        break;
+      case ButtonStyleType.textOnly:
+        content =
+            Text(text ?? '', style: textStyle?.copyWith(color: contentColor));
+        break;
+      case ButtonStyleType.iconOnly:
+        content = Icon(icon, color: contentColor);
+        break;
+    }
+
+    return MaterialButton(
+      onPressed: onPressed,
+      color: backgroundColor,
+      padding: _padding,
+      shape: RoundedRectangleBorder(
+        borderRadius: borderRadius,
+        side: BorderSide(color: borderColor),
+      ),
+      child: content,
+    );
+  }
+}
