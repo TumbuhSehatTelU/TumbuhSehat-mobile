@@ -6,7 +6,7 @@ enum ButtonStyleType { leftIcon, rightIcon, textOnly, iconOnly }
 
 // Contoh penggunaan
 
-// CustomButton(
+// TS_button(
 //   onPressed: () {},
 //   text: 'Kustom Lebar',
 //   backgroundColor: Colors.green,
@@ -15,10 +15,10 @@ enum ButtonStyleType { leftIcon, rightIcon, textOnly, iconOnly }
 //   size: ButtonSize.medium,
 //   style: ButtonStyleType.textOnly,
 //   textStyle: Regular.h1,
-//   width: 200, // 👈 custom lebar 200 pixel
+//   width: 200,
 // )
 
-class CustomButton extends StatelessWidget {
+class TS_button extends StatelessWidget {
   final VoidCallback onPressed;
   final String? text;
   final IconData? icon;
@@ -30,8 +30,9 @@ class CustomButton extends StatelessWidget {
   final double? customBorderRadius;
   final TextStyle? textStyle;
   final double? width;
+  final List<BoxShadow>? boxShadow;
 
-  const CustomButton({
+  const TS_button({
     Key? key,
     required this.onPressed,
     this.text,
@@ -44,6 +45,7 @@ class CustomButton extends StatelessWidget {
     this.style = ButtonStyleType.textOnly,
     this.customBorderRadius,
     this.width,
+    this.boxShadow,
   }) : super(key: key);
 
   EdgeInsets get _padding {
@@ -109,15 +111,25 @@ class CustomButton extends StatelessWidget {
 
     return SizedBox(
       width: width,
-      child: MaterialButton(
-        onPressed: onPressed,
-        color: backgroundColor,
-        padding: _padding,
-        shape: RoundedRectangleBorder(
+      child: Container(
+        decoration: BoxDecoration(
+          color: backgroundColor,
           borderRadius: borderRadius,
-          side: BorderSide(color: borderColor),
+          boxShadow: boxShadow,
+          border: Border.all(color: borderColor),
         ),
-        child: content,
+        child: Material(
+          color: Colors.transparent,
+          borderRadius: borderRadius,
+          child: InkWell(
+            borderRadius: borderRadius,
+            onTap: onPressed,
+            child: Padding(
+              padding: _padding,
+              child: Center(child: content),
+            ),
+          ),
+        ),
       ),
     );
   }
