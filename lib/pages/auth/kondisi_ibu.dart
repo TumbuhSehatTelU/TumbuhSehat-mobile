@@ -1,17 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:mobile_tumbuh_sehat/component/button/button.dart';
-import 'package:mobile_tumbuh_sehat/pages/auth/kondisi_ibu.dart';
+import 'package:mobile_tumbuh_sehat/pages/auth/data_kondisi_anak.dart';
 import 'package:mobile_tumbuh_sehat/theme/color.dart';
 import 'package:mobile_tumbuh_sehat/theme/text_style.dart';
 
-class Daftar extends StatefulWidget {
-  const Daftar({super.key});
+class KondisiIbu extends StatefulWidget {
+  const KondisiIbu({super.key});
 
   @override
-  State<Daftar> createState() => _DaftarState();
+  State<KondisiIbu> createState() => _KondisiIbuState();
 }
 
-class _DaftarState extends State<Daftar> {
+class _KondisiIbuState extends State<KondisiIbu> {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -23,20 +23,20 @@ class _DaftarState extends State<Daftar> {
           ),
           child: Column(
             children: [
-              Text('Daftar'),
+              Text('Kondisi Ibu'),
               TS_button(
                 onPressed: () {
                   Navigator.push(
                     context,
                     MaterialPageRoute(
-                      builder: (context) => KondisiIbu(),
+                      builder: (context) => DataKondisiAnak(),
                     ),
                   );
                 },
                 backgroundColor: TS_color.secondaryGreen.c3,
                 borderColor: TS_color.secondaryGreen.c3,
                 contentColor: TS_color.monochrome.black,
-                text: "Daftar",
+                text: "Tidak Hamil & Tidak Menyusui",
                 textStyle:
                     TS_font.bold.large.withColor(TS_color.monochrome.black),
               )

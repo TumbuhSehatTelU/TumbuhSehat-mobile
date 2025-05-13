@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:mobile_tumbuh_sehat/component/shadow/shadow.dart';
+import 'package:mobile_tumbuh_sehat/pages/auth/daftar.dart';
 import 'package:mobile_tumbuh_sehat/theme/color.dart';
 import 'package:mobile_tumbuh_sehat/theme/text_style.dart';
 import 'package:mobile_tumbuh_sehat/component/button/button.dart';
@@ -34,11 +35,17 @@ class _SplashScreenState extends State<SplashScreen> {
                 ),
                 SizedBox(height: (MediaQuery.of(context).size.height * 0.025)),
                 TS_button(
-                  onPressed: () {},
+                  onPressed: () {
+                    Navigator.pushAndRemoveUntil(
+                      context,
+                      MaterialPageRoute(builder: (context) => Daftar()),
+                      (route) => false,
+                    );
+                  },
                   backgroundColor: TS_color.secondaryGreen.c3,
                   borderColor: TS_color.secondaryGreen.c3,
                   contentColor: TS_color.monochrome.black,
-                  textStyle: Bold.large,
+                  textStyle: TS_font.bold.large,
                   text: "Mulai",
                   size: ButtonSize.large,
                   customBorderRadius: 240.0,
@@ -53,7 +60,8 @@ class _SplashScreenState extends State<SplashScreen> {
                           left: MediaQuery.of(context).size.width * 0.1),
                       child: Text(
                         'Bantu Ibu Pantau Gizi\nJaga Tumbuh\nKembang Anak!',
-                        style: Bold.h1.withColor(TS_color.monochrome.darkGrey),
+                        style: TS_font.bold.h1
+                            .withColor(TS_color.monochrome.darkGrey),
                       ),
                     ),
                   ],

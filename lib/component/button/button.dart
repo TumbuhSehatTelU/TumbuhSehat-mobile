@@ -116,7 +116,10 @@ class TS_button extends StatelessWidget {
           color: backgroundColor,
           borderRadius: borderRadius,
           boxShadow: boxShadow,
-          border: Border.all(color: borderColor),
+          border: Border.all(
+            color: borderColor,
+            width: 2.0,
+          ),
         ),
         child: Material(
           color: Colors.transparent,

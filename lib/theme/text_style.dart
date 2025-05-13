@@ -14,38 +14,46 @@ extension TextStyleExtension on TextStyle {
 //   style: Regular.h1.withColor(Main.blue),
 // );
 
+class TS_font {
+  static Regular regular = Regular();
+  static Medium medium = Medium();
+  static SemiBold semiBold = SemiBold();
+  static Bold bold = Bold();
+}
+
 class Regular {
-  static TextStyle h1 = GoogleFonts.openSans(
+  Regular();
+  final TextStyle h1 = GoogleFonts.openSans(
     fontSize: 28,
     fontWeight: FontWeight.normal,
     letterSpacing: -1.5,
   );
 
-  static TextStyle h2 = GoogleFonts.openSans(
+  final TextStyle h2 = GoogleFonts.openSans(
     fontSize: 22,
     fontWeight: FontWeight.normal,
     letterSpacing: -1,
   );
 
-  static TextStyle h3 = GoogleFonts.openSans(
+  final TextStyle h3 = GoogleFonts.openSans(
     fontSize: 18,
     fontWeight: FontWeight.normal,
     letterSpacing: -0.5,
   );
 
-  static TextStyle large = GoogleFonts.openSans(
+  final TextStyle large = GoogleFonts.openSans(
     fontSize: 16,
     fontWeight: FontWeight.normal,
     letterSpacing: 0,
   );
 
-  static TextStyle body = GoogleFonts.openSans(
+  final TextStyle body = GoogleFonts.openSans(
     fontSize: 14,
     fontWeight: FontWeight.normal,
     letterSpacing: 0.5,
   );
 
-  static TextStyle small = GoogleFonts.openSans(
+  final TextStyle small = GoogleFonts.openSans(
     fontSize: 12,
     fontWeight: FontWeight.normal,
     letterSpacing: 1,
@@ -53,37 +61,38 @@ class Regular {
 }
 
 class Medium {
-  static TextStyle h1 = GoogleFonts.openSans(
+  Medium();
+  final TextStyle h1 = GoogleFonts.openSans(
     fontSize: 28,
     fontWeight: FontWeight.w500,
     letterSpacing: -1.5,
   );
 
-  static TextStyle h2 = GoogleFonts.openSans(
+  final TextStyle h2 = GoogleFonts.openSans(
     fontSize: 22,
     fontWeight: FontWeight.w500,
     letterSpacing: -1,
   );
 
-  static TextStyle h3 = GoogleFonts.openSans(
+  final TextStyle h3 = GoogleFonts.openSans(
     fontSize: 18,
     fontWeight: FontWeight.w500,
     letterSpacing: -0.5,
   );
 
-  static TextStyle large = GoogleFonts.openSans(
+  final TextStyle large = GoogleFonts.openSans(
     fontSize: 16,
     fontWeight: FontWeight.w500,
     letterSpacing: 0,
   );
 
-  static TextStyle body = GoogleFonts.openSans(
+  final TextStyle body = GoogleFonts.openSans(
     fontSize: 14,
     fontWeight: FontWeight.w500,
     letterSpacing: 0.5,
   );
 
-  static TextStyle small = GoogleFonts.openSans(
+  final TextStyle small = GoogleFonts.openSans(
     fontSize: 12,
     fontWeight: FontWeight.w500,
     letterSpacing: 1,
@@ -91,37 +100,38 @@ class Medium {
 }
 
 class SemiBold {
-  static TextStyle h1 = GoogleFonts.openSans(
+  SemiBold();
+  final TextStyle h1 = GoogleFonts.openSans(
     fontSize: 28,
     fontWeight: FontWeight.w600,
     letterSpacing: -1.5,
   );
 
-  static TextStyle h2 = GoogleFonts.openSans(
+  final TextStyle h2 = GoogleFonts.openSans(
     fontSize: 22,
     fontWeight: FontWeight.w600,
     letterSpacing: -1,
   );
 
-  static TextStyle h3 = GoogleFonts.openSans(
+  final TextStyle h3 = GoogleFonts.openSans(
     fontSize: 18,
     fontWeight: FontWeight.w600,
     letterSpacing: -0.5,
   );
 
-  static TextStyle large = GoogleFonts.openSans(
+  final TextStyle large = GoogleFonts.openSans(
     fontSize: 16,
     fontWeight: FontWeight.w600,
     letterSpacing: 0,
   );
 
-  static TextStyle body = GoogleFonts.openSans(
+  final TextStyle body = GoogleFonts.openSans(
     fontSize: 14,
     fontWeight: FontWeight.w600,
     letterSpacing: 0.5,
   );
 
-  static TextStyle small = GoogleFonts.openSans(
+  final TextStyle small = GoogleFonts.openSans(
     fontSize: 12,
     fontWeight: FontWeight.w600,
     letterSpacing: 1,
@@ -129,37 +139,38 @@ class SemiBold {
 }
 
 class Bold {
-  static TextStyle h1 = GoogleFonts.openSans(
+  Bold();
+  final TextStyle h1 = GoogleFonts.openSans(
     fontSize: 28,
     fontWeight: FontWeight.bold,
     letterSpacing: -1.5,
   );
 
-  static TextStyle h2 = GoogleFonts.openSans(
+  final TextStyle h2 = GoogleFonts.openSans(
     fontSize: 22,
     fontWeight: FontWeight.bold,
     letterSpacing: -1,
   );
 
-  static TextStyle h3 = GoogleFonts.openSans(
+  final TextStyle h3 = GoogleFonts.openSans(
     fontSize: 18,
     fontWeight: FontWeight.bold,
     letterSpacing: -0.5,
   );
 
-  static TextStyle large = GoogleFonts.openSans(
+  final TextStyle large = GoogleFonts.openSans(
     fontSize: 16,
     fontWeight: FontWeight.bold,
     letterSpacing: 0,
   );
 
-  static TextStyle body = GoogleFonts.openSans(
+  final TextStyle body = GoogleFonts.openSans(
     fontSize: 14,
     fontWeight: FontWeight.bold,
     letterSpacing: 0.5,
   );
 
-  static TextStyle small = GoogleFonts.openSans(
+  final TextStyle small = GoogleFonts.openSans(
     fontSize: 12,
     fontWeight: FontWeight.bold,
     letterSpacing: 1,
