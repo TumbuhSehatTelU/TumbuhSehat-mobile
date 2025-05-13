@@ -44,7 +44,7 @@ class _MainPageState extends State<MainPage> {
       bottomNavigationBar: BottomAppBar(
         shape: const CircularNotchedRectangle(), // Membuat cekungan untuk FAB
         notchMargin: 6.0, // Jarak antara FAB dan BottomAppBar
-        color: MainTosca.c5,
+        color: TS_color.mainTosca.c5,
         height: 70,
         child: Container(
           // height: 10, // Sesuaikan tinggi navbar
@@ -60,30 +60,30 @@ class _MainPageState extends State<MainPage> {
                 IconButton(
                   icon: Icon(Icons.home,
                       color: _currentIndex == 0
-                          ? Monochrome.white
-                          : Monochrome.lightGrey),
+                          ? TS_color.monochrome.white
+                          : TS_color.monochrome.lightGrey),
                   onPressed: () => _onItemTapped(0),
                 ),
                 IconButton(
                   icon: Icon(Icons.home,
                       color: _currentIndex == 1
-                          ? Monochrome.white
-                          : Monochrome.lightGrey),
+                          ? TS_color.monochrome.white
+                          : TS_color.monochrome.lightGrey),
                   onPressed: () => _onItemTapped(1),
                 ),
                 SizedBox(width: 40),
                 IconButton(
                   icon: Icon(Icons.home,
                       color: _currentIndex == 3
-                          ? Monochrome.white
-                          : Monochrome.lightGrey),
+                          ? TS_color.monochrome.white
+                          : TS_color.monochrome.lightGrey),
                   onPressed: () => _onItemTapped(3),
                 ),
                 IconButton(
                   icon: Icon(Icons.person,
                       color: _currentIndex == 4
-                          ? Monochrome.white
-                          : Monochrome.lightGrey),
+                          ? TS_color.monochrome.white
+                          : TS_color.monochrome.lightGrey),
                   onPressed: () => _onItemTapped(4),
                 ),
               ],
