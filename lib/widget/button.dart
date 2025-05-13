@@ -1,7 +1,22 @@
 import 'package:flutter/material.dart';
 
 enum ButtonSize { large, medium, small }
+
 enum ButtonStyleType { leftIcon, rightIcon, textOnly, iconOnly }
+
+// Contoh penggunaan
+
+// CustomButton(
+//   onPressed: () {},
+//   text: 'Kustom Lebar',
+//   backgroundColor: Colors.green,
+//   borderColor: Colors.black,
+//   contentColor: Colors.white,
+//   size: ButtonSize.medium,
+//   style: ButtonStyleType.textOnly,
+//   textStyle: Regular.h1,
+//   width: 200, // 👈 custom lebar 200 pixel
+// )
 
 class CustomButton extends StatelessWidget {
   final VoidCallback onPressed;
@@ -14,6 +29,7 @@ class CustomButton extends StatelessWidget {
   final ButtonStyleType style;
   final double? customBorderRadius;
   final TextStyle? textStyle;
+  final double? width;
 
   const CustomButton({
     Key? key,
@@ -27,6 +43,7 @@ class CustomButton extends StatelessWidget {
     this.size = ButtonSize.medium,
     this.style = ButtonStyleType.textOnly,
     this.customBorderRadius,
+    this.width,
   }) : super(key: key);
 
   EdgeInsets get _padding {
@@ -90,15 +107,18 @@ class CustomButton extends StatelessWidget {
         break;
     }
 
-    return MaterialButton(
-      onPressed: onPressed,
-      color: backgroundColor,
-      padding: _padding,
-      shape: RoundedRectangleBorder(
-        borderRadius: borderRadius,
-        side: BorderSide(color: borderColor),
+    return SizedBox(
+      width: width,
+      child: MaterialButton(
+        onPressed: onPressed,
+        color: backgroundColor,
+        padding: _padding,
+        shape: RoundedRectangleBorder(
+          borderRadius: borderRadius,
+          side: BorderSide(color: borderColor),
+        ),
+        child: content,
       ),
-      child: content,
     );
   }
 }
