@@ -169,8 +169,7 @@ class _ScanMakananState extends State<ScanMakanan> {
           
                                 // 2. Panggil API service
                                 final apiService = NutritionApiService();
-                                final String apiResponse =
-                                    await apiService.getNutritionData(picture.path);
+                                final Map<String, dynamic> apiResponse = await apiService.getNutritionData(picture.path);
           
                                 // 3. Navigasi ke halaman hasil jika masih di-mount
                                 if (mounted) {

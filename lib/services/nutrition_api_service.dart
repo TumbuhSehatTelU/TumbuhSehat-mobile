@@ -6,7 +6,7 @@ class NutritionApiService {
   final String _apiUrl =
       'https://syahrezaadnanalazhar-tumbuh-sehat-food-segmentation.hf.space/predict';
 
-  Future<String> getNutritionData(String imagePath) async {
+  Future<Map<String, dynamic>> getNutritionData(String imagePath) async {
     try {
       String fileName = imagePath.split('/').last;
 
@@ -30,18 +30,20 @@ class NutritionApiService {
       final response = await _dio.post(_apiUrl, data: formData);
 
       if (response.statusCode == 200) {
-        return response.data.toString();
+        return response.data;
       } else {
-        return "Error: Server returned status code ${response.statusCode}";
+        throw Exception(
+            'Gagal mendapatkan data: Status ${response.statusCode}');
       }
     } on DioException catch (e) {
       // Periksa apakah ada response dari server untuk info lebih detail
       if (e.response != null) {
-        return "Error ${e.response?.statusCode}: ${e.response?.data.toString()}";
+        throw Exception(
+            'Error ${e.response?.statusCode}: ${e.response?.data.toString()}');
       }
-      return "Error sending request: ${e.message}";
+      throw Exception('Error request API: ${e.message}');
     } catch (e) {
-      return "An unexpected error occurred: $e";
+      throw Exception('Terjadi error tak terduga: $e');
     }
   }
 }
