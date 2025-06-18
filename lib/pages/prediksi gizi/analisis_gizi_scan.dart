@@ -3,7 +3,12 @@ import 'package:flutter/material.dart';
 
 class AnalisisGiziScan extends StatefulWidget {
   final String imagePath;
-  const AnalisisGiziScan({super.key, required this.imagePath});
+  final String apiResponse;
+  const AnalisisGiziScan({
+    super.key,
+    required this.imagePath,
+    required this.apiResponse,
+  });
 
   @override
   State<AnalisisGiziScan> createState() => _AnalisisGiziScanState();
@@ -166,8 +171,8 @@ class _AnalisisGiziScanState extends State<AnalisisGiziScan> {
                           child: Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
-                              Text(
-                                'Serving Size 100 g',
+                              SelectableText(
+                                'API Response:\n${widget.apiResponse}',
                                 style: TextStyle(
                                     fontSize: 16, fontWeight: FontWeight.bold),
                               ),
@@ -194,14 +199,6 @@ class _AnalisisGiziScanState extends State<AnalisisGiziScan> {
                           ),
                         )
                       ],
-                      // List.generate(
-                      //   30,
-                      //   (index) => Padding(
-                      //     padding: const EdgeInsets.symmetric(vertical: 8),
-                      //     child: Text('Data Analisis $index',
-                      //         style: const TextStyle(fontSize: 18)),
-                      //   ),
-                      // ),
                     ),
                   ),
                 ],

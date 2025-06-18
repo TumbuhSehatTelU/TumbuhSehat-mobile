@@ -1,86 +1,103 @@
 import 'package:flutter/material.dart';
 import 'package:mobile_tumbuh_sehat/component/shadow/shadow.dart';
+import 'package:mobile_tumbuh_sehat/theme/color.dart';
+import 'package:mobile_tumbuh_sehat/theme/text_style.dart';
 
 // Contoh Penggunaan
 
 // final TextEditingController emailController = TextEditingController();
-// final GlobalKey<_CustomTextFieldState> emailFieldKey = GlobalKey();
+// final GlobalKey<CustomTextFieldState> emailFieldKey = GlobalKey<CustomTextFieldState>();
 
-// CustomTextField(
+// TS_inputfield.text(
 //   key: emailFieldKey,
-//   placeholder: "Masukkan email",
-//   backgroundColor: Colors.white,
-//   borderColor: Colors.grey,
+//   placeholder: "Contoh: 1234567812345678",
+//   backgroundColor: TS_color.monochrome.pureWhite,
+//   borderColor: TS_color.monochrome.pureWhite,
 //   textColor: Colors.black,
-//   placeholderColor: Colors.grey,
 //   isPassword: false,
-//   borderRadius: 12,
+//   borderRadius: 240,
 //   width: MediaQuery.of(context).size.width * 0.8,
 //   boxShadow: TS_shadow.light,
 //   controller: emailController,
-//   validationLogic: (text) {
-//     if (text.isEmpty) return "Email tidak boleh kosong";
-//     if (!text.contains('@')) return "Email tidak valid";
-//     return null;
-//   },
+//   validationLogicList: [
+//     (val) => val.isNotEmpty,
+//     (val) => RegExp(r'^\d+$').hasMatch(val), // hanya angka
+//     (val) => val.length == 16,
+//   ],
+//   validationMessageList: const [
+//     "Input tidak boleh kosong",
+//     "Input harus berupa angka",
+//     "Panjang harus 16 karakter",
+//   ],
 // ),
-// const SizedBox(height: 20),
-// ElevatedButton(
-//   onPressed: () {
-//     // Jalankan validasi saat button ditekan
-//     emailFieldKey.currentState?.validate();
-//     if (emailController.text.contains('@')) {
-//       print("Submit berhasil dengan email: ${emailController.text}");
-//     }
-//   },
-//   child: const Text("Submit"),
-// ),
+
+// onPressed: () {
+//   bool isValid =
+//       emailFieldKey.currentState?.validate() ?? false;
+//   if (isValid) {
+//     Navigator.push(
+//       context,
+//       MaterialPageRoute(
+//         builder: (context) => KondisiIbu(),
+//       ),
+//     );
+//   }
+// },
 
 class CustomTextField extends StatefulWidget {
   final String placeholder;
   final Color backgroundColor;
   final Color borderColor;
-  final Color textColor;
-  final Color placeholderColor;
+  final Color placeholderColor = TS_color.monochrome.lightGrey;
   final bool isPassword;
   final double borderRadius;
   final double width;
   final List<BoxShadow> boxShadow;
   final TextEditingController controller;
-  final String? Function(String)? validationLogic;
-  final String? validationMessage;
+  final List<String> validationMessageList;
+  final List<bool Function(String)> validationLogicList;
 
-  const CustomTextField({
+  CustomTextField({
     Key? key,
     required this.placeholder,
     required this.backgroundColor,
     required this.borderColor,
-    required this.textColor,
-    required this.placeholderColor,
     required this.isPassword,
     required this.borderRadius,
     required this.width,
     required this.boxShadow,
     required this.controller,
-    this.validationLogic,
-    this.validationMessage,
-  }) : super(key: key);
+    required this.validationMessageList,
+    required this.validationLogicList,
+  })  : assert(
+          validationLogicList.length == validationMessageList.length,
+          "Jumlah validationLogic dan validationMessage harus sama",
+        ),
+        super(key: key);
 
   @override
-  State<CustomTextField> createState() => _CustomTextFieldState();
+  CustomTextFieldState createState() => CustomTextFieldState();
 }
 
-class _CustomTextFieldState extends State<CustomTextField> {
-  bool _obscureText = true;
+class CustomTextFieldState extends State<CustomTextField> {
+  bool _obscureText = false;
   String? _errorText;
 
-  void validate() {
-    if (widget.validationLogic != null) {
-      final result = widget.validationLogic!(widget.controller.text);
-      setState(() {
-        _errorText = result;
-      });
+  bool validate() {
+    String text = widget.controller.text;
+    for (int i = 0; i < widget.validationLogicList.length; i++) {
+      bool isValid = widget.validationLogicList[i](text);
+      if (!isValid) {
+        setState(() {
+          _errorText = widget.validationMessageList[i];
+        });
+        return false;
+      }
     }
+    setState(() {
+      _errorText = null;
+    });
+    return true;
   }
 
   @override
@@ -103,10 +120,12 @@ class _CustomTextFieldState extends State<CustomTextField> {
                 child: TextField(
                   controller: widget.controller,
                   obscureText: widget.isPassword ? _obscureText : false,
-                  style: TextStyle(color: widget.textColor),
+                  style:
+                      TS_font.regular.body.withColor(TS_color.monochrome.black),
                   decoration: InputDecoration(
                     hintText: widget.placeholder,
-                    hintStyle: TextStyle(color: widget.placeholderColor),
+                    hintStyle: TS_font.regular.body
+                        .withColor(TS_color.monochrome.lightGrey),
                     border: InputBorder.none,
                   ),
                 ),
@@ -126,14 +145,13 @@ class _CustomTextFieldState extends State<CustomTextField> {
             ],
           ),
         ),
-        if (_errorText != null)
-          Padding(
-            padding: const EdgeInsets.only(top: 6, left: 8),
-            child: Text(
-              _errorText!,
-              style: TextStyle(color: Colors.red, fontSize: 12),
-            ),
+        Padding(
+          padding: const EdgeInsets.only(top: 4, left: 8),
+          child: Text(
+            _errorText ?? " ",
+            style: TS_font.bold.body.withColor(TS_color.additionalColor.red),
           ),
+        ),
       ],
     );
   }

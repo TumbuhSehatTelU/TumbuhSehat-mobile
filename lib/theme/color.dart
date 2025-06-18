@@ -33,6 +33,7 @@ class Monochrome {
   final Color grey = const Color.fromRGBO(104, 104, 104, 1);
   final Color lightGrey = const Color.fromRGBO(178, 178, 178, 1);
   final Color white = const Color.fromRGBO(245, 245, 250, 1);
+  final Color pureWhite = const Color.fromRGBO(255, 255, 255, 1);
 }
 
 class AdditionalColor {
