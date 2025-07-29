@@ -471,7 +471,7 @@ final Map<String, FoodData> foodDatabase = {
       ),
       KategoriInfo(
         namaKategori: 'Serat',
-        satuan: 'buah',
+        satuan: 'sdm',
         satuanNutrisi: 'gram',
         aturanRentangPiksel: [
           PixelRangeRule(

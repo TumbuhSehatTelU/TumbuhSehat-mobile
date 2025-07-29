@@ -1,10 +1,10 @@
 class KomponenMakanan {
-  final String nama; 
-  final List<String> kategori; 
-  final List<double> kuantitas; 
-  final List<String> satuan; 
-  final List<double> kuantitasNutrisi; 
-  final List<String> satuanKuantitasNutrisi; 
+  final String nama;
+  final List<String> kategori;
+  final List<double> kuantitas;
+  final List<String> satuan;
+  final List<double> kuantitasNutrisi;
+  final List<String> satuanKuantitasNutrisi;
 
   KomponenMakanan({
     required this.nama,
@@ -15,7 +15,6 @@ class KomponenMakanan {
     required this.satuanKuantitasNutrisi,
   });
 
-  
   @override
   String toString() {
     return 'KomponenMakanan(\n'
@@ -36,9 +35,9 @@ class FoodData {
 }
 
 class KategoriInfo {
-  final String namaKategori; 
-  final String satuan; 
-  final String satuanNutrisi; 
+  final String namaKategori;
+  final String satuan;
+  final String satuanNutrisi;
   final List<PixelRangeRule> aturanRentangPiksel;
 
   KategoriInfo({
