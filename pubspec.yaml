@@ -41,3 +41,7 @@ flutter:
     # - lib/assets/icon
     - lib/assets/image/Splash Screen Illustration.svg
     - lib/assets/image/Logo.svg
+
+flutter_gen:
+  output: lib/app/core/gen/
+  line_length: 80
