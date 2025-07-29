@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:mobile_tumbuh_sehat/component/shadow/shadow.dart';
-import 'package:mobile_tumbuh_sehat/theme/color.dart';
-import 'package:mobile_tumbuh_sehat/theme/text_style.dart';
+import 'package:mobile_tumbuh_sehat/app/presentation/widgets/shadow/shadow.dart';
+import 'package:mobile_tumbuh_sehat/app/core/theme/color.dart';
+import 'package:mobile_tumbuh_sehat/app/core/theme/text_style.dart';
 
 // Contoh Penggunaan
 

@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:mobile_tumbuh_sehat/component/shadow/shadow.dart';
-import 'package:mobile_tumbuh_sehat/pages/auth/daftar.dart';
-import 'package:mobile_tumbuh_sehat/theme/color.dart';
-import 'package:mobile_tumbuh_sehat/theme/text_style.dart';
-import 'package:mobile_tumbuh_sehat/component/button/button.dart';
+import 'package:mobile_tumbuh_sehat/app/presentation/widgets/shadow/shadow.dart';
+import 'package:mobile_tumbuh_sehat/features/auth/presentation/pages/daftar.dart';
+import 'package:mobile_tumbuh_sehat/app/core/theme/color.dart';
+import 'package:mobile_tumbuh_sehat/app/core/theme/text_style.dart';
+import 'package:mobile_tumbuh_sehat/app/presentation/widgets/button/button.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
 class SplashScreen extends StatefulWidget {

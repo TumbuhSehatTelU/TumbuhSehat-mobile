@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:mobile_tumbuh_sehat/component/button/button.dart';
-import 'package:mobile_tumbuh_sehat/component/input_field/AllInputField.dart';
-import 'package:mobile_tumbuh_sehat/component/shadow/shadow.dart';
-import 'package:mobile_tumbuh_sehat/pages/auth/kondisi_ibu.dart';
-import 'package:mobile_tumbuh_sehat/theme/color.dart';
-import 'package:mobile_tumbuh_sehat/theme/text_style.dart';
-import 'package:mobile_tumbuh_sehat/component/input_field/text_field.dart';
+import 'package:mobile_tumbuh_sehat/app/presentation/widgets/button/button.dart';
+import 'package:mobile_tumbuh_sehat/app/presentation/widgets/input_field/AllInputField.dart';
+import 'package:mobile_tumbuh_sehat/app/presentation/widgets/shadow/shadow.dart';
+import 'package:mobile_tumbuh_sehat/features/auth/presentation/pages/kondisi_ibu.dart';
+import 'package:mobile_tumbuh_sehat/app/core/theme/color.dart';
+import 'package:mobile_tumbuh_sehat/app/core/theme/text_style.dart';
+import 'package:mobile_tumbuh_sehat/app/presentation/widgets/input_field/text_field.dart';
 
 class Daftar extends StatefulWidget {
   const Daftar({super.key});

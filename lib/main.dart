@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:mobile_tumbuh_sehat/main_page.dart';
-import 'package:mobile_tumbuh_sehat/pages/auth/splash_screen.dart';
-import 'package:mobile_tumbuh_sehat/pages/prediksi%20gizi/analisis_gizi_scan.dart';
-import 'package:mobile_tumbuh_sehat/pages/prediksi%20gizi/scan_makanan.dart';
+import 'package:mobile_tumbuh_sehat/app/presentation/pages/main_page.dart';
+import 'package:mobile_tumbuh_sehat/features/auth/presentation/pages/splash_screen.dart';
+import 'package:mobile_tumbuh_sehat/features/nutrition_prediction/presentation/pages/analisis_gizi_scan.dart';
+import 'package:mobile_tumbuh_sehat/features/nutrition_prediction/presentation/pages/scan_makanan.dart';
 
 void main() {
   runApp(const MainApp());

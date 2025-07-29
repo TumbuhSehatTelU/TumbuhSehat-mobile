@@ -1,9 +1,9 @@
 import 'package:camera/camera.dart';
 import 'package:flutter/material.dart';
-import 'package:mobile_tumbuh_sehat/pages/prediksi%20gizi/analisis_gizi_scan.dart';
-import 'package:mobile_tumbuh_sehat/services/nutrition_api_service.dart';
-import 'package:mobile_tumbuh_sehat/theme/color.dart';
-import 'package:mobile_tumbuh_sehat/theme/text_style.dart';
+import 'package:mobile_tumbuh_sehat/features/nutrition_prediction/presentation/pages/analisis_gizi_scan.dart';
+import 'package:mobile_tumbuh_sehat/features/nutrition_prediction/data/datasources/nutrition_remote_service.dart';
+import 'package:mobile_tumbuh_sehat/app/core/theme/color.dart';
+import 'package:mobile_tumbuh_sehat/app/core/theme/text_style.dart';
 
 // 1. UBAH DEKLARASI KELAS MENJADI STATEFULWIDGET
 class ScanMakanan extends StatefulWidget {

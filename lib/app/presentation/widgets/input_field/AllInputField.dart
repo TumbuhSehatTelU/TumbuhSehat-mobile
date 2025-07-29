@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:mobile_tumbuh_sehat/component/input_field/text_field.dart';
+import 'package:mobile_tumbuh_sehat/app/presentation/widgets/input_field/text_field.dart';
 
 class TS_inputfield {
   static Widget text({

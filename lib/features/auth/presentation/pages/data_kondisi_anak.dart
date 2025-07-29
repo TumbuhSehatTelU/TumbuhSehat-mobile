@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:mobile_tumbuh_sehat/component/button/button.dart';
-import 'package:mobile_tumbuh_sehat/theme/color.dart';
-import 'package:mobile_tumbuh_sehat/theme/text_style.dart';
+import 'package:mobile_tumbuh_sehat/app/presentation/widgets/button/button.dart';
+import 'package:mobile_tumbuh_sehat/app/core/theme/color.dart';
+import 'package:mobile_tumbuh_sehat/app/core/theme/text_style.dart';
 
 class DataKondisiAnak extends StatefulWidget {
   const DataKondisiAnak({super.key});

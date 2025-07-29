@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:mobile_tumbuh_sehat/pages/beranda.dart';
-import 'package:mobile_tumbuh_sehat/pages/chatbot.dart';
-import 'package:mobile_tumbuh_sehat/pages/komunitas.dart';
-import 'package:mobile_tumbuh_sehat/pages/profil.dart';
-import 'package:mobile_tumbuh_sehat/pages/prediksi%20gizi/scan_makanan.dart';
-import 'package:mobile_tumbuh_sehat/theme/color.dart';
+import 'package:mobile_tumbuh_sehat/features/home/presentation/pages/home_page.dart';
+import 'package:mobile_tumbuh_sehat/features/chatbot/presentation/pages/chatbot_page.dart';
+import 'package:mobile_tumbuh_sehat/features/community/presentation/pages/community_page.dart';
+import 'package:mobile_tumbuh_sehat/features/profile/presentation/pages/profile_page.dart';
+import 'package:mobile_tumbuh_sehat/features/nutrition_prediction/presentation/pages/scan_makanan.dart';
+import 'package:mobile_tumbuh_sehat/app/core/theme/color.dart';
 
 class MainPage extends StatefulWidget {
   final int selectedIndex;

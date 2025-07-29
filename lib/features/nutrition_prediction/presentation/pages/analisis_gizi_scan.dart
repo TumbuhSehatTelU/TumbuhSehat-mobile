@@ -1,10 +1,10 @@
 import 'dart:io';
 import 'package:flutter/material.dart';
-import 'package:mobile_tumbuh_sehat/models/komponen_makanan.dart';
-import 'package:mobile_tumbuh_sehat/models/api_response_model.dart';
-import 'package:mobile_tumbuh_sehat/services/food_processor_service.dart';
-import 'package:mobile_tumbuh_sehat/theme/color.dart';
-import 'package:mobile_tumbuh_sehat/theme/text_style.dart';
+import 'package:mobile_tumbuh_sehat/features/nutrition_prediction/domain/entities/food_component.dart';
+import 'package:mobile_tumbuh_sehat/app/core/models/api_response_model.dart';
+import 'package:mobile_tumbuh_sehat/features/nutrition_prediction/data/datasources/food_processor_service.dart';
+import 'package:mobile_tumbuh_sehat/app/core/theme/color.dart';
+import 'package:mobile_tumbuh_sehat/app/core/theme/text_style.dart';
 
 class AnalisisGiziScan extends StatefulWidget {
   final String imagePath;

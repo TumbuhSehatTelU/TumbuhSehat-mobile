@@ -1,4 +1,4 @@
-import 'package:mobile_tumbuh_sehat/models/komponen_makanan.dart';
+import 'package:mobile_tumbuh_sehat/features/nutrition_prediction/domain/entities/food_component.dart';
 
 final Map<String, FoodData> foodDatabase = {
 // NASI
