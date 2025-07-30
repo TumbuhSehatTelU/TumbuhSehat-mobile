@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:mobile_tumbuh_sehat/app/presentation/widgets/shadow/shadow.dart';
+import 'package:mobile_tumbuh_sehat/app/presentation/widgets/shadow/ts_shadow.dart';
 import 'package:mobile_tumbuh_sehat/features/auth/presentation/pages/daftar.dart';
-import 'package:mobile_tumbuh_sehat/app/core/theme/color.dart';
-import 'package:mobile_tumbuh_sehat/app/core/theme/text_style.dart';
-import 'package:mobile_tumbuh_sehat/app/presentation/widgets/button/button.dart';
+import 'package:mobile_tumbuh_sehat/app/core/theme/ts_color.dart';
+import 'package:mobile_tumbuh_sehat/app/core/theme/ts_text_style.dart';
+import 'package:mobile_tumbuh_sehat/app/presentation/widgets/button/ts_button.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
 class SplashScreen extends StatefulWidget {
@@ -50,7 +50,7 @@ class _SplashScreenState extends State<SplashScreen> {
                   size: ButtonSize.large,
                   customBorderRadius: 240.0,
                   width: (MediaQuery.of(context).size.width * 0.8),
-                  boxShadow: TS_shadow.light,
+                  boxShadow: TSShadow.light,
                 ),
                 SizedBox(height: (MediaQuery.of(context).size.height * 0.12)),
                 Row(

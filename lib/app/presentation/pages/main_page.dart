@@ -4,7 +4,7 @@ import 'package:mobile_tumbuh_sehat/features/chatbot/presentation/pages/chatbot_
 import 'package:mobile_tumbuh_sehat/features/community/presentation/pages/community_page.dart';
 import 'package:mobile_tumbuh_sehat/features/profile/presentation/pages/profile_page.dart';
 import 'package:mobile_tumbuh_sehat/features/nutrition_prediction/presentation/pages/scan_makanan.dart';
-import 'package:mobile_tumbuh_sehat/app/core/theme/color.dart';
+import 'package:mobile_tumbuh_sehat/app/core/theme/ts_color.dart';
 
 class MainPage extends StatefulWidget {
   final int selectedIndex;

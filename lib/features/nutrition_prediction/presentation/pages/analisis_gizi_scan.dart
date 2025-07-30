@@ -3,8 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:mobile_tumbuh_sehat/features/nutrition_prediction/domain/entities/food_component.dart';
 import 'package:mobile_tumbuh_sehat/app/core/models/api_response_model.dart';
 import 'package:mobile_tumbuh_sehat/features/nutrition_prediction/data/datasources/food_processor_service.dart';
-import 'package:mobile_tumbuh_sehat/app/core/theme/color.dart';
-import 'package:mobile_tumbuh_sehat/app/core/theme/text_style.dart';
+import 'package:mobile_tumbuh_sehat/app/core/theme/ts_color.dart';
+import 'package:mobile_tumbuh_sehat/app/core/theme/ts_text_style.dart';
 
 class AnalisisGiziScan extends StatefulWidget {
   final String imagePath;

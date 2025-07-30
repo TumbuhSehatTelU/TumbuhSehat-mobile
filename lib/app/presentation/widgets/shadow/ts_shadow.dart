@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-class TS_shadow {
+class TSShadow {
   static List<BoxShadow> light = [
     BoxShadow(
       color: Colors.black.withOpacity(0.2), // transparansi 20%
