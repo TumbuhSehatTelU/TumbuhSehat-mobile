@@ -14,7 +14,7 @@ extension TextStyleExtension on TextStyle {
 //   style: Regular.h1.withColor(Main.blue),
 // );
 
-class TS_font {
+class TSFont {
   static Regular regular = Regular();
   static Medium medium = Medium();
   static SemiBold semiBold = SemiBold();

@@ -96,7 +96,7 @@ class _DaftarState extends State<Daftar> {
               ),
               Text(
                 'No. Kartu Keluarga',
-                style: TS_font.bold.large.withColor(TS_color.monochrome.black),
+                style: TSFont.bold.large.withColor(TS_color.monochrome.black),
               ),
 
               const SizedBox(height: 8),
@@ -147,7 +147,7 @@ class _DaftarState extends State<Daftar> {
               //   ],
               // ),
 
-              TS_button(
+              TSButton(
                 onPressed: () {
                   bool isValid =
                       emailFieldKey.currentState?.validate() ?? false;
@@ -165,7 +165,7 @@ class _DaftarState extends State<Daftar> {
                 contentColor: TS_color.monochrome.black,
                 text: "Daftar",
                 textStyle:
-                    TS_font.bold.large.withColor(TS_color.monochrome.black),
+                    TSFont.bold.large.withColor(TS_color.monochrome.black),
                 size: ButtonSize.medium,
                 customBorderRadius: 240,
               )

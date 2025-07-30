@@ -6,7 +6,7 @@ enum ButtonStyleType { leftIcon, rightIcon, textOnly, iconOnly }
 
 // Contoh penggunaan
 
-// TS_button(
+// TSButton(
 //   onPressed: () {},
 //   text: 'Kustom Lebar',
 //   backgroundColor: Colors.green,
@@ -18,7 +18,7 @@ enum ButtonStyleType { leftIcon, rightIcon, textOnly, iconOnly }
 //   width: 200,
 // )
 
-class TS_button extends StatelessWidget {
+class TSButton extends StatelessWidget {
   final VoidCallback onPressed;
   final String? text;
   final IconData? icon;
@@ -32,7 +32,7 @@ class TS_button extends StatelessWidget {
   final double? width;
   final List<BoxShadow>? boxShadow;
 
-  const TS_button({
+  const TSButton({
     Key? key,
     required this.onPressed,
     this.text,

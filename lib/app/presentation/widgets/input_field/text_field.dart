@@ -121,10 +121,10 @@ class CustomTextFieldState extends State<CustomTextField> {
                   controller: widget.controller,
                   obscureText: widget.isPassword ? _obscureText : false,
                   style:
-                      TS_font.regular.body.withColor(TS_color.monochrome.black),
+                      TSFont.regular.body.withColor(TS_color.monochrome.black),
                   decoration: InputDecoration(
                     hintText: widget.placeholder,
-                    hintStyle: TS_font.regular.body
+                    hintStyle: TSFont.regular.body
                         .withColor(TS_color.monochrome.lightGrey),
                     border: InputBorder.none,
                   ),
@@ -149,7 +149,7 @@ class CustomTextFieldState extends State<CustomTextField> {
           padding: const EdgeInsets.only(top: 4, left: 8),
           child: Text(
             _errorText ?? " ",
-            style: TS_font.bold.body.withColor(TS_color.additionalColor.red),
+            style: TSFont.bold.body.withColor(TS_color.additionalColor.red),
           ),
         ),
       ],

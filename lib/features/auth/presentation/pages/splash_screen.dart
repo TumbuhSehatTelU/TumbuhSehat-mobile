@@ -34,7 +34,7 @@ class _SplashScreenState extends State<SplashScreen> {
                   ),
                 ),
                 SizedBox(height: (MediaQuery.of(context).size.height * 0.025)),
-                TS_button(
+                TSButton(
                   onPressed: () {
                     Navigator.pushAndRemoveUntil(
                       context,
@@ -45,7 +45,7 @@ class _SplashScreenState extends State<SplashScreen> {
                   backgroundColor: TS_color.secondaryGreen.c3,
                   borderColor: TS_color.secondaryGreen.c3,
                   contentColor: TS_color.monochrome.black,
-                  textStyle: TS_font.bold.large,
+                  textStyle: TSFont.bold.large,
                   text: "Mulai",
                   size: ButtonSize.large,
                   customBorderRadius: 240.0,
@@ -60,7 +60,7 @@ class _SplashScreenState extends State<SplashScreen> {
                           left: MediaQuery.of(context).size.width * 0.1),
                       child: Text(
                         'Bantu Ibu Pantau Gizi\nJaga Tumbuh\nKembang Anak!',
-                        style: TS_font.bold.h1
+                        style: TSFont.bold.h1
                             .withColor(TS_color.monochrome.darkGrey),
                       ),
                     ),

@@ -24,7 +24,7 @@ class _KondisiIbuState extends State<KondisiIbu> {
           child: Column(
             children: [
               Text('Kondisi Ibu'),
-              TS_button(
+              TSButton(
                 onPressed: () {
                   Navigator.push(
                     context,
@@ -38,7 +38,7 @@ class _KondisiIbuState extends State<KondisiIbu> {
                 contentColor: TS_color.monochrome.black,
                 text: "Tidak Hamil & Tidak Menyusui",
                 textStyle:
-                    TS_font.bold.large.withColor(TS_color.monochrome.black),
+                    TSFont.bold.large.withColor(TS_color.monochrome.black),
               )
             ],
           ),

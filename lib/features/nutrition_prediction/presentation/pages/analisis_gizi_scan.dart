@@ -234,7 +234,7 @@ class _AnalisisGiziScanState extends State<AnalisisGiziScan> {
                               else if (_errorMessage.isNotEmpty)
                                 Center(
                                     child: Text(_errorMessage,
-                                        style: TS_font.regular.body.withColor(
+                                        style: TSFont.regular.body.withColor(
                                             TS_color.additionalColor.red)))
                               else
                                 Column(
@@ -244,10 +244,10 @@ class _AnalisisGiziScanState extends State<AnalisisGiziScan> {
                                           MainAxisAlignment.spaceBetween,
                                       children: [
                                         Text('Total Kalori',
-                                            style: TS_font.semiBold.large),
+                                            style: TSFont.semiBold.large),
                                         Text(
                                           '${_totalCalories.toStringAsFixed(0)} kal', // Tampilkan dari state
-                                          style: TS_font.bold.large,
+                                          style: TSFont.bold.large,
                                         ),
                                       ],
                                     ),
@@ -281,7 +281,7 @@ class _AnalisisGiziScanState extends State<AnalisisGiziScan> {
                                       onPressed: () => Navigator.of(context)
                                           .popUntil((route) => route.isFirst),
                                       child: Text('Kembali ke Beranda',
-                                          style: TS_font.bold.large.withColor(
+                                          style: TSFont.bold.large.withColor(
                                               TS_color.monochrome.black)),
                                     )
                                   ],
@@ -329,17 +329,17 @@ class _AnalisisGiziScanState extends State<AnalisisGiziScan> {
           Expanded(
               flex: 3,
               child: Text(name,
-                  style: TS_font.regular.body
+                  style: TSFont.regular.body
                       .withColor(TS_color.monochrome.black))),
           Expanded(
               flex: 2,
               child: Text('$quantity $unit',
-                  style: TS_font.semiBold.body.withColor(TS_color.mainTosca.c5),
+                  style: TSFont.semiBold.body.withColor(TS_color.mainTosca.c5),
                   textAlign: TextAlign.center)),
           Expanded(
               flex: 2,
               child: Text('$calories kal',
-                  style: TS_font.semiBold.body
+                  style: TSFont.semiBold.body
                       .withColor(TS_color.secondaryGreen.c5),
                   textAlign: TextAlign.right)),
         ],
@@ -371,7 +371,7 @@ class _AnalisisGiziScanState extends State<AnalisisGiziScan> {
             children: [
               Text(icon, style: const TextStyle(fontSize: 20)),
               const SizedBox(width: 8),
-              Text(title, style: TS_font.bold.h3.withColor(titleColor)),
+              Text(title, style: TSFont.bold.h3.withColor(titleColor)),
             ],
           ),
           const SizedBox(height: 8),
@@ -381,7 +381,7 @@ class _AnalisisGiziScanState extends State<AnalisisGiziScan> {
                   const EdgeInsets.symmetric(horizontal: 8.0, vertical: 4.0),
               child: Text(
                 'Tidak ada mengandung $title',
-                style: TS_font.regular.body.withColor(TS_color.monochrome.grey),
+                style: TSFont.regular.body.withColor(TS_color.monochrome.grey),
               ),
             )
           else

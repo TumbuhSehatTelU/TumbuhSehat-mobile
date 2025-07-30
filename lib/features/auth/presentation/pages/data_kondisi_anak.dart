@@ -23,14 +23,14 @@ class _DataKondisiAnakState extends State<DataKondisiAnak> {
           child: Column(
             children: [
               Text('Kondisi Anak'),
-              TS_button(
+              TSButton(
                 onPressed: () {},
                 backgroundColor: TS_color.secondaryGreen.c3,
                 borderColor: TS_color.secondaryGreen.c3,
                 contentColor: TS_color.monochrome.black,
                 text: "Simpan",
                 textStyle:
-                    TS_font.bold.large.withColor(TS_color.monochrome.black),
+                    TSFont.bold.large.withColor(TS_color.monochrome.black),
               )
             ],
           ),
