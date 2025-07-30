@@ -235,7 +235,7 @@ class _AnalisisGiziScanState extends State<AnalisisGiziScan> {
                                 Center(
                                     child: Text(_errorMessage,
                                         style: TSFont.regular.body.withColor(
-                                            TS_color.additionalColor.red)))
+                                            TSColor.additionalColor.red)))
                               else
                                 Column(
                                   children: [
@@ -252,7 +252,7 @@ class _AnalisisGiziScanState extends State<AnalisisGiziScan> {
                                       ],
                                     ),
                                     Divider(
-                                        color: TS_color.monochrome.lightGrey,
+                                        color: TSColor.monochrome.lightGrey,
                                         thickness: 1.5,
                                         height: 24),
 
@@ -271,7 +271,7 @@ class _AnalisisGiziScanState extends State<AnalisisGiziScan> {
                                     ElevatedButton(
                                       style: ElevatedButton.styleFrom(
                                         backgroundColor:
-                                            TS_color.secondaryGreen.c3,
+                                            TSColor.secondaryGreen.c3,
                                         shape: RoundedRectangleBorder(
                                             borderRadius:
                                                 BorderRadius.circular(12)),
@@ -282,7 +282,7 @@ class _AnalisisGiziScanState extends State<AnalisisGiziScan> {
                                           .popUntil((route) => route.isFirst),
                                       child: Text('Kembali ke Beranda',
                                           style: TSFont.bold.large.withColor(
-                                              TS_color.monochrome.black)),
+                                              TSColor.monochrome.black)),
                                     )
                                   ],
                                 )
@@ -329,18 +329,18 @@ class _AnalisisGiziScanState extends State<AnalisisGiziScan> {
           Expanded(
               flex: 3,
               child: Text(name,
-                  style: TSFont.regular.body
-                      .withColor(TS_color.monochrome.black))),
+                  style:
+                      TSFont.regular.body.withColor(TSColor.monochrome.black))),
           Expanded(
               flex: 2,
               child: Text('$quantity $unit',
-                  style: TSFont.semiBold.body.withColor(TS_color.mainTosca.c5),
+                  style: TSFont.semiBold.body.withColor(TSColor.mainTosca.c5),
                   textAlign: TextAlign.center)),
           Expanded(
               flex: 2,
               child: Text('$calories kal',
-                  style: TSFont.semiBold.body
-                      .withColor(TS_color.secondaryGreen.c5),
+                  style:
+                      TSFont.semiBold.body.withColor(TSColor.secondaryGreen.c5),
                   textAlign: TextAlign.right)),
         ],
       ),
@@ -381,7 +381,7 @@ class _AnalisisGiziScanState extends State<AnalisisGiziScan> {
                   const EdgeInsets.symmetric(horizontal: 8.0, vertical: 4.0),
               child: Text(
                 'Tidak ada mengandung $title',
-                style: TSFont.regular.body.withColor(TS_color.monochrome.grey),
+                style: TSFont.regular.body.withColor(TSColor.monochrome.grey),
               ),
             )
           else
@@ -396,7 +396,7 @@ class _AnalisisGiziScanState extends State<AnalisisGiziScan> {
               );
             }).toList(),
           const SizedBox(height: 8),
-          Divider(color: TS_color.monochrome.lightGrey),
+          Divider(color: TSColor.monochrome.lightGrey),
         ],
       ),
     );

@@ -54,7 +54,7 @@ class _DaftarState extends State<Daftar> {
                               fontSize: 36,
                               fontWeight: FontWeight.w800,
                               letterSpacing: 4,
-                              color: TS_color.mainTosca.c3,
+                              color: TSColor.mainTosca.c3,
                             ),
                           ),
                           Text(
@@ -63,7 +63,7 @@ class _DaftarState extends State<Daftar> {
                               fontSize: 36,
                               fontWeight: FontWeight.w800,
                               letterSpacing: 4,
-                              color: TS_color.monochrome.black,
+                              color: TSColor.monochrome.black,
                             ),
                           ),
                         ],
@@ -76,7 +76,7 @@ class _DaftarState extends State<Daftar> {
                               fontSize: 36,
                               fontWeight: FontWeight.w800,
                               letterSpacing: 4,
-                              color: TS_color.secondaryGreen.c4,
+                              color: TSColor.secondaryGreen.c4,
                             ),
                           ),
                           Text(
@@ -85,7 +85,7 @@ class _DaftarState extends State<Daftar> {
                               fontSize: 36,
                               fontWeight: FontWeight.w800,
                               letterSpacing: 4,
-                              color: TS_color.monochrome.black,
+                              color: TSColor.monochrome.black,
                             ),
                           ),
                         ],
@@ -96,7 +96,7 @@ class _DaftarState extends State<Daftar> {
               ),
               Text(
                 'No. Kartu Keluarga',
-                style: TSFont.bold.large.withColor(TS_color.monochrome.black),
+                style: TSFont.bold.large.withColor(TSColor.monochrome.black),
               ),
 
               const SizedBox(height: 8),
@@ -104,8 +104,8 @@ class _DaftarState extends State<Daftar> {
               TS_inputfield.text(
                 key: emailFieldKey,
                 placeholder: "Contoh: 1234567812345678",
-                backgroundColor: TS_color.monochrome.pureWhite,
-                borderColor: TS_color.monochrome.pureWhite,
+                backgroundColor: TSColor.monochrome.pureWhite,
+                borderColor: TSColor.monochrome.pureWhite,
                 isPassword: false,
                 borderRadius: 240,
                 width: MediaQuery.of(context).size.width * 0.8,
@@ -128,8 +128,8 @@ class _DaftarState extends State<Daftar> {
               // TS_inputfield.text(
               //   key: emailFieldKey,
               //   placeholder: "Contoh: 1234567812345678",
-              //   backgroundColor: TS_color.monochrome.pureWhite,
-              //   borderColor: TS_color.monochrome.pureWhite,
+              //   backgroundColor: TSColor.monochrome.pureWhite,
+              //   borderColor: TSColor.monochrome.pureWhite,
               //   isPassword: false,
               //   borderRadius: 240,
               //   width: MediaQuery.of(context).size.width * 0.8,
@@ -160,12 +160,12 @@ class _DaftarState extends State<Daftar> {
                     );
                   }
                 },
-                backgroundColor: TS_color.secondaryGreen.c3,
-                borderColor: TS_color.secondaryGreen.c3,
-                contentColor: TS_color.monochrome.black,
+                backgroundColor: TSColor.secondaryGreen.c3,
+                borderColor: TSColor.secondaryGreen.c3,
+                contentColor: TSColor.monochrome.black,
                 text: "Daftar",
                 textStyle:
-                    TSFont.bold.large.withColor(TS_color.monochrome.black),
+                    TSFont.bold.large.withColor(TSColor.monochrome.black),
                 size: ButtonSize.medium,
                 customBorderRadius: 240,
               )

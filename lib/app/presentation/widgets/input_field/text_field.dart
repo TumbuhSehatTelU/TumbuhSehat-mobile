@@ -11,8 +11,8 @@ import 'package:mobile_tumbuh_sehat/app/core/theme/text_style.dart';
 // TS_inputfield.text(
 //   key: emailFieldKey,
 //   placeholder: "Contoh: 1234567812345678",
-//   backgroundColor: TS_color.monochrome.pureWhite,
-//   borderColor: TS_color.monochrome.pureWhite,
+//   backgroundColor: TSColor.monochrome.pureWhite,
+//   borderColor: TSColor.monochrome.pureWhite,
 //   textColor: Colors.black,
 //   isPassword: false,
 //   borderRadius: 240,
@@ -48,7 +48,7 @@ class CustomTextField extends StatefulWidget {
   final String placeholder;
   final Color backgroundColor;
   final Color borderColor;
-  final Color placeholderColor = TS_color.monochrome.lightGrey;
+  final Color placeholderColor = TSColor.monochrome.lightGrey;
   final bool isPassword;
   final double borderRadius;
   final double width;
@@ -121,11 +121,11 @@ class CustomTextFieldState extends State<CustomTextField> {
                   controller: widget.controller,
                   obscureText: widget.isPassword ? _obscureText : false,
                   style:
-                      TSFont.regular.body.withColor(TS_color.monochrome.black),
+                      TSFont.regular.body.withColor(TSColor.monochrome.black),
                   decoration: InputDecoration(
                     hintText: widget.placeholder,
                     hintStyle: TSFont.regular.body
-                        .withColor(TS_color.monochrome.lightGrey),
+                        .withColor(TSColor.monochrome.lightGrey),
                     border: InputBorder.none,
                   ),
                 ),
@@ -149,7 +149,7 @@ class CustomTextFieldState extends State<CustomTextField> {
           padding: const EdgeInsets.only(top: 4, left: 8),
           child: Text(
             _errorText ?? " ",
-            style: TSFont.bold.body.withColor(TS_color.additionalColor.red),
+            style: TSFont.bold.body.withColor(TSColor.additionalColor.red),
           ),
         ),
       ],

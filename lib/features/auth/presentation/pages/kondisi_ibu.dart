@@ -33,12 +33,12 @@ class _KondisiIbuState extends State<KondisiIbu> {
                     ),
                   );
                 },
-                backgroundColor: TS_color.secondaryGreen.c3,
-                borderColor: TS_color.secondaryGreen.c3,
-                contentColor: TS_color.monochrome.black,
+                backgroundColor: TSColor.secondaryGreen.c3,
+                borderColor: TSColor.secondaryGreen.c3,
+                contentColor: TSColor.monochrome.black,
                 text: "Tidak Hamil & Tidak Menyusui",
                 textStyle:
-                    TSFont.bold.large.withColor(TS_color.monochrome.black),
+                    TSFont.bold.large.withColor(TSColor.monochrome.black),
               )
             ],
           ),

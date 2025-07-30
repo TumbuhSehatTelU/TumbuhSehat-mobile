@@ -42,9 +42,9 @@ class _SplashScreenState extends State<SplashScreen> {
                       (route) => false,
                     );
                   },
-                  backgroundColor: TS_color.secondaryGreen.c3,
-                  borderColor: TS_color.secondaryGreen.c3,
-                  contentColor: TS_color.monochrome.black,
+                  backgroundColor: TSColor.secondaryGreen.c3,
+                  borderColor: TSColor.secondaryGreen.c3,
+                  contentColor: TSColor.monochrome.black,
                   textStyle: TSFont.bold.large,
                   text: "Mulai",
                   size: ButtonSize.large,
@@ -61,7 +61,7 @@ class _SplashScreenState extends State<SplashScreen> {
                       child: Text(
                         'Bantu Ibu Pantau Gizi\nJaga Tumbuh\nKembang Anak!',
                         style: TSFont.bold.h1
-                            .withColor(TS_color.monochrome.darkGrey),
+                            .withColor(TSColor.monochrome.darkGrey),
                       ),
                     ),
                   ],
@@ -87,7 +87,7 @@ class _SplashScreenState extends State<SplashScreen> {
                                 fontSize: 36,
                                 fontWeight: FontWeight.w800,
                                 letterSpacing: 4,
-                                color: TS_color.mainTosca.c3,
+                                color: TSColor.mainTosca.c3,
                               ),
                             ),
                             Text(
@@ -96,7 +96,7 @@ class _SplashScreenState extends State<SplashScreen> {
                                 fontSize: 36,
                                 fontWeight: FontWeight.w800,
                                 letterSpacing: 4,
-                                color: TS_color.monochrome.black,
+                                color: TSColor.monochrome.black,
                               ),
                             ),
                           ],
@@ -109,7 +109,7 @@ class _SplashScreenState extends State<SplashScreen> {
                                 fontSize: 36,
                                 fontWeight: FontWeight.w800,
                                 letterSpacing: 4,
-                                color: TS_color.secondaryGreen.c4,
+                                color: TSColor.secondaryGreen.c4,
                               ),
                             ),
                             Text(
@@ -118,7 +118,7 @@ class _SplashScreenState extends State<SplashScreen> {
                                 fontSize: 36,
                                 fontWeight: FontWeight.w800,
                                 letterSpacing: 4,
-                                color: TS_color.monochrome.black,
+                                color: TSColor.monochrome.black,
                               ),
                             ),
                           ],

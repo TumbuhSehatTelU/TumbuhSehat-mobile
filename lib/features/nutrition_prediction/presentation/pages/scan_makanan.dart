@@ -65,12 +65,12 @@ class _ScanMakananState extends State<ScanMakanan> {
             onTap: () => Navigator.of(context).pop(),
             child: Container(
               decoration: BoxDecoration(
-                color: TS_color.additionalColor.red,
+                color: TSColor.additionalColor.red,
                 shape: BoxShape.circle,
               ),
               child: Icon(
                 Icons.close,
-                color: TS_color.monochrome.white,
+                color: TSColor.monochrome.white,
                 size: 20,
               ),
             ),
@@ -91,7 +91,7 @@ class _ScanMakananState extends State<ScanMakanan> {
             builder: (context, snapshot) {
               // Gunakan controller dari state, pastikan tidak null
               final controller = _controller;
-          
+
               if (snapshot.connectionState == ConnectionState.done &&
                   controller != null) {
                 // UI setelah kamera siap (SAMA PERSIS SEPERTI SEBELUMNYA)
@@ -113,8 +113,8 @@ class _ScanMakananState extends State<ScanMakanan> {
                     ),
                     const SizedBox(height: 30),
                     Container(
-                      padding:
-                          const EdgeInsets.symmetric(vertical: 12, horizontal: 16),
+                      padding: const EdgeInsets.symmetric(
+                          vertical: 12, horizontal: 16),
                       margin: const EdgeInsets.symmetric(horizontal: 40),
                       decoration: BoxDecoration(
                           color: Colors.grey[200],
@@ -158,19 +158,23 @@ class _ScanMakananState extends State<ScanMakanan> {
                               if (_isLoading ||
                                   _controller == null ||
                                   !_controller!.value.isInitialized) return;
-          
+
                               try {
                                 setState(() {
-                                  _isLoading = true; // Tampilkan loading indicator
+                                  _isLoading =
+                                      true; // Tampilkan loading indicator
                                 });
-          
+
                                 // 1. Ambil gambar
-                                final picture = await _controller!.takePicture();
-          
+                                final picture =
+                                    await _controller!.takePicture();
+
                                 // 2. Panggil API service
                                 final apiService = NutritionApiService();
-                                final Map<String, dynamic> apiResponse = await apiService.getNutritionData(picture.path);
-          
+                                final Map<String, dynamic> apiResponse =
+                                    await apiService
+                                        .getNutritionData(picture.path);
+
                                 // 3. Navigasi ke halaman hasil jika masih di-mount
                                 if (mounted) {
                                   Navigator.push(
@@ -189,7 +193,8 @@ class _ScanMakananState extends State<ScanMakanan> {
                                 if (mounted) {
                                   ScaffoldMessenger.of(context).showSnackBar(
                                     SnackBar(
-                                        content: Text('Error: ${e.toString()}')),
+                                        content:
+                                            Text('Error: ${e.toString()}')),
                                   );
                                 }
                               } finally {
@@ -206,7 +211,8 @@ class _ScanMakananState extends State<ScanMakanan> {
                               height: 70,
                               decoration: BoxDecoration(
                                 shape: BoxShape.circle,
-                                border: Border.all(color: Colors.teal, width: 4),
+                                border:
+                                    Border.all(color: Colors.teal, width: 4),
                               ),
                               child: Center(
                                 child: Container(
@@ -236,7 +242,6 @@ class _ScanMakananState extends State<ScanMakanan> {
               }
             },
           ),
-
           if (_isLoading)
             Container(
               color: Colors.black.withOpacity(0.5),

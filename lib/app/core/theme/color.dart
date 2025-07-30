@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-class TS_color {
+class TSColor {
   static MainTosca mainTosca = MainTosca();
   static SecondaryGreen secondaryGreen = SecondaryGreen();
   static Monochrome monochrome = Monochrome();
