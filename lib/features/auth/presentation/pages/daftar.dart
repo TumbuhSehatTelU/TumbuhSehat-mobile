@@ -54,7 +54,7 @@ class _DaftarState extends State<Daftar> {
                               fontSize: 36,
                               fontWeight: FontWeight.w800,
                               letterSpacing: 4,
-                              color: TSColor.mainTosca.c3,
+                              color: TSColor.mainTosca.primary,
                             ),
                           ),
                           Text(
@@ -76,7 +76,7 @@ class _DaftarState extends State<Daftar> {
                               fontSize: 36,
                               fontWeight: FontWeight.w800,
                               letterSpacing: 4,
-                              color: TSColor.secondaryGreen.c4,
+                              color: TSColor.secondaryGreen.shade400,
                             ),
                           ),
                           Text(
@@ -160,8 +160,8 @@ class _DaftarState extends State<Daftar> {
                     );
                   }
                 },
-                backgroundColor: TSColor.secondaryGreen.c3,
-                borderColor: TSColor.secondaryGreen.c3,
+                backgroundColor: TSColor.secondaryGreen.primary,
+                borderColor: TSColor.secondaryGreen.primary,
                 contentColor: TSColor.monochrome.black,
                 text: "Daftar",
                 textStyle:

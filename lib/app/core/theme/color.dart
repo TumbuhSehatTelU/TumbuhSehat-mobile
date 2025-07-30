@@ -9,20 +9,20 @@ class TSColor {
 
 class MainTosca {
   MainTosca();
-  final Color c1 = const Color.fromRGBO(129, 225, 221, 1);
-  final Color c2 = const Color.fromRGBO(83, 205, 200, 1);
-  final Color c3 = const Color.fromRGBO(22, 179, 172, 1);
-  final Color c4 = const Color.fromRGBO(18, 143, 138, 1);
-  final Color c5 = const Color.fromRGBO(13, 107, 103, 1);
+  final Color shade100 = const Color.fromRGBO(129, 225, 221, 1);
+  final Color shade200 = const Color.fromRGBO(83, 205, 200, 1);
+  final Color primary = const Color.fromRGBO(22, 179, 172, 1);
+  final Color shade400 = const Color.fromRGBO(18, 143, 138, 1);
+  final Color shade500 = const Color.fromRGBO(13, 107, 103, 1);
 }
 
 class SecondaryGreen {
   SecondaryGreen();
-  final Color c1 = const Color.fromRGBO(250, 254, 162, 1);
-  final Color c2 = const Color.fromRGBO(234, 240, 98, 1);
-  final Color c3 = const Color.fromRGBO(210, 220, 2, 1);
-  final Color c4 = const Color.fromRGBO(173, 182, 2, 1);
-  final Color c5 = const Color.fromRGBO(137, 143, 1, 1);
+  final Color shade100 = const Color.fromRGBO(250, 254, 162, 1);
+  final Color shade200 = const Color.fromRGBO(234, 240, 98, 1);
+  final Color primary = const Color.fromRGBO(210, 220, 2, 1);
+  final Color shade400 = const Color.fromRGBO(173, 182, 2, 1);
+  final Color shade500 = const Color.fromRGBO(137, 143, 1, 1);
 }
 
 class Monochrome {

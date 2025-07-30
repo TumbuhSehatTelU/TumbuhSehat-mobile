@@ -40,15 +40,13 @@ class _MainPageState extends State<MainPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: _pages[_currentIndex], // Hanya ganti halaman di sini
+      body: _pages[_currentIndex], 
       bottomNavigationBar: BottomAppBar(
-        shape: const CircularNotchedRectangle(), // Membuat cekungan untuk FAB
-        notchMargin: 6.0, // Jarak antara FAB dan BottomAppBar
-        color: TSColor.mainTosca.c5,
+        shape: const CircularNotchedRectangle(), 
+        notchMargin: 6.0, 
+        color: TSColor.mainTosca.shade500,
         height: 70,
         child: Container(
-          // height: 10, // Sesuaikan tinggi navbar
-          // padding: const EdgeInsets.symmetric(horizontal: 16.0),
           child: Padding(
             padding: EdgeInsets.symmetric(
               horizontal: MediaQuery.of(context).size.width * 0.01,

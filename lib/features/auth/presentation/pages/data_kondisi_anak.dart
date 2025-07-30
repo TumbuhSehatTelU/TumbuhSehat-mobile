@@ -25,8 +25,8 @@ class _DataKondisiAnakState extends State<DataKondisiAnak> {
               Text('Kondisi Anak'),
               TSButton(
                 onPressed: () {},
-                backgroundColor: TSColor.secondaryGreen.c3,
-                borderColor: TSColor.secondaryGreen.c3,
+                backgroundColor: TSColor.secondaryGreen.primary,
+                borderColor: TSColor.secondaryGreen.primary,
                 contentColor: TSColor.monochrome.black,
                 text: "Simpan",
                 textStyle:

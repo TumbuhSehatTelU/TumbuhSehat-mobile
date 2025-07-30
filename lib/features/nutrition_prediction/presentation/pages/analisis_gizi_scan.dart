@@ -92,7 +92,7 @@ class _AnalisisGiziScanState extends State<AnalisisGiziScan> {
             left: 0,
             right: 0,
             child: Container(
-              height: 400, // Ukuran gambar tetap 200px
+              height: 400,
               decoration: BoxDecoration(
                 image: DecorationImage(
                   image: FileImage(File(widget.imagePath)),
@@ -102,14 +102,12 @@ class _AnalisisGiziScanState extends State<AnalisisGiziScan> {
             ),
           ),
 
-          // Container Analisis yang bisa di-scroll dan overlap gambar secara perlahan
           Positioned.fill(
-            top: 200, // Menindihi gambar sejauh 10px
+            top: 200,
             child: SingleChildScrollView(
               child: Column(
                 children: [
-                  const SizedBox(
-                      height: 180), // Jarak agar awalnya tidak overlap
+                  const SizedBox(height: 180),
                   Container(
                     decoration: const BoxDecoration(
                       color: Colors.white,
@@ -246,7 +244,7 @@ class _AnalisisGiziScanState extends State<AnalisisGiziScan> {
                                         Text('Total Kalori',
                                             style: TSFont.semiBold.large),
                                         Text(
-                                          '${_totalCalories.toStringAsFixed(0)} kal', // Tampilkan dari state
+                                          '${_totalCalories.toStringAsFixed(0)} kal',
                                           style: TSFont.bold.large,
                                         ),
                                       ],
@@ -255,8 +253,6 @@ class _AnalisisGiziScanState extends State<AnalisisGiziScan> {
                                         color: TSColor.monochrome.lightGrey,
                                         thickness: 1.5,
                                         height: 24),
-
-                                    // Tampilkan setiap seksi kategori sesuai urutan
                                     _buildCategorySection('Karbohidrat', '🍚',
                                         Colors.orange, _hasilAnalisis),
                                     _buildCategorySection('Protein', '🍗',
@@ -265,13 +261,11 @@ class _AnalisisGiziScanState extends State<AnalisisGiziScan> {
                                         Colors.blue, _hasilAnalisis),
                                     _buildCategorySection('Serat', '🌿',
                                         Colors.green, _hasilAnalisis),
-
-                                    // Tombol Kembali ke Beranda (contoh)
                                     const SizedBox(height: 24),
                                     ElevatedButton(
                                       style: ElevatedButton.styleFrom(
                                         backgroundColor:
-                                            TSColor.secondaryGreen.c3,
+                                            TSColor.secondaryGreen.primary,
                                         shape: RoundedRectangleBorder(
                                             borderRadius:
                                                 BorderRadius.circular(12)),
@@ -334,13 +328,14 @@ class _AnalisisGiziScanState extends State<AnalisisGiziScan> {
           Expanded(
               flex: 2,
               child: Text('$quantity $unit',
-                  style: TSFont.semiBold.body.withColor(TSColor.mainTosca.c5),
+                  style: TSFont.semiBold.body
+                      .withColor(TSColor.mainTosca.shade500),
                   textAlign: TextAlign.center)),
           Expanded(
               flex: 2,
               child: Text('$calories kal',
-                  style:
-                      TSFont.semiBold.body.withColor(TSColor.secondaryGreen.c5),
+                  style: TSFont.semiBold.body
+                      .withColor(TSColor.secondaryGreen.shade500),
                   textAlign: TextAlign.right)),
         ],
       ),
@@ -353,7 +348,7 @@ class _AnalisisGiziScanState extends State<AnalisisGiziScan> {
     for (var food in allFoods) {
       for (int i = 0; i < food.kategori.length; i++) {
         if (food.kategori[i] == title) {
-          foodsInCategory[food] = i; // Simpan makanan dan indeks kategorinya
+          foodsInCategory[food] = i;
         }
       }
     }
