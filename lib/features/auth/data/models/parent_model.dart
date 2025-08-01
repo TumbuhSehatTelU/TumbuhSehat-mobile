@@ -6,7 +6,7 @@ import 'package:mobile_tumbuh_sehat/features/auth/domain/entities/parent.dart';
 part 'parent_model.freezed.dart';
 part 'parent_model.g.dart';
 
-@JsonSerializable(explicitToJson: true)
+// @JsonSerializable(explicitToJson: true)
 @freezed
 abstract class ParentModel with _$ParentModel {
   const ParentModel._();

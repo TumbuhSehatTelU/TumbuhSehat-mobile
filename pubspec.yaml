@@ -25,7 +25,6 @@ dependencies:
   hive: ^2.2.3
   skeletonizer: ^2.1.0+1
   envied: ^1.1.1
-  freezed: ^3.2.0
   flutter_gen_runner: ^5.11.0
   hive_flutter: ^1.1.0
   connectivity_plus: ^6.1.4
@@ -38,6 +37,7 @@ dev_dependencies:
   flutter_lints: ^4.0.0
   build_runner: ^2.6.0
   json_serializable: ^6.10.0
+  freezed: ^3.2.0
 
 flutter:
   uses-material-design: true

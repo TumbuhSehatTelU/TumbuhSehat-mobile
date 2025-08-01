@@ -6,7 +6,7 @@ import 'package:mobile_tumbuh_sehat/features/auth/domain/entities/family.dart';
 part 'family_model.freezed.dart';
 part 'family_model.g.dart';
 
-@JsonSerializable(explicitToJson: true) 
+// @JsonSerializable(explicitToJson: true) 
 @freezed
 abstract class FamilyModel with _$FamilyModel {
   const FamilyModel._();
