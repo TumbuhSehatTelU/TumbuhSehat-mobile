@@ -9,11 +9,11 @@ class TSOtpField extends StatefulWidget {
   final bool autofocus;
 
   const TSOtpField({
-    Key? key,
+    super.key,
     this.length = 6,
     required this.onCompleted,
     this.autofocus = true,
-  }) : super(key: key);
+  });
 
   @override
   State<TSOtpField> createState() => _TSOtpFieldState();

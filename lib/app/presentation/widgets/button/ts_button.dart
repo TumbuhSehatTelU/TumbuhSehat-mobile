@@ -33,7 +33,7 @@ class TSButton extends StatelessWidget {
   final List<BoxShadow>? boxShadow;
 
   const TSButton({
-    Key? key,
+    super.key,
     required this.onPressed,
     this.text,
     this.icon,
@@ -46,7 +46,7 @@ class TSButton extends StatelessWidget {
     this.customBorderRadius,
     this.width,
     this.boxShadow,
-  }) : super(key: key);
+  });
 
   EdgeInsets get _padding {
     switch (size) {

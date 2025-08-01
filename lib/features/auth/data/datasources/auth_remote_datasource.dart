@@ -1,5 +1,4 @@
 import 'package:mobile_tumbuh_sehat/features/auth/data/models/family_model.dart';
-import 'package:mobile_tumbuh_sehat/features/auth/data/models/parent_model.dart';
 
 abstract class AuthRemoteDataSource {
   Future<FamilyModel> login({required String phone, required String password});

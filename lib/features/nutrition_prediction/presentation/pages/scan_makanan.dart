@@ -157,7 +157,9 @@ class _ScanMakananState extends State<ScanMakanan> {
                             onTap: () async {
                               if (_isLoading ||
                                   _controller == null ||
-                                  !_controller!.value.isInitialized) return;
+                                  !_controller!.value.isInitialized) {
+                                return;
+                              }
 
                               try {
                                 setState(() {

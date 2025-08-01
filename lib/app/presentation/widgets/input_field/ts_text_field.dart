@@ -12,14 +12,14 @@ class TSTextField extends StatefulWidget {
   final String? Function(String?)? validator;
 
   const TSTextField({
-    Key? key,
+    super.key,
     required this.controller,
     required this.label,
     this.hintText,
     this.keyboardType = TextInputType.text,
     this.isPassword = false,
     this.validator,
-  }) : super(key: key);
+  });
 
   @override
   State<TSTextField> createState() => _TSTextFieldState();

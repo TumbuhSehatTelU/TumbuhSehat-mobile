@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:mobile_tumbuh_sehat/app/presentation/widgets/shadow/ts_shadow.dart';
 import 'package:mobile_tumbuh_sehat/app/core/theme/ts_color.dart';
 import 'package:mobile_tumbuh_sehat/app/core/theme/ts_text_style.dart';
 
@@ -58,7 +57,7 @@ class CustomTextField extends StatefulWidget {
   final List<bool Function(String)> validationLogicList;
 
   CustomTextField({
-    Key? key,
+    super.key,
     required this.placeholder,
     required this.backgroundColor,
     required this.borderColor,
@@ -72,8 +71,7 @@ class CustomTextField extends StatefulWidget {
   })  : assert(
           validationLogicList.length == validationMessageList.length,
           "Jumlah validationLogic dan validationMessage harus sama",
-        ),
-        super(key: key);
+        );
 
   @override
   CustomTextFieldState createState() => CustomTextFieldState();

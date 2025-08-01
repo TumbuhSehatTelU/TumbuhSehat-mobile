@@ -1,3 +1,4 @@
+import 'package:flutter/foundation.dart';
 import 'package:mobile_tumbuh_sehat/features/nutrition_prediction/data/datasources/food_database.dart';
 import 'package:mobile_tumbuh_sehat/features/nutrition_prediction/domain/entities/food_component.dart';
 import 'package:mobile_tumbuh_sehat/app/core/models/api_response_model.dart';
@@ -13,7 +14,9 @@ class FoodProcessorService {
         final komponen = _createKomponenFromFoodData(detection, foodData);
         hasilKomponen.add(komponen);
       } else {
-        print("Peringatan: Makanan '${detection.className}' tidak ditemukan di database.");
+        if (kDebugMode) {
+          print("Peringatan: Makanan '${detection.className}' tidak ditemukan di database.");
+        }
       }
     }
     return hasilKomponen;

@@ -18,11 +18,11 @@ class _MainPageState extends State<MainPage> {
   int _currentIndex = 0;
 
   final List<Widget> _pages = [
-    Beranda(),
-    Chatbot(),
-    ScanMakanan(),
-    Komunitas(),
-    Profil(),
+    const Beranda(),
+    const Chatbot(),
+    const ScanMakanan(),
+    const Komunitas(),
+    const Profil(),
   ];
 
   @override
@@ -69,7 +69,7 @@ class _MainPageState extends State<MainPage> {
                           : TSColor.monochrome.lightGrey),
                   onPressed: () => _onItemTapped(1),
                 ),
-                SizedBox(width: 40),
+                const SizedBox(width: 40),
                 IconButton(
                   icon: Icon(Icons.home,
                       color: _currentIndex == 3
@@ -95,14 +95,14 @@ class _MainPageState extends State<MainPage> {
         width: 100,
         height: 100,
         child: Padding(
-          padding: EdgeInsets.all(8),
+          padding: const EdgeInsets.all(8),
           child: FloatingActionButton(
             backgroundColor: Colors.cyan,
             shape: const CircleBorder(
               side: BorderSide(color: Colors.black, width: 2),
             ),
             hoverElevation: 10,
-            child: Icon(
+            child: const Icon(
               Icons.camera,
               color: Colors.white,
             ),

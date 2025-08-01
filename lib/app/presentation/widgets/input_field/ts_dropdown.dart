@@ -13,7 +13,7 @@ class TSDropdown<T> extends StatelessWidget {
   final Widget Function(T item) itemBuilder;
 
   const TSDropdown({
-    Key? key,
+    super.key,
     required this.label,
     this.hintText,
     this.value,
@@ -21,7 +21,7 @@ class TSDropdown<T> extends StatelessWidget {
     required this.onChanged,
     this.validator,
     required this.itemBuilder,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -33,10 +33,7 @@ class TSDropdown<T> extends StatelessWidget {
       child: DropdownButtonFormField<T>(
         value: value,
         items: items.map((T item) {
-          return DropdownMenuItem<T>(
-            value: item,
-            child: itemBuilder(item),
-          );
+          return DropdownMenuItem<T>(value: item, child: itemBuilder(item));
         }).toList(),
         onChanged: onChanged,
         validator: validator,
@@ -45,8 +42,9 @@ class TSDropdown<T> extends StatelessWidget {
           labelText: label,
           hintText: hintText,
           labelStyle: TSFont.regular.body.withColor(TSColor.monochrome.grey),
-          hintStyle:
-              TSFont.regular.body.withColor(TSColor.monochrome.lightGrey),
+          hintStyle: TSFont.regular.body.withColor(
+            TSColor.monochrome.lightGrey,
+          ),
           filled: true,
           fillColor: TSColor.monochrome.pureWhite,
           border: OutlineInputBorder(
@@ -63,13 +61,17 @@ class TSDropdown<T> extends StatelessWidget {
           ),
           errorBorder: OutlineInputBorder(
             borderRadius: BorderRadius.circular(12),
-            borderSide:
-                BorderSide(color: TSColor.additionalColor.red, width: 2),
+            borderSide: BorderSide(
+              color: TSColor.additionalColor.red,
+              width: 2,
+            ),
           ),
           focusedErrorBorder: OutlineInputBorder(
             borderRadius: BorderRadius.circular(12),
-            borderSide:
-                BorderSide(color: TSColor.additionalColor.red, width: 2),
+            borderSide: BorderSide(
+              color: TSColor.additionalColor.red,
+              width: 2,
+            ),
           ),
         ),
         icon: Icon(Icons.keyboard_arrow_down, color: TSColor.monochrome.grey),

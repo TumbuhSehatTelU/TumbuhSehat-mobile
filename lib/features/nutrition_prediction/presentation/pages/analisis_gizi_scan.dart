@@ -136,13 +136,14 @@ class _AnalisisGiziScanState extends State<AnalisisGiziScan> {
                           decoration: BoxDecoration(
                             color: Colors.white,
                             borderRadius:
-                                BorderRadius.all(const Radius.circular(10)),
+                                const BorderRadius.all(Radius.circular(10)),
                             boxShadow: [
                               BoxShadow(
+                                // ignore: deprecated_member_use
                                 color: Colors.black.withOpacity(0.1),
                                 spreadRadius: 5,
                                 blurRadius: 10,
-                                offset: Offset(0, 0),
+                                offset: const Offset(0, 0),
                               ),
                             ],
                           ),
@@ -187,13 +188,14 @@ class _AnalisisGiziScanState extends State<AnalisisGiziScan> {
                           decoration: BoxDecoration(
                             color: Colors.cyan,
                             borderRadius:
-                                BorderRadius.all(const Radius.circular(10)),
+                                const BorderRadius.all(Radius.circular(10)),
                             boxShadow: [
                               BoxShadow(
+                                // ignore: deprecated_member_use
                                 color: Colors.black.withOpacity(0.1),
                                 spreadRadius: 5,
                                 blurRadius: 10,
-                                offset: Offset(0, 0),
+                                offset: const Offset(0, 0),
                               ),
                             ],
                           ),
@@ -212,11 +214,11 @@ class _AnalisisGiziScanState extends State<AnalisisGiziScan> {
                         ),
                         // untuk detail gizi makanan
                         Container(
-                          padding: EdgeInsets.all(16),
+                          padding: const EdgeInsets.all(16),
                           decoration: BoxDecoration(
                             color: Colors.white,
                             borderRadius: BorderRadius.circular(12),
-                            boxShadow: [
+                            boxShadow: const [
                               BoxShadow(
                                 color: Colors.black12,
                                 blurRadius: 6,
@@ -301,16 +303,16 @@ class _AnalisisGiziScanState extends State<AnalisisGiziScan> {
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
-          Expanded(child: Text(name, style: TextStyle(fontSize: 14))),
-          Text(value, style: TextStyle(fontSize: 14)),
-          Text(percentage, style: TextStyle(fontSize: 14)),
+          Expanded(child: Text(name, style: const TextStyle(fontSize: 14))),
+          Text(value, style: const TextStyle(fontSize: 14)),
+          Text(percentage, style: const TextStyle(fontSize: 14)),
         ],
       ),
     );
   }
 
   Widget buildBoldDivider() {
-    return Divider(thickness: 2, color: Colors.black);
+    return const Divider(thickness: 2, color: Colors.black);
   }
 
   Widget _buildFoodItemRow(
@@ -389,7 +391,7 @@ class _AnalisisGiziScanState extends State<AnalisisGiziScan> {
                 food.satuan[index],
                 food.kuantitasNutrisi[index].toStringAsFixed(0),
               );
-            }).toList(),
+            }),
           const SizedBox(height: 8),
           Divider(color: TSColor.monochrome.lightGrey),
         ],

@@ -12,14 +12,14 @@ class TSClickableText extends StatelessWidget {
   final TextAlign textAlign;
 
   const TSClickableText({
-    Key? key,
+    super.key,
     required this.nonClickableText,
     required this.clickableText,
     required this.onTap,
     this.nonClickableStyle,
     this.clickableStyle,
     this.textAlign = TextAlign.center,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {
