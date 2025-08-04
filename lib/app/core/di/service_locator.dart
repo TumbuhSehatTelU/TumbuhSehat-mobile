@@ -4,6 +4,8 @@ import 'package:get_it/get_it.dart';
 import 'package:hive/hive.dart';
 import 'package:mobile_tumbuh_sehat/app/core/network/network_info.dart';
 import 'package:mobile_tumbuh_sehat/app/core/network/network_info_impl.dart';
+import 'package:mobile_tumbuh_sehat/app/core/security/bcrypt_password_hasher.dart';
+import 'package:mobile_tumbuh_sehat/app/core/security/password_hasher.dart';
 import 'package:mobile_tumbuh_sehat/features/auth/data/datasources/auth_local_datasource.dart';
 import 'package:mobile_tumbuh_sehat/features/auth/data/datasources/auth_local_datasource_impl.dart';
 import 'package:mobile_tumbuh_sehat/features/auth/data/datasources/auth_remote_datasource.dart';
@@ -17,6 +19,7 @@ const String sessionBoxName = 'session_box';
 Future<void> init() async {
   // CORE
   sl.registerLazySingleton<NetworkInfo>(() => NetworkInfoImpl(sl()));
+  sl.registerLazySingleton<PasswordHasher>(() => BcryptPasswordHasher());
 
   // EXTERNAL PACKAGES
   sl.registerLazySingleton(() => Dio());

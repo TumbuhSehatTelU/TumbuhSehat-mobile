@@ -15,7 +15,7 @@ T _$identity<T>(T value) => value;
 /// @nodoc
 mixin _$ParentModel {
 
- String get id; String get name; ParentRole get role; DateTime get dateOfBirth; MaternalStatus get maternalStatus;
+ String get id; String get name; ParentRole get role; DateTime get dateOfBirth; MaternalStatus get maternalStatus; String get hashedPassword;
 /// Create a copy of ParentModel
 /// with the given fields replaced by the non-null parameter values.
 @JsonKey(includeFromJson: false, includeToJson: false)
@@ -28,16 +28,16 @@ $ParentModelCopyWith<ParentModel> get copyWith => _$ParentModelCopyWithImpl<Pare
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is ParentModel&&(identical(other.id, id) || other.id == id)&&(identical(other.name, name) || other.name == name)&&(identical(other.role, role) || other.role == role)&&(identical(other.dateOfBirth, dateOfBirth) || other.dateOfBirth == dateOfBirth)&&(identical(other.maternalStatus, maternalStatus) || other.maternalStatus == maternalStatus));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is ParentModel&&(identical(other.id, id) || other.id == id)&&(identical(other.name, name) || other.name == name)&&(identical(other.role, role) || other.role == role)&&(identical(other.dateOfBirth, dateOfBirth) || other.dateOfBirth == dateOfBirth)&&(identical(other.maternalStatus, maternalStatus) || other.maternalStatus == maternalStatus)&&(identical(other.hashedPassword, hashedPassword) || other.hashedPassword == hashedPassword));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,id,name,role,dateOfBirth,maternalStatus);
+int get hashCode => Object.hash(runtimeType,id,name,role,dateOfBirth,maternalStatus,hashedPassword);
 
 @override
 String toString() {
-  return 'ParentModel(id: $id, name: $name, role: $role, dateOfBirth: $dateOfBirth, maternalStatus: $maternalStatus)';
+  return 'ParentModel(id: $id, name: $name, role: $role, dateOfBirth: $dateOfBirth, maternalStatus: $maternalStatus, hashedPassword: $hashedPassword)';
 }
 
 
@@ -48,7 +48,7 @@ abstract mixin class $ParentModelCopyWith<$Res>  {
   factory $ParentModelCopyWith(ParentModel value, $Res Function(ParentModel) _then) = _$ParentModelCopyWithImpl;
 @useResult
 $Res call({
- String id, String name, ParentRole role, DateTime dateOfBirth, MaternalStatus maternalStatus
+ String id, String name, ParentRole role, DateTime dateOfBirth, MaternalStatus maternalStatus, String hashedPassword
 });
 
 
@@ -65,14 +65,15 @@ class _$ParentModelCopyWithImpl<$Res>
 
 /// Create a copy of ParentModel
 /// with the given fields replaced by the non-null parameter values.
-@pragma('vm:prefer-inline') @override $Res call({Object? id = null,Object? name = null,Object? role = null,Object? dateOfBirth = null,Object? maternalStatus = null,}) {
+@pragma('vm:prefer-inline') @override $Res call({Object? id = null,Object? name = null,Object? role = null,Object? dateOfBirth = null,Object? maternalStatus = null,Object? hashedPassword = null,}) {
   return _then(_self.copyWith(
 id: null == id ? _self.id : id // ignore: cast_nullable_to_non_nullable
 as String,name: null == name ? _self.name : name // ignore: cast_nullable_to_non_nullable
 as String,role: null == role ? _self.role : role // ignore: cast_nullable_to_non_nullable
 as ParentRole,dateOfBirth: null == dateOfBirth ? _self.dateOfBirth : dateOfBirth // ignore: cast_nullable_to_non_nullable
 as DateTime,maternalStatus: null == maternalStatus ? _self.maternalStatus : maternalStatus // ignore: cast_nullable_to_non_nullable
-as MaternalStatus,
+as MaternalStatus,hashedPassword: null == hashedPassword ? _self.hashedPassword : hashedPassword // ignore: cast_nullable_to_non_nullable
+as String,
   ));
 }
 /// Create a copy of ParentModel
@@ -166,10 +167,10 @@ return $default(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( String id,  String name,  ParentRole role,  DateTime dateOfBirth,  MaternalStatus maternalStatus)?  $default,{required TResult orElse(),}) {final _that = this;
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( String id,  String name,  ParentRole role,  DateTime dateOfBirth,  MaternalStatus maternalStatus,  String hashedPassword)?  $default,{required TResult orElse(),}) {final _that = this;
 switch (_that) {
 case _ParentModel() when $default != null:
-return $default(_that.id,_that.name,_that.role,_that.dateOfBirth,_that.maternalStatus);case _:
+return $default(_that.id,_that.name,_that.role,_that.dateOfBirth,_that.maternalStatus,_that.hashedPassword);case _:
   return orElse();
 
 }
@@ -187,10 +188,10 @@ return $default(_that.id,_that.name,_that.role,_that.dateOfBirth,_that.maternalS
 /// }
 /// ```
 
-@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( String id,  String name,  ParentRole role,  DateTime dateOfBirth,  MaternalStatus maternalStatus)  $default,) {final _that = this;
+@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( String id,  String name,  ParentRole role,  DateTime dateOfBirth,  MaternalStatus maternalStatus,  String hashedPassword)  $default,) {final _that = this;
 switch (_that) {
 case _ParentModel():
-return $default(_that.id,_that.name,_that.role,_that.dateOfBirth,_that.maternalStatus);case _:
+return $default(_that.id,_that.name,_that.role,_that.dateOfBirth,_that.maternalStatus,_that.hashedPassword);case _:
   throw StateError('Unexpected subclass');
 
 }
@@ -207,10 +208,10 @@ return $default(_that.id,_that.name,_that.role,_that.dateOfBirth,_that.maternalS
 /// }
 /// ```
 
-@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( String id,  String name,  ParentRole role,  DateTime dateOfBirth,  MaternalStatus maternalStatus)?  $default,) {final _that = this;
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( String id,  String name,  ParentRole role,  DateTime dateOfBirth,  MaternalStatus maternalStatus,  String hashedPassword)?  $default,) {final _that = this;
 switch (_that) {
 case _ParentModel() when $default != null:
-return $default(_that.id,_that.name,_that.role,_that.dateOfBirth,_that.maternalStatus);case _:
+return $default(_that.id,_that.name,_that.role,_that.dateOfBirth,_that.maternalStatus,_that.hashedPassword);case _:
   return null;
 
 }
@@ -222,7 +223,7 @@ return $default(_that.id,_that.name,_that.role,_that.dateOfBirth,_that.maternalS
 @JsonSerializable()
 
 class _ParentModel extends ParentModel {
-  const _ParentModel({required this.id, required this.name, required this.role, required this.dateOfBirth, required this.maternalStatus}): super._();
+  const _ParentModel({required this.id, required this.name, required this.role, required this.dateOfBirth, required this.maternalStatus, required this.hashedPassword}): super._();
   factory _ParentModel.fromJson(Map<String, dynamic> json) => _$ParentModelFromJson(json);
 
 @override final  String id;
@@ -230,6 +231,7 @@ class _ParentModel extends ParentModel {
 @override final  ParentRole role;
 @override final  DateTime dateOfBirth;
 @override final  MaternalStatus maternalStatus;
+@override final  String hashedPassword;
 
 /// Create a copy of ParentModel
 /// with the given fields replaced by the non-null parameter values.
@@ -244,16 +246,16 @@ Map<String, dynamic> toJson() {
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _ParentModel&&(identical(other.id, id) || other.id == id)&&(identical(other.name, name) || other.name == name)&&(identical(other.role, role) || other.role == role)&&(identical(other.dateOfBirth, dateOfBirth) || other.dateOfBirth == dateOfBirth)&&(identical(other.maternalStatus, maternalStatus) || other.maternalStatus == maternalStatus));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is _ParentModel&&(identical(other.id, id) || other.id == id)&&(identical(other.name, name) || other.name == name)&&(identical(other.role, role) || other.role == role)&&(identical(other.dateOfBirth, dateOfBirth) || other.dateOfBirth == dateOfBirth)&&(identical(other.maternalStatus, maternalStatus) || other.maternalStatus == maternalStatus)&&(identical(other.hashedPassword, hashedPassword) || other.hashedPassword == hashedPassword));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,id,name,role,dateOfBirth,maternalStatus);
+int get hashCode => Object.hash(runtimeType,id,name,role,dateOfBirth,maternalStatus,hashedPassword);
 
 @override
 String toString() {
-  return 'ParentModel(id: $id, name: $name, role: $role, dateOfBirth: $dateOfBirth, maternalStatus: $maternalStatus)';
+  return 'ParentModel(id: $id, name: $name, role: $role, dateOfBirth: $dateOfBirth, maternalStatus: $maternalStatus, hashedPassword: $hashedPassword)';
 }
 
 
@@ -264,7 +266,7 @@ abstract mixin class _$ParentModelCopyWith<$Res> implements $ParentModelCopyWith
   factory _$ParentModelCopyWith(_ParentModel value, $Res Function(_ParentModel) _then) = __$ParentModelCopyWithImpl;
 @override @useResult
 $Res call({
- String id, String name, ParentRole role, DateTime dateOfBirth, MaternalStatus maternalStatus
+ String id, String name, ParentRole role, DateTime dateOfBirth, MaternalStatus maternalStatus, String hashedPassword
 });
 
 
@@ -281,14 +283,15 @@ class __$ParentModelCopyWithImpl<$Res>
 
 /// Create a copy of ParentModel
 /// with the given fields replaced by the non-null parameter values.
-@override @pragma('vm:prefer-inline') $Res call({Object? id = null,Object? name = null,Object? role = null,Object? dateOfBirth = null,Object? maternalStatus = null,}) {
+@override @pragma('vm:prefer-inline') $Res call({Object? id = null,Object? name = null,Object? role = null,Object? dateOfBirth = null,Object? maternalStatus = null,Object? hashedPassword = null,}) {
   return _then(_ParentModel(
 id: null == id ? _self.id : id // ignore: cast_nullable_to_non_nullable
 as String,name: null == name ? _self.name : name // ignore: cast_nullable_to_non_nullable
 as String,role: null == role ? _self.role : role // ignore: cast_nullable_to_non_nullable
 as ParentRole,dateOfBirth: null == dateOfBirth ? _self.dateOfBirth : dateOfBirth // ignore: cast_nullable_to_non_nullable
 as DateTime,maternalStatus: null == maternalStatus ? _self.maternalStatus : maternalStatus // ignore: cast_nullable_to_non_nullable
-as MaternalStatus,
+as MaternalStatus,hashedPassword: null == hashedPassword ? _self.hashedPassword : hashedPassword // ignore: cast_nullable_to_non_nullable
+as String,
   ));
 }
 

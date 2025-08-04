@@ -6,7 +6,6 @@ import 'package:mobile_tumbuh_sehat/features/auth/domain/entities/parent.dart';
 part 'parent_model.freezed.dart';
 part 'parent_model.g.dart';
 
-// @JsonSerializable(explicitToJson: true)
 @freezed
 abstract class ParentModel with _$ParentModel {
   const ParentModel._();
@@ -17,20 +16,11 @@ abstract class ParentModel with _$ParentModel {
     required ParentRole role,
     required DateTime dateOfBirth,
     required MaternalStatus maternalStatus,
+    required String hashedPassword,
   }) = _ParentModel;
 
   factory ParentModel.fromJson(Map<String, dynamic> json) =>
       _$ParentModelFromJson(json);
-
-  factory ParentModel.fromEntity(Parent entity) {
-    return ParentModel(
-      id: entity.id,
-      name: entity.name,
-      role: entity.role,
-      dateOfBirth: entity.dateOfBirth,
-      maternalStatus: entity.maternalStatus,
-    );
-  }
 
   Parent toEntity() {
     return Parent(

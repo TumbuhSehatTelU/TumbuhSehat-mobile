@@ -14,6 +14,7 @@ _ParentModel _$ParentModelFromJson(Map<String, dynamic> json) => _ParentModel(
   maternalStatus: MaternalStatus.fromJson(
     json['maternalStatus'] as Map<String, dynamic>,
   ),
+  hashedPassword: json['hashedPassword'] as String,
 );
 
 Map<String, dynamic> _$ParentModelToJson(_ParentModel instance) =>
@@ -23,6 +24,7 @@ Map<String, dynamic> _$ParentModelToJson(_ParentModel instance) =>
       'role': _$ParentRoleEnumMap[instance.role]!,
       'dateOfBirth': instance.dateOfBirth.toIso8601String(),
       'maternalStatus': instance.maternalStatus,
+      'hashedPassword': instance.hashedPassword,
     };
 
 const _$ParentRoleEnumMap = {
