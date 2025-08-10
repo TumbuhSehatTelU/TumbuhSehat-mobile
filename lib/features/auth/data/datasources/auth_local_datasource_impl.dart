@@ -15,8 +15,8 @@ class AuthLocalDataSourceImpl implements AuthLocalDataSource {
   AuthLocalDataSourceImpl({required this.familyBox, required this.sessionBox});
 
   @override
-  Future<FamilyModel> getFamily(String familyId) async {
-    final familyJson = familyBox.get(familyId);
+  Future<FamilyModel> getFamilyByPhone(String phone) async {
+    final familyJson = familyBox.get(phone);
     if (familyJson != null) {
       return FamilyModel.fromJson(Map<String, dynamic>.from(familyJson));
     } else {
@@ -34,7 +34,7 @@ class AuthLocalDataSourceImpl implements AuthLocalDataSource {
     required String familyId,
     required ParentModel newParent,
   }) async {
-    final existingFamilyModel = await getFamily(familyId);
+    final existingFamilyModel = await getFamilyByPhone(familyId);
 
     final updatedParents = List<ParentModel>.from(existingFamilyModel.parents)
       ..add(newParent);

@@ -2,7 +2,7 @@ import 'package:mobile_tumbuh_sehat/features/auth/data/models/family_model.dart'
 import 'package:mobile_tumbuh_sehat/features/auth/data/models/parent_model.dart';
 
 abstract class AuthLocalDataSource {
-  Future<FamilyModel> getFamily(String familyId);
+  Future<FamilyModel> getFamilyByPhone(String phone);
 
   Future<void> saveFamily(FamilyModel family);
 

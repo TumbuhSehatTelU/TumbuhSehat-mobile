@@ -1,5 +1,6 @@
 import 'package:mobile_tumbuh_sehat/features/auth/domain/entities/auth_result.dart';
 import 'package:mobile_tumbuh_sehat/features/auth/domain/entities/child.dart';
+import 'package:mobile_tumbuh_sehat/features/auth/domain/entities/family.dart';
 import 'package:mobile_tumbuh_sehat/features/auth/domain/entities/parent.dart';
 
 abstract class AuthRepository {
@@ -28,6 +29,8 @@ abstract class AuthRepository {
     required String familyId,
     required Parent parent,
   });
+
+  Future<Family> getFamilyByPhone(String phone);
 
   Future<void> logout();
 }

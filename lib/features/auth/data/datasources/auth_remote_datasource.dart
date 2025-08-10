@@ -23,7 +23,7 @@ abstract class AuthRemoteDataSource {
   });
 
   // GET /family/{familyId}
-  Future<FamilyModel> getFamily(String familyId);
+  Future<FamilyModel> getFamilyByPhone(String phone);
 
   // POST /auth/logout
   Future<void> logout();

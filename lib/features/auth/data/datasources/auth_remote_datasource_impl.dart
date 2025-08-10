@@ -85,12 +85,12 @@ class AuthRemoteDataSourceImpl implements AuthRemoteDataSource {
   }
 
   @override
-  Future<FamilyModel> getFamily(String familyId) async {
+  Future<FamilyModel> getFamilyByPhone(String phone) async {
     if (AppConfig.baseUrl.isEmpty) throw ServerException();
 
     try {
       // POSTPONE ENDPOINT
-      final response = await dio.get('${AppConfig.baseUrl}/family/$familyId');
+      final response = await dio.get('${AppConfig.baseUrl}/family/$phone');
       if (response.statusCode == 200) {
         return FamilyModel.fromJson(response.data['data']);
       } else {
@@ -109,9 +109,7 @@ class AuthRemoteDataSourceImpl implements AuthRemoteDataSource {
 
     try {
       await dio.post('${AppConfig.baseUrl}/auth/logout');
-    // ignore: empty_catches
-    } on DioException {
-      
-    }
+      // ignore: empty_catches
+    } on DioException {}
   }
 }

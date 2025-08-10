@@ -8,6 +8,7 @@ import 'package:mobile_tumbuh_sehat/features/auth/data/models/family_model.dart'
 import 'package:mobile_tumbuh_sehat/features/auth/data/models/parent_model.dart';
 import 'package:mobile_tumbuh_sehat/features/auth/domain/entities/auth_result.dart';
 import 'package:mobile_tumbuh_sehat/features/auth/domain/entities/child.dart';
+import 'package:mobile_tumbuh_sehat/features/auth/domain/entities/family.dart';
 import 'package:mobile_tumbuh_sehat/features/auth/domain/entities/parent.dart';
 import 'package:mobile_tumbuh_sehat/features/auth/domain/repositories/auth_repository.dart';
 import 'package:uuid/uuid.dart';
@@ -34,7 +35,7 @@ class AuthRepositoryImpl implements AuthRepository {
     required String password,
   }) async {
     try {
-      final familyModel = await localDataSource.getFamily(phone);
+      final familyModel = await localDataSource.getFamilyByPhone(phone);
 
       final parentModel = familyModel.parents.firstWhere(
         (p) => p.name == name,
@@ -158,7 +159,7 @@ class AuthRepositoryImpl implements AuthRepository {
     required Parent parent,
   }) async {
     try {
-      final familyModel = await localDataSource.getFamily(familyId);
+      final familyModel = await localDataSource.getFamilyByPhone(familyId);
       final parentModel = familyModel.parents.firstWhere(
         (p) => p.id == parent.id,
         orElse: () => throw CacheException(),
@@ -166,6 +167,31 @@ class AuthRepositoryImpl implements AuthRepository {
       await localDataSource.saveActiveParent(parentModel);
     } catch (e) {
       rethrow;
+    }
+  }
+
+  @override
+  Future<Family> getFamilyByPhone(String phone) async {
+    if (await networkInfo.isConnected) {
+      try {
+        final remoteFamily = await remoteDataSource.getFamilyByPhone(phone);
+        await localDataSource.saveFamily(remoteFamily);
+        return remoteFamily.toEntity();
+      } on ServerException {
+        try {
+          final localFamily = await localDataSource.getFamilyByPhone(phone);
+          return localFamily.toEntity();
+        } on CacheException {
+          rethrow;
+        }
+      }
+    } else {
+      try {
+        final localFamily = await localDataSource.getFamilyByPhone(phone);
+        return localFamily.toEntity();
+      } on CacheException {
+        rethrow;
+      }
     }
   }
 
