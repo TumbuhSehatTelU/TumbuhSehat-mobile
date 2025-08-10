@@ -1,5 +1,19 @@
-class ServerException implements Exception {}
+class ServerException implements Exception {
+  final String? message;
+  ServerException({this.message});
+}
 
-class CacheException implements Exception {}
+class CacheException implements Exception {
+  final String? message;
+  CacheException({this.message});
+}
 
-class OtpException implements Exception {}
+class InputException implements Exception {
+  final String? message;
+  InputException({this.message});
+}
+
+class OtpException implements Exception {
+  final String? message;
+  OtpException({this.message});
+}

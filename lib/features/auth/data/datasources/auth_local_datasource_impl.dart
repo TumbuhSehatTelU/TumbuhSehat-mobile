@@ -17,16 +17,26 @@ class AuthLocalDataSourceImpl implements AuthLocalDataSource {
   @override
   Future<FamilyModel> getFamilyByPhone(String phone) async {
     final familyJson = familyBox.get(phone);
-    if (familyJson != null) {
-      return FamilyModel.fromJson(Map<String, dynamic>.from(familyJson));
-    } else {
-      throw CacheException();
+    try {
+      if (familyJson != null) {
+        return FamilyModel.fromJson(Map<String, dynamic>.from(familyJson));
+      } else {
+        throw CacheException(
+          message: 'Family with phone number $phone not found in local cache.',
+        );
+      }
+    } catch (e) {
+      throw CacheException(message: 'Failed to read from familyBox: $e');
     }
   }
 
   @override
   Future<void> saveFamily(FamilyModel family) async {
-    await familyBox.put(family.familyId, family.toJson());
+    try {
+      await familyBox.put(family.familyId, family.toJson());
+    } catch (e) {
+      throw CacheException(message: 'Failed to save family to local cache: $e');
+    }
   }
 
   @override
@@ -34,32 +44,54 @@ class AuthLocalDataSourceImpl implements AuthLocalDataSource {
     required String familyId,
     required ParentModel newParent,
   }) async {
-    final existingFamilyModel = await getFamilyByPhone(familyId);
+    try {
+      final existingFamilyModel = await getFamilyByPhone(familyId);
 
-    final updatedParents = List<ParentModel>.from(existingFamilyModel.parents)
-      ..add(newParent);
+      final updatedParents = List<ParentModel>.from(existingFamilyModel.parents)
+        ..add(newParent);
 
-    final updatedFamily = existingFamilyModel.copyWith(parents: updatedParents);
+      final updatedFamily = existingFamilyModel.copyWith(
+        parents: updatedParents,
+      );
 
-    await saveFamily(updatedFamily);
+      await saveFamily(updatedFamily);
+    } on CacheException {
+      rethrow;
+    } catch (e) {
+      throw CacheException(message: 'Failed to add parent to family: $e');
+    }
   }
 
   @override
   Future<ParentModel?> getActiveParent() async {
-    final parentJson = sessionBox.get(activeParentKey);
-    if (parentJson != null) {
-      return ParentModel.fromJson(Map<String, dynamic>.from(parentJson));
+    try {
+      final parentJson = sessionBox.get(activeParentKey);
+      if (parentJson != null) {
+        return ParentModel.fromJson(Map<String, dynamic>.from(parentJson));
+      }
+      return null;
+    } catch (e) {
+      throw CacheException(message: 'Failed to get active parent session: $e');
     }
-    return null;
   }
 
   @override
   Future<void> saveActiveParent(ParentModel parent) async {
-    await sessionBox.put(activeParentKey, parent.toJson());
+    try {
+      await sessionBox.put(activeParentKey, parent.toJson());
+    } catch (e) {
+      throw CacheException(message: 'Failed to save active parent session: $e');
+    }
   }
 
   @override
   Future<void> clearActiveParent() async {
-    await sessionBox.delete(activeParentKey);
+    try {
+      await sessionBox.delete(activeParentKey);
+    } catch (e) {
+      throw CacheException(
+        message: 'Failed to clear active parent session: $e',
+      );
+    }
   }
 }

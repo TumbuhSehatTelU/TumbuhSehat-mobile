@@ -37,27 +37,27 @@ class AuthRepositoryImpl implements AuthRepository {
     try {
       final familyModel = await localDataSource.getFamilyByPhone(phone);
 
-      final parentModel = familyModel.parents.firstWhere(
-        (p) => p.name == name,
-        orElse: () => throw CacheException(),
+      final parentModel = familyModel.parents.cast<ParentModel?>().firstWhere(
+        (p) => p?.name == name,
+        orElse: () => null,
       );
 
-      final isPasswordCorrect = passwordHasher.verify(
-        password,
-        parentModel.hashedPassword,
-      );
-
-      if (!isPasswordCorrect) {
-        throw CacheException();
+      if (parentModel != null &&
+          passwordHasher.verify(password, parentModel.hashedPassword)) {
+        await localDataSource.saveActiveParent(parentModel);
+        return AuthResult(
+          family: familyModel.toEntity(),
+          activeParent: parentModel.toEntity(),
+        );
+      } else {
+        throw CacheException(
+          message: 'No. Handphone, Nama, atau Password salah.',
+        );
       }
-
-      await localDataSource.saveActiveParent(parentModel);
-      return AuthResult(
-        family: familyModel.toEntity(),
-        activeParent: parentModel.toEntity(),
-      );
     } on CacheException {
-      rethrow;
+      throw CacheException(
+        message: 'No. Handphone, Nama, atau Password salah.',
+      );
     }
   }
 
@@ -162,7 +162,9 @@ class AuthRepositoryImpl implements AuthRepository {
       final familyModel = await localDataSource.getFamilyByPhone(familyId);
       final parentModel = familyModel.parents.firstWhere(
         (p) => p.id == parent.id,
-        orElse: () => throw CacheException(),
+        orElse: () => throw CacheException(
+          message: 'Gagal menyimpan sesi: Data pengguna tidak valid.',
+        ),
       );
       await localDataSource.saveActiveParent(parentModel);
     } catch (e) {
@@ -182,7 +184,9 @@ class AuthRepositoryImpl implements AuthRepository {
           final localFamily = await localDataSource.getFamilyByPhone(phone);
           return localFamily.toEntity();
         } on CacheException {
-          rethrow;
+          throw ServerException(
+            message: 'Nomor handphone ini tidak terdaftar di sistem kami.',
+          );
         }
       }
     } else {
@@ -190,7 +194,10 @@ class AuthRepositoryImpl implements AuthRepository {
         final localFamily = await localDataSource.getFamilyByPhone(phone);
         return localFamily.toEntity();
       } on CacheException {
-        rethrow;
+        throw CacheException(
+          message:
+              'Anda sedang offline dan nomor ini tidak tersimpan di perangkat Anda.',
+        );
       }
     }
   }
@@ -198,5 +205,13 @@ class AuthRepositoryImpl implements AuthRepository {
   @override
   Future<void> logout() async {
     await localDataSource.clearActiveParent();
+
+    if (await networkInfo.isConnected) {
+      try {
+        await remoteDataSource.logout();
+      } on ServerException {
+        //  POSTPONE LOGIC
+      }
+    }
   }
 }
