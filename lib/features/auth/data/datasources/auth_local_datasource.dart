@@ -6,6 +6,11 @@ abstract class AuthLocalDataSource {
 
   Future<void> saveFamily(FamilyModel family);
 
+  Future<void> addParentToFamily({
+    required String familyId,
+    required ParentModel newParent,
+  });
+
   Future<void> saveActiveParent(ParentModel parent);
 
   Future<ParentModel?> getActiveParent();
