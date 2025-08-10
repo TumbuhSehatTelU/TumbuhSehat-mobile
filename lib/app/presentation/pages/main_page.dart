@@ -46,46 +46,44 @@ class _MainPageState extends State<MainPage> {
         notchMargin: 6.0, 
         color: TSColor.mainTosca.shade500,
         height: 70,
-        child: Container(
-          child: Padding(
-            padding: EdgeInsets.symmetric(
-              horizontal: MediaQuery.of(context).size.width * 0.01,
-            ),
-            child: Row(
-              mainAxisSize: MainAxisSize.max,
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                IconButton(
-                  icon: Icon(Icons.home,
-                      color: _currentIndex == 0
-                          ? TSColor.monochrome.white
-                          : TSColor.monochrome.lightGrey),
-                  onPressed: () => _onItemTapped(0),
-                ),
-                IconButton(
-                  icon: Icon(Icons.home,
-                      color: _currentIndex == 1
-                          ? TSColor.monochrome.white
-                          : TSColor.monochrome.lightGrey),
-                  onPressed: () => _onItemTapped(1),
-                ),
-                const SizedBox(width: 40),
-                IconButton(
-                  icon: Icon(Icons.home,
-                      color: _currentIndex == 3
-                          ? TSColor.monochrome.white
-                          : TSColor.monochrome.lightGrey),
-                  onPressed: () => _onItemTapped(3),
-                ),
-                IconButton(
-                  icon: Icon(Icons.person,
-                      color: _currentIndex == 4
-                          ? TSColor.monochrome.white
-                          : TSColor.monochrome.lightGrey),
-                  onPressed: () => _onItemTapped(4),
-                ),
-              ],
-            ),
+        child: Padding(
+          padding: EdgeInsets.symmetric(
+            horizontal: MediaQuery.of(context).size.width * 0.01,
+          ),
+          child: Row(
+            mainAxisSize: MainAxisSize.max,
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              IconButton(
+                icon: Icon(Icons.home,
+                    color: _currentIndex == 0
+                        ? TSColor.monochrome.white
+                        : TSColor.monochrome.lightGrey),
+                onPressed: () => _onItemTapped(0),
+              ),
+              IconButton(
+                icon: Icon(Icons.home,
+                    color: _currentIndex == 1
+                        ? TSColor.monochrome.white
+                        : TSColor.monochrome.lightGrey),
+                onPressed: () => _onItemTapped(1),
+              ),
+              const SizedBox(width: 40),
+              IconButton(
+                icon: Icon(Icons.home,
+                    color: _currentIndex == 3
+                        ? TSColor.monochrome.white
+                        : TSColor.monochrome.lightGrey),
+                onPressed: () => _onItemTapped(3),
+              ),
+              IconButton(
+                icon: Icon(Icons.person,
+                    color: _currentIndex == 4
+                        ? TSColor.monochrome.white
+                        : TSColor.monochrome.lightGrey),
+                onPressed: () => _onItemTapped(4),
+              ),
+            ],
           ),
         ),
       ),

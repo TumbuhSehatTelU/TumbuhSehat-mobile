@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:mobile_tumbuh_sehat/app/presentation/widgets/input_field/text_field.dart';
 
+// ignore: camel_case_types
 class TS_inputfield {
   static Widget text({
     Key? key,

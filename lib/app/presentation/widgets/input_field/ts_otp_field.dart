@@ -81,6 +81,7 @@ class _TSOtpFieldState extends State<TSOtpField> {
             style: TSFont.semiBold.h3.withColor(TSColor.monochrome.black),
             decoration: InputDecoration(
               filled: true,
+              // ignore: deprecated_member_use
               fillColor: TSColor.monochrome.lightGrey.withOpacity(0.2),
               counterText: "",
               border: OutlineInputBorder(

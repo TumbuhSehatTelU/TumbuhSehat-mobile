@@ -23,13 +23,13 @@ class _KondisiIbuState extends State<KondisiIbu> {
           ),
           child: Column(
             children: [
-              Text('Kondisi Ibu'),
+              const Text('Kondisi Ibu'),
               TSButton(
                 onPressed: () {
                   Navigator.push(
                     context,
                     MaterialPageRoute(
-                      builder: (context) => DataKondisiAnak(),
+                      builder: (context) => const DataKondisiAnak(),
                     ),
                   );
                 },

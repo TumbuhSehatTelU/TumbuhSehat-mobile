@@ -22,7 +22,7 @@ class _DataKondisiAnakState extends State<DataKondisiAnak> {
           ),
           child: Column(
             children: [
-              Text('Kondisi Anak'),
+              const Text('Kondisi Anak'),
               TSButton(
                 onPressed: () {},
                 backgroundColor: TSColor.secondaryGreen.primary,

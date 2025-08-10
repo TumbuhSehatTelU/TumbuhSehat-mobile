@@ -155,7 +155,7 @@ class _DaftarState extends State<Daftar> {
                     Navigator.push(
                       context,
                       MaterialPageRoute(
-                        builder: (context) => KondisiIbu(),
+                        builder: (context) => const KondisiIbu(),
                       ),
                     );
                   }

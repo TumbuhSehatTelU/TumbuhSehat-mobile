@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 import 'package:mobile_tumbuh_sehat/features/nutrition_prediction/presentation/pages/analisis_gizi_scan.dart';
 import 'package:mobile_tumbuh_sehat/features/nutrition_prediction/data/datasources/nutrition_remote_service.dart';
 import 'package:mobile_tumbuh_sehat/app/core/theme/ts_color.dart';
-import 'package:mobile_tumbuh_sehat/app/core/theme/ts_text_style.dart';
 
 // 1. UBAH DEKLARASI KELAS MENJADI STATEFULWIDGET
 class ScanMakanan extends StatefulWidget {
@@ -180,6 +179,7 @@ class _ScanMakananState extends State<ScanMakanan> {
                                 // 3. Navigasi ke halaman hasil jika masih di-mount
                                 if (mounted) {
                                   Navigator.push(
+                                    // ignore: use_build_context_synchronously
                                     context,
                                     MaterialPageRoute(
                                       builder: (context) => AnalisisGiziScan(
@@ -193,6 +193,7 @@ class _ScanMakananState extends State<ScanMakanan> {
                               } catch (e) {
                                 // Tampilkan pesan error jika ada masalah
                                 if (mounted) {
+                                  // ignore: use_build_context_synchronously
                                   ScaffoldMessenger.of(context).showSnackBar(
                                     SnackBar(
                                         content:
@@ -246,6 +247,7 @@ class _ScanMakananState extends State<ScanMakanan> {
           ),
           if (_isLoading)
             Container(
+              // ignore: deprecated_member_use
               color: Colors.black.withOpacity(0.5),
               child: const Center(
                 child: CircularProgressIndicator(

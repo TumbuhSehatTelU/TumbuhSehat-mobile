@@ -38,7 +38,7 @@ class _SplashScreenState extends State<SplashScreen> {
                   onPressed: () {
                     Navigator.pushAndRemoveUntil(
                       context,
-                      MaterialPageRoute(builder: (context) => Daftar()),
+                      MaterialPageRoute(builder: (context) => const Daftar()),
                       (route) => false,
                     );
                   },

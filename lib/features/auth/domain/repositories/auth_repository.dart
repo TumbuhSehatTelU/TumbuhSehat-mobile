@@ -1,4 +1,3 @@
-import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:mobile_tumbuh_sehat/features/auth/domain/entities/auth_result.dart';
 import 'package:mobile_tumbuh_sehat/features/auth/domain/entities/child.dart';
 import 'package:mobile_tumbuh_sehat/features/auth/domain/entities/parent.dart';

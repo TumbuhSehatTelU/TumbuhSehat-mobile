@@ -20,6 +20,7 @@ class AnalisisGiziScan extends StatefulWidget {
 }
 
 class _AnalisisGiziScanState extends State<AnalisisGiziScan> {
+  // ignore: unused_field
   String _debugOutput = "Memproses data...";
   bool _isLoading = true;
   List<KomponenMakanan> _hasilAnalisis = [];
