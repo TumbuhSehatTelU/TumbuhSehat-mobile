@@ -62,7 +62,7 @@ class AuthRepositoryImpl implements AuthRepository {
   }
 
   @override
-  Future<void> register({
+  Future<void> registerNewFamily({
     required String phone,
     required String password,
     required Parent newParentData,

@@ -10,7 +10,7 @@ abstract class AuthRepository {
     required String password,
   });
 
-  Future<void> register({
+  Future<void> registerNewFamily({
     required String phone,
     required String password,
     required Parent newParentData,
