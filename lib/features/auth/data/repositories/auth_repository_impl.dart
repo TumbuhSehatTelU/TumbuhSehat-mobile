@@ -1,7 +1,9 @@
 import 'package:mobile_tumbuh_sehat/app/core/error/exceptions.dart';
 import 'package:mobile_tumbuh_sehat/app/core/network/network_info.dart';
+import 'package:mobile_tumbuh_sehat/app/core/security/password_hasher.dart';
 import 'package:mobile_tumbuh_sehat/features/auth/data/datasources/auth_local_datasource.dart';
 import 'package:mobile_tumbuh_sehat/features/auth/data/datasources/auth_remote_datasource.dart';
+import 'package:mobile_tumbuh_sehat/features/auth/data/models/child_model.dart';
 import 'package:mobile_tumbuh_sehat/features/auth/data/models/family_model.dart';
 import 'package:mobile_tumbuh_sehat/features/auth/data/models/parent_model.dart';
 import 'package:mobile_tumbuh_sehat/features/auth/domain/entities/auth_result.dart';
@@ -14,33 +16,44 @@ class AuthRepositoryImpl implements AuthRepository {
   final AuthRemoteDataSource remoteDataSource;
   final AuthLocalDataSource localDataSource;
   final NetworkInfo networkInfo;
+  final PasswordHasher passwordHasher;
   final Uuid uuid;
 
   AuthRepositoryImpl({
     required this.remoteDataSource,
     required this.localDataSource,
     required this.networkInfo,
+    required this.passwordHasher,
     required this.uuid,
   });
 
   @override
-  Future<AuthResult> login(
-      {required String phone, required String password}) async {
-    // Untuk login, kita hanya perlu mengecek data lokal karena password tidak dikirim ke remote.
-    // Logika password check terjadi di BLoC/UseCase.
-    // Di dunia nyata, login akan selalu online dan mengembalikan token.
-    // Untuk aplikasi ini, kita prioritaskan data lokal.
+  Future<AuthResult> login({
+    required String phone,
+    required String name,
+    required String password,
+  }) async {
     try {
       final familyModel = await localDataSource.getFamily(phone);
-      // Di sini kita asumsikan password sudah diverifikasi di lapisan atas.
-      // Kita cari parent yang sesuai.
-      // Untuk kesederhanaan, kita anggap login berhasil jika keluarga ditemukan.
-      // Kita ambil parent pertama sebagai yang aktif.
-      final activeParent = familyModel.parents.first;
-      await localDataSource.saveActiveParent(active_parent);
+
+      final parentModel = familyModel.parents.firstWhere(
+        (p) => p.name == name,
+        orElse: () => throw CacheException(),
+      );
+
+      final isPasswordCorrect = passwordHasher.verify(
+        password,
+        parentModel.hashedPassword,
+      );
+
+      if (!isPasswordCorrect) {
+        throw CacheException();
+      }
+
+      await localDataSource.saveActiveParent(parentModel);
       return AuthResult(
         family: familyModel.toEntity(),
-        activeParent: activeParent.toEntity(),
+        activeParent: parentModel.toEntity(),
       );
     } on CacheException {
       rethrow;
@@ -54,12 +67,32 @@ class AuthRepositoryImpl implements AuthRepository {
     required Parent newParentData,
     required List<Child> childrenData,
   }) async {
-    final parentModel = ParentModel.fromEntity(newParentData);
-    final childrenModels =
-        childrenData.map((c) => ChildModel.fromEntity(c)).toList();
+    final hashedPassword = passwordHasher.hash(password);
+
+    final parentModel = ParentModel(
+      id: uuid.v4(),
+      name: newParentData.name,
+      role: newParentData.role,
+      dateOfBirth: newParentData.dateOfBirth,
+      maternalStatus: newParentData.maternalStatus,
+      hashedPassword: hashedPassword,
+    );
+
+    final childrenModels = childrenData
+        .map(
+          (c) => ChildModel(
+            id: uuid.v4(),
+            name: c.name,
+            gender: c.gender,
+            dateOfBirth: c.dateOfBirth,
+            height: c.height,
+            weight: c.weight,
+          ),
+        )
+        .toList();
 
     final familyModel = FamilyModel(
-      familyId: phone, 
+      familyId: phone,
       parents: [parentModel],
       children: childrenModels,
     );
@@ -68,10 +101,47 @@ class AuthRepositoryImpl implements AuthRepository {
 
     if (await networkInfo.isConnected) {
       try {
-        await remoteDataSource.register(
-            family: familyModel, password: password);
+        await remoteDataSource.registerNewFamily(
+          family: familyModel,
+          password: password,
+        );
       } on ServerException {
-        // NEED LOGIC FOR SYNCHRONIZING
+        // POSTPONE TO ADD SYNCHRONIZED LOGIC
+      }
+    }
+  }
+
+  @override
+  Future<void> joinExistingFamily({
+    required String familyPhone,
+    required String password,
+    required Parent newParentData,
+  }) async {
+    final hashedPassword = passwordHasher.hash(password);
+
+    final newParentModel = ParentModel(
+      id: uuid.v4(),
+      name: newParentData.name,
+      role: newParentData.role,
+      dateOfBirth: newParentData.dateOfBirth,
+      maternalStatus: newParentData.maternalStatus,
+      hashedPassword: hashedPassword,
+    );
+
+    await localDataSource.addParentToFamily(
+      familyId: familyPhone,
+      newParent: newParentModel,
+    );
+
+    if (await networkInfo.isConnected) {
+      try {
+        await remoteDataSource.joinExistingFamily(
+          familyId: familyPhone,
+          newParent: newParentModel,
+          password: password,
+        );
+      } on ServerException {
+        // POSTPONE TO ADD SYNCHRONIZED LOGIC
       }
     }
   }
@@ -83,8 +153,20 @@ class AuthRepositoryImpl implements AuthRepository {
   }
 
   @override
-  Future<void> saveActiveParent(Parent parent) async {
-    await localDataSource.saveActiveParent(ParentModel.fromEntity(parent));
+  Future<void> saveActiveParent({
+    required String familyId,
+    required Parent parent,
+  }) async {
+    try {
+      final familyModel = await localDataSource.getFamily(familyId);
+      final parentModel = familyModel.parents.firstWhere(
+        (p) => p.id == parent.id,
+        orElse: () => throw CacheException(),
+      );
+      await localDataSource.saveActiveParent(parentModel);
+    } catch (e) {
+      rethrow;
+    }
   }
 
   @override

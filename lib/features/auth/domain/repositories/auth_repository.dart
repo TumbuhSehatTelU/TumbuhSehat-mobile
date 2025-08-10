@@ -1,3 +1,4 @@
+import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:mobile_tumbuh_sehat/features/auth/domain/entities/auth_result.dart';
 import 'package:mobile_tumbuh_sehat/features/auth/domain/entities/child.dart';
 import 'package:mobile_tumbuh_sehat/features/auth/domain/entities/parent.dart';
@@ -24,7 +25,10 @@ abstract class AuthRepository {
 
   Future<Parent?> getActiveParent();
 
-  Future<void> saveActiveParent(Parent parent);
+  Future<void> saveActiveParent({
+    required String familyId,
+    required Parent parent,
+  });
 
   Future<void> logout();
 }

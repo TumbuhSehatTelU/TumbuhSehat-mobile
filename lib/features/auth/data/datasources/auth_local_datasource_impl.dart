@@ -30,6 +30,21 @@ class AuthLocalDataSourceImpl implements AuthLocalDataSource {
   }
 
   @override
+  Future<void> addParentToFamily({
+    required String familyId,
+    required ParentModel newParent,
+  }) async {
+    final existingFamilyModel = await getFamily(familyId);
+
+    final updatedParents = List<ParentModel>.from(existingFamilyModel.parents)
+      ..add(newParent);
+
+    final updatedFamily = existingFamilyModel.copyWith(parents: updatedParents);
+
+    await saveFamily(updatedFamily);
+  }
+
+  @override
   Future<ParentModel?> getActiveParent() async {
     final parentJson = sessionBox.get(activeParentKey);
     if (parentJson != null) {
