@@ -44,7 +44,10 @@ class AuthRepositoryImpl implements AuthRepository {
 
       if (parentModel != null &&
           passwordHasher.verify(password, parentModel.hashedPassword)) {
-        await localDataSource.saveActiveParent(parentModel);
+        await localDataSource.saveActiveParent(
+          parent: parentModel,
+          familyId: phone,
+        );
         return AuthResult(
           family: familyModel.toEntity(),
           activeParent: parentModel.toEntity(),
@@ -166,7 +169,10 @@ class AuthRepositoryImpl implements AuthRepository {
           message: 'Gagal menyimpan sesi: Data pengguna tidak valid.',
         ),
       );
-      await localDataSource.saveActiveParent(parentModel);
+      await localDataSource.saveActiveParent(
+        parent: parentModel,
+        familyId: familyId,
+      );
     } catch (e) {
       rethrow;
     }

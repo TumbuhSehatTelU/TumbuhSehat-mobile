@@ -7,6 +7,7 @@ import 'package:mobile_tumbuh_sehat/features/auth/data/models/parent_model.dart'
 const String familyBoxName = 'family_box';
 const String sessionBoxName = 'session_box';
 const String activeParentKey = 'active_parent_key';
+const String activeFamilyIdKey = 'active_family_id_key';
 
 class AuthLocalDataSourceImpl implements AuthLocalDataSource {
   final Box familyBox;
@@ -76,9 +77,22 @@ class AuthLocalDataSourceImpl implements AuthLocalDataSource {
   }
 
   @override
-  Future<void> saveActiveParent(ParentModel parent) async {
+  Future<String?> getActiveFamilyId() async {
+    try {
+      return sessionBox.get(activeFamilyIdKey);
+    } catch (e) {
+      throw CacheException(message: 'Failed to get active family session: $e');
+    }
+  }
+
+  @override
+  Future<void> saveActiveParent({
+    required ParentModel parent,
+    required String familyId,
+  }) async {
     try {
       await sessionBox.put(activeParentKey, parent.toJson());
+      await sessionBox.put(activeFamilyIdKey, familyId);
     } catch (e) {
       throw CacheException(message: 'Failed to save active parent session: $e');
     }
@@ -88,6 +102,7 @@ class AuthLocalDataSourceImpl implements AuthLocalDataSource {
   Future<void> clearActiveParent() async {
     try {
       await sessionBox.delete(activeParentKey);
+      await sessionBox.delete(activeFamilyIdKey);
     } catch (e) {
       throw CacheException(
         message: 'Failed to clear active parent session: $e',
