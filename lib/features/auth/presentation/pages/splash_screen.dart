@@ -25,7 +25,7 @@ class SplashScreen extends StatelessWidget {
         builder: (context, constraints) {
           final isTablet = constraints.maxWidth > 600;
           final double horizontalPadding = isTablet ? 60 : 24;
-          final double verticalPadding = isTablet ? 80 : 40;
+          final double verticalPadding = isTablet ? 64 : 32;
 
           return Scaffold(
             backgroundColor: TSColor.monochrome.white,
@@ -48,8 +48,33 @@ class SplashScreen extends StatelessWidget {
                     crossAxisAlignment: CrossAxisAlignment.stretch,
                     children: [
                       const Spacer(flex: 2),
-                      Assets.image.logo.svg(height: isTablet ? 100 : 60),
-                      const Spacer()
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Assets.image.logo.svg(height: isTablet ? 180 : 120),
+                          Column(
+                            children: [
+                              Row(
+                                children: [
+                                  Text(
+                                    "T",
+                                    style: isTablet
+                                        ? TSFont.bold.h1ForTablet.withColor(
+                                            TSColor.mainTosca.shade200,
+                                          )
+                                        : TSFont.bold.h1.withColor(
+                                            TSColor.mainTosca.shade200,
+                                          ),
+                                  ),
+                                  Text("umbuh"),
+                                ],
+                              ),
+                              Row(children: [Text("S"), Text("ehat")]),
+                            ],
+                          ),
+                        ],
+                      ),
+                      const Spacer(),
                     ],
                   ),
                 ),
