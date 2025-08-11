@@ -265,7 +265,7 @@ class ExtraBold {
   final TextStyle h0 = GoogleFonts.openSans(
     fontSize: 36,
     fontWeight: FontWeight.w800,
-    letterSpacing: -1.5,
+    letterSpacing: 1.5,
   );
   TextStyle get h0ForTablet =>
       h0.copyWith(fontSize: h0.fontSize! * _tabletFontScale);

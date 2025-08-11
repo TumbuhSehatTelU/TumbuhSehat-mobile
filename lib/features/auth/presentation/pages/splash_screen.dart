@@ -25,7 +25,6 @@ class SplashScreen extends StatelessWidget {
         builder: (context, constraints) {
           final isTablet = constraints.maxWidth > 600;
           final double horizontalPadding = isTablet ? 60 : 24;
-          final double verticalPadding = isTablet ? 64 : 32;
 
           return Scaffold(
             backgroundColor: TSColor.monochrome.white,
@@ -39,19 +38,21 @@ class SplashScreen extends StatelessWidget {
               },
               child: SafeArea(
                 child: Padding(
-                  padding: EdgeInsets.symmetric(
-                    horizontal: horizontalPadding,
-                    vertical: verticalPadding,
-                  ),
+                  padding: EdgeInsets.symmetric(horizontal: horizontalPadding),
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.start,
                     crossAxisAlignment: CrossAxisAlignment.stretch,
                     children: [
-                      const Spacer(flex: 2),
+                      SizedBox(
+                        height: MediaQuery.of(context).size.height * 0.1,
+                      ),
+                      // LOGO TUMBUH SEHAT
                       Row(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
+                          const Spacer(flex: 3),
                           Assets.image.logo.svg(height: isTablet ? 180 : 120),
+                          const Spacer(flex: 2),
                           Column(
                             children: [
                               Row(
@@ -59,22 +60,95 @@ class SplashScreen extends StatelessWidget {
                                   Text(
                                     "T",
                                     style: isTablet
-                                        ? TSFont.bold.h0ForTablet.withColor(
-                                            TSColor.mainTosca.shade200,
-                                          )
-                                        : TSFont.bold.h0.withColor(
-                                            TSColor.mainTosca.shade200,
+                                        ? TSFont.extraBold.h0ForTablet
+                                              .withColor(
+                                                TSColor.mainTosca.primary,
+                                              )
+                                        : TSFont.extraBold.h0.withColor(
+                                            TSColor.mainTosca.primary,
                                           ),
                                   ),
-                                  Text("umbuh"),
+                                  Text(
+                                    "umbuh",
+                                    style: isTablet
+                                        ? TSFont.extraBold.h0ForTablet
+                                              .withColor(
+                                                TSColor.monochrome.black,
+                                              )
+                                        : TSFont.extraBold.h0.withColor(
+                                            TSColor.monochrome.black,
+                                          ),
+                                  ),
                                 ],
                               ),
-                              Row(children: [Text("S"), Text("ehat")]),
+                              Transform.translate(
+                                offset: const Offset(0, -16),
+                                child: Row(
+                                  children: [
+                                    Text(
+                                      "S",
+                                      style: isTablet
+                                          ? TSFont.extraBold.h0ForTablet
+                                                .withColor(
+                                                  TSColor
+                                                      .secondaryGreen
+                                                      .shade400,
+                                                )
+                                          : TSFont.extraBold.h0.withColor(
+                                              TSColor.secondaryGreen.shade400,
+                                            ),
+                                    ),
+                                    Text(
+                                      "ehat",
+                                      style: isTablet
+                                          ? TSFont.extraBold.h0ForTablet
+                                                .withColor(
+                                                  TSColor.monochrome.black,
+                                                )
+                                          : TSFont.extraBold.h0.withColor(
+                                              TSColor.monochrome.black,
+                                            ),
+                                    ),
+                                  ],
+                                ),
+                              ),
                             ],
                           ),
+                          const Spacer(flex: 3),
                         ],
                       ),
                       const Spacer(),
+                      Text(
+                        "Bantu Ibu Pantau Gizi,\n Jaga Tumbuh\n Kembang Anak!",
+                        style: isTablet
+                            ? TSFont.bold.h1ForTablet.withColor(
+                                TSColor.monochrome.black,
+                              )
+                            : TSFont.bold.h1.withColor(
+                                TSColor.monochrome.black,
+                              ),
+                      ),
+                      const Spacer(flex: 2),
+                      TSButton(
+                        onPressed: () {
+                          context.go("/family-check");
+                        },
+                        text: "Mulai",
+                        textStyle: isTablet
+                            ? TSFont.bold.largeForTablet
+                            : TSFont.bold.large,
+                        backgroundColor: TSColor.secondaryGreen.primary,
+                        borderColor: TSColor.secondaryGreen.primary,
+                        contentColor: TSColor.monochrome.black,
+                        customBorderRadius: 48,
+                        size: ButtonSize.medium,
+                        boxShadow: TSShadow.light,
+                      ),
+                      const Spacer(),
+                      Assets.image.illustrationSplashScreen.svg(
+                        width: constraints.maxWidth * 0.9,
+                        height: constraints.maxHeight * (isTablet ? 0.3 : 0.2),
+                      ),
                     ],
                   ),
                 ),
