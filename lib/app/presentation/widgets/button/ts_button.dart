@@ -19,7 +19,7 @@ enum ButtonStyleType { leftIcon, rightIcon, textOnly, iconOnly }
 // )
 
 class TSButton extends StatelessWidget {
-  final VoidCallback onPressed;
+  final VoidCallback? onPressed;
   final String? text;
   final IconData? icon;
   final Color backgroundColor;
@@ -31,6 +31,7 @@ class TSButton extends StatelessWidget {
   final TextStyle? textStyle;
   final double? width;
   final List<BoxShadow>? boxShadow;
+  final double? borderWidth;
 
   const TSButton({
     super.key,
@@ -46,6 +47,7 @@ class TSButton extends StatelessWidget {
     this.customBorderRadius,
     this.width,
     this.boxShadow,
+    this.borderWidth,
   });
 
   EdgeInsets get _padding {
@@ -72,8 +74,9 @@ class TSButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final borderRadius =
-        BorderRadius.circular(customBorderRadius ?? _defaultRadius);
+    final borderRadius = BorderRadius.circular(
+      customBorderRadius ?? _defaultRadius,
+    );
 
     Widget content;
 
@@ -101,8 +104,10 @@ class TSButton extends StatelessWidget {
         );
         break;
       case ButtonStyleType.textOnly:
-        content =
-            Text(text ?? '', style: textStyle?.copyWith(color: contentColor));
+        content = Text(
+          text ?? '',
+          style: textStyle?.copyWith(color: contentColor),
+        );
         break;
       case ButtonStyleType.iconOnly:
         content = Icon(icon, color: contentColor);
@@ -116,10 +121,7 @@ class TSButton extends StatelessWidget {
           color: backgroundColor,
           borderRadius: borderRadius,
           boxShadow: boxShadow,
-          border: Border.all(
-            color: borderColor,
-            width: 2.0,
-          ),
+          border: Border.all(color: borderColor, width: borderWidth ?? 2.0),
         ),
         child: Material(
           color: Colors.transparent,

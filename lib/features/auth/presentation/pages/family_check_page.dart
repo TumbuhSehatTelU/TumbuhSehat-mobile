@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 import 'package:mobile_tumbuh_sehat/app/core/gen/assets.gen.dart';
 import 'package:mobile_tumbuh_sehat/app/core/theme/ts_color.dart';
 import 'package:mobile_tumbuh_sehat/app/core/theme/ts_text_style.dart';
+import 'package:mobile_tumbuh_sehat/app/presentation/widgets/button/ts_button.dart';
+import 'package:mobile_tumbuh_sehat/app/presentation/widgets/shadow/ts_shadow.dart';
 
 class FamilyCheckPage extends StatelessWidget {
   const FamilyCheckPage({super.key});
@@ -86,6 +89,60 @@ class FamilyCheckPage extends StatelessWidget {
                       ),
                       const Spacer(flex: 3),
                     ],
+                  ),
+                  const Spacer(flex: 1),
+                  Text(
+                    "Apakah anggota keluarga anda\nada yang menggunakan\nTumbuhSehat?",
+                    style: isTablet
+                        ? TSFont.bold.h2ForTablet.withColor(
+                            TSColor.monochrome.black,
+                          )
+                        : TSFont.bold.h2.withColor(TSColor.monochrome.black),
+                    textAlign: TextAlign.center,
+                  ),
+                  const Spacer(flex: 1),
+                  TSButton(
+                    text: "Ada",
+                    textStyle: isTablet
+                        ? TSFont.bold.h2ForTablet.withColor(
+                            TSColor.monochrome.pureWhite,
+                          )
+                        : TSFont.bold.h2.withColor(
+                            TSColor.monochrome.pureWhite,
+                          ),
+                    onPressed: () {
+                      context.push('/family-join');
+                    },
+                    backgroundColor: TSColor.additionalColor.green,
+                    borderColor: TSColor.additionalColor.green,
+                    contentColor: TSColor.monochrome.pureWhite,
+                    customBorderRadius: 248,
+                    size: ButtonSize.medium,
+                    boxShadow: TSShadow.elevations.weight300,
+                  ),
+                  const Spacer(flex: 1),
+                  TSButton(
+                    text: "Tidak Ada",
+                    textStyle: isTablet
+                        ? TSFont.bold.h2ForTablet.withColor(
+                            TSColor.additionalColor.red,
+                          )
+                        : TSFont.bold.h2.withColor(TSColor.additionalColor.red),
+                    onPressed: () {
+                      context.push('/register');
+                    },
+                    backgroundColor: TSColor.monochrome.white,
+                    borderColor: TSColor.additionalColor.red,
+                    contentColor: TSColor.additionalColor.red,
+                    customBorderRadius: 248,
+                    size: ButtonSize.medium,
+                    borderWidth: 4,
+                    boxShadow: TSShadow.elevations.weight300,
+                  ),
+                  const Spacer(flex: 1),
+                  Assets.image.illustrationYesOrNo.svg(
+                    width: constraints.maxWidth * 0.9,
+                    height: constraints.maxHeight * 0.25,
                   ),
                 ],
               ),

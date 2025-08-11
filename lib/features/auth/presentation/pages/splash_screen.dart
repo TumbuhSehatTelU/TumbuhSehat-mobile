@@ -129,7 +129,7 @@ class SplashScreen extends StatelessWidget {
                       const Spacer(flex: 2),
                       TSButton(
                         onPressed: () {
-                          context.go("/family-check");
+                          context.push("/family-check");
                         },
                         text: "Mulai",
                         textStyle: isTablet

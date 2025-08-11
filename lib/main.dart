@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:mobile_tumbuh_sehat/app/core/routes/app_router.dart';
 import 'app/core/bloc/app_bloc_observer.dart';
-import 'package:mobile_tumbuh_sehat/features/auth/presentation/pages/splash_screen.dart';
 import 'app/core/di/service_locator.dart' as di;
 import 'package:hive_flutter/hive_flutter.dart';
 
@@ -36,10 +36,10 @@ class MainApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const MaterialApp(
+    return MaterialApp.router(
       debugShowCheckedModeBanner: false,
       // home: MainPage(),
-      home: SplashScreen(),
+      routerConfig: AppRouter.router,
     );
   }
 }

@@ -21,11 +21,19 @@ class $AssetsImageGen {
   SvgGenImage get illustrationSplashScreen =>
       const SvgGenImage('assets/image/Illustration Splash Screen.svg');
 
+  /// File path: assets/image/Illustration Yes or No.svg
+  SvgGenImage get illustrationYesOrNo =>
+      const SvgGenImage('assets/image/Illustration Yes or No.svg');
+
   /// File path: assets/image/Logo.svg
   SvgGenImage get logo => const SvgGenImage('assets/image/Logo.svg');
 
   /// List of all assets
-  List<SvgGenImage> get values => [illustrationSplashScreen, logo];
+  List<SvgGenImage> get values => [
+    illustrationSplashScreen,
+    illustrationYesOrNo,
+    logo,
+  ];
 }
 
 class Assets {
