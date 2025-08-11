@@ -14,6 +14,7 @@ class MainTosca {
   final Color primary = const Color.fromRGBO(22, 179, 172, 1);
   final Color shade400 = const Color.fromRGBO(18, 143, 138, 1);
   final Color shade500 = const Color.fromRGBO(13, 107, 103, 1);
+  final Color shade600 = const Color.fromRGBO(11, 89, 86, 1);
 }
 
 class SecondaryGreen {
@@ -23,6 +24,7 @@ class SecondaryGreen {
   final Color primary = const Color.fromRGBO(210, 220, 2, 1);
   final Color shade400 = const Color.fromRGBO(173, 182, 2, 1);
   final Color shade500 = const Color.fromRGBO(137, 143, 1, 1);
+  final Color shade600 = const Color.fromRGBO(106, 111, 1, 1);
 }
 
 class Monochrome {

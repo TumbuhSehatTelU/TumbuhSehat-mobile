@@ -59,10 +59,10 @@ class SplashScreen extends StatelessWidget {
                                   Text(
                                     "T",
                                     style: isTablet
-                                        ? TSFont.bold.h1ForTablet.withColor(
+                                        ? TSFont.bold.h0ForTablet.withColor(
                                             TSColor.mainTosca.shade200,
                                           )
-                                        : TSFont.bold.h1.withColor(
+                                        : TSFont.bold.h0.withColor(
                                             TSColor.mainTosca.shade200,
                                           ),
                                   ),
