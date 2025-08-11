@@ -109,7 +109,7 @@ class _DaftarState extends State<Daftar> {
                 isPassword: false,
                 borderRadius: 240,
                 width: MediaQuery.of(context).size.width * 0.8,
-                boxShadow: TSShadow.light,
+                boxShadow: TSShadow.shadows.weight400,
                 controller: emailController,
                 validationLogicList: [
                   (val) => val.isNotEmpty,

@@ -27,7 +27,7 @@ class TSDropdown<T> extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       decoration: BoxDecoration(
-        boxShadow: TSShadow.light,
+        boxShadow: TSShadow.shadows.weight300,
         borderRadius: BorderRadius.circular(12),
       ),
       child: DropdownButtonFormField<T>(

@@ -32,7 +32,7 @@ class _TSTextFieldState extends State<TSTextField> {
   Widget build(BuildContext context) {
     return Container(
       decoration: BoxDecoration(
-        boxShadow: TSShadow.light,
+        boxShadow: TSShadow.shadows.weight300,
         borderRadius: BorderRadius.circular(12),
       ),
       child: TextFormField(
@@ -45,8 +45,9 @@ class _TSTextFieldState extends State<TSTextField> {
           labelText: widget.label,
           hintText: widget.hintText,
           labelStyle: TSFont.regular.body.withColor(TSColor.monochrome.grey),
-          hintStyle:
-              TSFont.regular.body.withColor(TSColor.monochrome.lightGrey),
+          hintStyle: TSFont.regular.body.withColor(
+            TSColor.monochrome.lightGrey,
+          ),
           filled: true,
           fillColor: TSColor.monochrome.pureWhite,
           suffixIcon: widget.isPassword
@@ -64,8 +65,7 @@ class _TSTextFieldState extends State<TSTextField> {
               : null,
           border: OutlineInputBorder(
             borderRadius: BorderRadius.circular(12),
-            borderSide:
-                BorderSide.none,
+            borderSide: BorderSide.none,
           ),
           enabledBorder: OutlineInputBorder(
             borderRadius: BorderRadius.circular(12),
@@ -77,13 +77,17 @@ class _TSTextFieldState extends State<TSTextField> {
           ),
           errorBorder: OutlineInputBorder(
             borderRadius: BorderRadius.circular(12),
-            borderSide:
-                BorderSide(color: TSColor.additionalColor.red, width: 2),
+            borderSide: BorderSide(
+              color: TSColor.additionalColor.red,
+              width: 2,
+            ),
           ),
           focusedErrorBorder: OutlineInputBorder(
             borderRadius: BorderRadius.circular(12),
-            borderSide:
-                BorderSide(color: TSColor.additionalColor.red, width: 2),
+            borderSide: BorderSide(
+              color: TSColor.additionalColor.red,
+              width: 2,
+            ),
           ),
         ),
       ),

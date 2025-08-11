@@ -8,11 +8,9 @@ import 'package:mobile_tumbuh_sehat/app/presentation/widgets/shadow/ts_shadow.da
 import 'package:mobile_tumbuh_sehat/features/auth/presentation/bloc/auth_bloc.dart';
 import 'package:mobile_tumbuh_sehat/features/auth/presentation/bloc/auth_event.dart';
 import 'package:mobile_tumbuh_sehat/features/auth/presentation/bloc/auth_state.dart';
-import 'package:mobile_tumbuh_sehat/features/auth/presentation/pages/daftar.dart';
 import 'package:mobile_tumbuh_sehat/app/core/theme/ts_color.dart';
 import 'package:mobile_tumbuh_sehat/app/core/theme/ts_text_style.dart';
 import 'package:mobile_tumbuh_sehat/app/presentation/widgets/button/ts_button.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 
 class SplashScreen extends StatelessWidget {
   const SplashScreen({super.key});
@@ -142,7 +140,7 @@ class SplashScreen extends StatelessWidget {
                         contentColor: TSColor.monochrome.black,
                         customBorderRadius: 48,
                         size: ButtonSize.medium,
-                        boxShadow: TSShadow.light,
+                        boxShadow: TSShadow.elevations.weight300,
                       ),
                       const Spacer(),
                       Assets.image.illustrationSplashScreen.svg(
