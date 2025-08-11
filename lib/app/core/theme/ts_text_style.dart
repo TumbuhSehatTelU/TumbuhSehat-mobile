@@ -8,6 +8,8 @@ extension TextStyleExtension on TextStyle {
   }
 }
 
+const double _tabletFontScale = 1.5;
+
 // contoh penggunaan
 // Text(
 //   'ini tulisan',
@@ -28,36 +30,48 @@ class Regular {
     fontWeight: FontWeight.normal,
     letterSpacing: -1.5,
   );
+  TextStyle get h1ForTablet =>
+      h1.copyWith(fontSize: h1.fontSize! * _tabletFontScale);
 
   final TextStyle h2 = GoogleFonts.openSans(
     fontSize: 22,
     fontWeight: FontWeight.normal,
     letterSpacing: -1,
   );
+  TextStyle get h2ForTablet =>
+      h2.copyWith(fontSize: h2.fontSize! * _tabletFontScale);
 
   final TextStyle h3 = GoogleFonts.openSans(
     fontSize: 18,
     fontWeight: FontWeight.normal,
     letterSpacing: -0.5,
   );
+  TextStyle get h3ForTablet =>
+      h3.copyWith(fontSize: h3.fontSize! * _tabletFontScale);
 
   final TextStyle large = GoogleFonts.openSans(
     fontSize: 16,
     fontWeight: FontWeight.normal,
     letterSpacing: 0,
   );
+  TextStyle get largeForTablet =>
+      large.copyWith(fontSize: large.fontSize! * _tabletFontScale);
 
   final TextStyle body = GoogleFonts.openSans(
     fontSize: 14,
     fontWeight: FontWeight.normal,
     letterSpacing: 0.5,
   );
+  TextStyle get bodyForTablet =>
+      body.copyWith(fontSize: body.fontSize! * _tabletFontScale);
 
   final TextStyle small = GoogleFonts.openSans(
     fontSize: 12,
     fontWeight: FontWeight.normal,
     letterSpacing: 1,
   );
+  TextStyle get smallForTablet =>
+      small.copyWith(fontSize: small.fontSize! * _tabletFontScale);
 }
 
 class Medium {
@@ -67,36 +81,48 @@ class Medium {
     fontWeight: FontWeight.w500,
     letterSpacing: -1.5,
   );
+  TextStyle get h1ForTablet =>
+      h1.copyWith(fontSize: h1.fontSize! * _tabletFontScale);
 
   final TextStyle h2 = GoogleFonts.openSans(
     fontSize: 22,
     fontWeight: FontWeight.w500,
     letterSpacing: -1,
   );
+  TextStyle get h2ForTablet =>
+      h2.copyWith(fontSize: h2.fontSize! * _tabletFontScale);
 
   final TextStyle h3 = GoogleFonts.openSans(
     fontSize: 18,
     fontWeight: FontWeight.w500,
     letterSpacing: -0.5,
   );
+  TextStyle get h3ForTablet =>
+      h3.copyWith(fontSize: h3.fontSize! * _tabletFontScale);
 
   final TextStyle large = GoogleFonts.openSans(
     fontSize: 16,
     fontWeight: FontWeight.w500,
     letterSpacing: 0,
   );
+  TextStyle get largeForTablet =>
+      large.copyWith(fontSize: large.fontSize! * _tabletFontScale);
 
   final TextStyle body = GoogleFonts.openSans(
     fontSize: 14,
     fontWeight: FontWeight.w500,
     letterSpacing: 0.5,
   );
+  TextStyle get bodyForTablet =>
+      body.copyWith(fontSize: body.fontSize! * _tabletFontScale);
 
   final TextStyle small = GoogleFonts.openSans(
     fontSize: 12,
     fontWeight: FontWeight.w500,
     letterSpacing: 1,
   );
+  TextStyle get smallForTablet =>
+      small.copyWith(fontSize: small.fontSize! * _tabletFontScale);
 }
 
 class SemiBold {
@@ -106,36 +132,48 @@ class SemiBold {
     fontWeight: FontWeight.w600,
     letterSpacing: -1.5,
   );
+  TextStyle get h1ForTablet =>
+      h1.copyWith(fontSize: h1.fontSize! * _tabletFontScale);
 
   final TextStyle h2 = GoogleFonts.openSans(
     fontSize: 22,
     fontWeight: FontWeight.w600,
     letterSpacing: -1,
   );
+  TextStyle get h2ForTablet =>
+      h2.copyWith(fontSize: h2.fontSize! * _tabletFontScale);
 
   final TextStyle h3 = GoogleFonts.openSans(
     fontSize: 18,
     fontWeight: FontWeight.w600,
     letterSpacing: -0.5,
   );
+  TextStyle get h3ForTablet =>
+      h3.copyWith(fontSize: h3.fontSize! * _tabletFontScale);
 
   final TextStyle large = GoogleFonts.openSans(
     fontSize: 16,
     fontWeight: FontWeight.w600,
     letterSpacing: 0,
   );
+  TextStyle get largeForTablet =>
+      large.copyWith(fontSize: large.fontSize! * _tabletFontScale);
 
   final TextStyle body = GoogleFonts.openSans(
     fontSize: 14,
     fontWeight: FontWeight.w600,
     letterSpacing: 0.5,
   );
+  TextStyle get bodyForTablet =>
+      body.copyWith(fontSize: body.fontSize! * _tabletFontScale);
 
   final TextStyle small = GoogleFonts.openSans(
     fontSize: 12,
     fontWeight: FontWeight.w600,
     letterSpacing: 1,
   );
+  TextStyle get smallForTablet =>
+      small.copyWith(fontSize: small.fontSize! * _tabletFontScale);
 }
 
 class Bold {
@@ -145,34 +183,46 @@ class Bold {
     fontWeight: FontWeight.bold,
     letterSpacing: -1.5,
   );
+  TextStyle get h1ForTablet =>
+      h1.copyWith(fontSize: h1.fontSize! * _tabletFontScale);
 
   final TextStyle h2 = GoogleFonts.openSans(
     fontSize: 22,
     fontWeight: FontWeight.bold,
     letterSpacing: -1,
   );
+  TextStyle get h2ForTablet =>
+      h2.copyWith(fontSize: h2.fontSize! * _tabletFontScale);
 
   final TextStyle h3 = GoogleFonts.openSans(
     fontSize: 18,
     fontWeight: FontWeight.bold,
     letterSpacing: -0.5,
   );
+  TextStyle get h3ForTablet =>
+      h3.copyWith(fontSize: h3.fontSize! * _tabletFontScale);
 
   final TextStyle large = GoogleFonts.openSans(
     fontSize: 16,
     fontWeight: FontWeight.bold,
     letterSpacing: 0,
   );
+  TextStyle get largeForTablet =>
+      large.copyWith(fontSize: large.fontSize! * _tabletFontScale);
 
   final TextStyle body = GoogleFonts.openSans(
     fontSize: 14,
     fontWeight: FontWeight.bold,
     letterSpacing: 0.5,
   );
+  TextStyle get bodyForTablet =>
+      body.copyWith(fontSize: body.fontSize! * _tabletFontScale);
 
   final TextStyle small = GoogleFonts.openSans(
     fontSize: 12,
     fontWeight: FontWeight.bold,
     letterSpacing: 1,
   );
+  TextStyle get smallForTablet =>
+      small.copyWith(fontSize: small.fontSize! * _tabletFontScale);
 }
