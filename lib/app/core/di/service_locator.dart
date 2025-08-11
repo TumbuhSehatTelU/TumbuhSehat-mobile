@@ -10,6 +10,11 @@ import 'package:mobile_tumbuh_sehat/features/auth/data/datasources/auth_local_da
 import 'package:mobile_tumbuh_sehat/features/auth/data/datasources/auth_local_datasource_impl.dart';
 import 'package:mobile_tumbuh_sehat/features/auth/data/datasources/auth_remote_datasource.dart';
 import 'package:mobile_tumbuh_sehat/features/auth/data/datasources/auth_remote_datasource_impl.dart';
+import 'package:mobile_tumbuh_sehat/features/auth/data/repositories/auth_repository_impl.dart';
+import 'package:mobile_tumbuh_sehat/features/auth/domain/repositories/auth_repository.dart';
+import 'package:mobile_tumbuh_sehat/features/auth/domain/usecases/register_new_family_usecase.dart';
+import 'package:mobile_tumbuh_sehat/features/auth/domain/usecases/search_family_by_phone_usecase.dart';
+import 'package:mobile_tumbuh_sehat/features/auth/presentation/bloc/auth_bloc.dart';
 import 'package:uuid/uuid.dart';
 
 final sl = GetIt.instance;
@@ -17,18 +22,31 @@ const String familyBoxName = 'family_box';
 const String sessionBoxName = 'session_box';
 
 Future<void> init() async {
-  // CORE
-  sl.registerLazySingleton<NetworkInfo>(() => NetworkInfoImpl(sl()));
-  sl.registerLazySingleton<PasswordHasher>(() => BcryptPasswordHasher());
-
-  // EXTERNAL PACKAGES
-  sl.registerLazySingleton(() => Dio());
-  sl.registerLazySingleton(() => Connectivity());
-  sl.registerLazySingleton(() => const Uuid());
-  sl.registerLazySingleton(() => Hive.box(familyBoxName));
-  sl.registerLazySingleton(() => Hive.box(sessionBoxName));
-
   // FEATURES - AUTH
+  // BLoC
+  sl.registerFactory(
+    () => AuthBloc(
+      searchFamilyByPhoneUseCase: sl(),
+      registerNewFamilyUseCase: sl(),
+    ),
+  );
+
+  // UseCases
+  sl.registerLazySingleton(() => SearchFamilyByPhoneUseCase(sl()));
+  sl.registerLazySingleton(() => RegisterNewFamilyUseCase(sl()));
+
+  // Repository
+  sl.registerLazySingleton<AuthRepository>(
+    () => AuthRepositoryImpl(
+      remoteDataSource: sl(),
+      localDataSource: sl(),
+      networkInfo: sl(),
+      passwordHasher: sl(),
+      uuid: sl(),
+    ),
+  );
+
+  // DataSources
   sl.registerLazySingleton<AuthRemoteDataSource>(
     () => AuthRemoteDataSourceImpl(dio: sl()),
   );
@@ -39,5 +57,12 @@ Future<void> init() async {
     ),
   );
 
+  // CORE
+  sl.registerLazySingleton<NetworkInfo>(() => NetworkInfoImpl(sl()));
+  sl.registerLazySingleton<PasswordHasher>(() => BcryptPasswordHasher());
+
+  // EXTERNAL PACKAGES
+  sl.registerLazySingleton(() => Dio());
   sl.registerLazySingleton(() => Connectivity());
+  sl.registerLazySingleton(() => const Uuid());
 }
