@@ -18,12 +18,6 @@ class AuthRemoteDataSourceImpl implements AuthRemoteDataSource {
     required String name,
     required String password,
   }) async {
-    if (AppConfig.baseUrl.isEmpty) {
-      throw ServerException(
-        message: 'Remote login attempted while in offline mode.',
-      );
-    }
-
     // POSTPONE ENDPOINT
     const endpoint = '${AppConfig.baseUrl}/auth/login';
 
@@ -53,12 +47,6 @@ class AuthRemoteDataSourceImpl implements AuthRemoteDataSource {
     required FamilyModel family,
     required String password,
   }) async {
-    if (AppConfig.baseUrl.isEmpty) {
-      throw ServerException(
-        message: 'Remote register attempted while in offline mode.',
-      );
-    }
-
     // POSTPONE ENDPOINT
     const endpoint = '${AppConfig.baseUrl}/auth/register';
 
