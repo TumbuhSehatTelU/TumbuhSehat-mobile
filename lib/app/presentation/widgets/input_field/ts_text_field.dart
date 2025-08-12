@@ -5,20 +5,30 @@ import 'package:mobile_tumbuh_sehat/app/presentation/widgets/shadow/ts_shadow.da
 
 class TSTextField extends StatefulWidget {
   final TextEditingController controller;
-  final String label;
+  final String? label;
   final String? hintText;
   final TextInputType keyboardType;
   final bool isPassword;
   final String? Function(String?)? validator;
+  final TextInputAction? textInputAction;
+  final void Function(String)? onFieldSubmitted;
+  final List<BoxShadow>? boxShadow;
+  final double? borderRadius;
+  final Color? focusedBorderColor;
 
   const TSTextField({
     super.key,
     required this.controller,
-    required this.label,
+    this.label,
     this.hintText,
     this.keyboardType = TextInputType.text,
     this.isPassword = false,
     this.validator,
+    this.textInputAction,
+    this.onFieldSubmitted,
+    this.boxShadow,
+    this.borderRadius,
+    this.focusedBorderColor,
   });
 
   @override
@@ -30,24 +40,29 @@ class _TSTextFieldState extends State<TSTextField> {
 
   @override
   Widget build(BuildContext context) {
+    final effectiveBorderRadius = BorderRadius.circular(
+      widget.borderRadius ?? 12,
+    );
+    final effectiveBoxShadow = widget.boxShadow ?? TSShadow.shadows.weight100;
+
     return Container(
       decoration: BoxDecoration(
-        boxShadow: TSShadow.shadows.weight300,
-        borderRadius: BorderRadius.circular(12),
+        boxShadow: effectiveBoxShadow,
+        borderRadius: effectiveBorderRadius,
       ),
       child: TextFormField(
         controller: widget.controller,
         keyboardType: widget.keyboardType,
         obscureText: widget.isPassword ? _isObscured : false,
         validator: widget.validator,
+        textInputAction: widget.textInputAction,
+        onFieldSubmitted: widget.onFieldSubmitted,
         style: TSFont.regular.body.withColor(TSColor.monochrome.black),
         decoration: InputDecoration(
           labelText: widget.label,
           hintText: widget.hintText,
           labelStyle: TSFont.regular.body.withColor(TSColor.monochrome.grey),
-          hintStyle: TSFont.regular.body.withColor(
-            TSColor.monochrome.lightGrey,
-          ),
+          hintStyle: TSFont.regular.body.withColor(TSColor.monochrome.grey),
           filled: true,
           fillColor: TSColor.monochrome.pureWhite,
           suffixIcon: widget.isPassword
@@ -64,29 +79,32 @@ class _TSTextFieldState extends State<TSTextField> {
                 )
               : null,
           border: OutlineInputBorder(
-            borderRadius: BorderRadius.circular(12),
+            borderRadius: effectiveBorderRadius,
             borderSide: BorderSide.none,
           ),
           enabledBorder: OutlineInputBorder(
-            borderRadius: BorderRadius.circular(12),
+            borderRadius: effectiveBorderRadius,
             borderSide: BorderSide.none,
           ),
           focusedBorder: OutlineInputBorder(
-            borderRadius: BorderRadius.circular(12),
-            borderSide: BorderSide(color: TSColor.mainTosca.primary, width: 2),
+            borderRadius: effectiveBorderRadius,
+            borderSide: BorderSide(
+              color: widget.focusedBorderColor ?? TSColor.mainTosca.primary,
+              width: 4,
+            ),
           ),
           errorBorder: OutlineInputBorder(
-            borderRadius: BorderRadius.circular(12),
+            borderRadius: effectiveBorderRadius,
             borderSide: BorderSide(
               color: TSColor.additionalColor.red,
-              width: 2,
+              width: 4,
             ),
           ),
           focusedErrorBorder: OutlineInputBorder(
-            borderRadius: BorderRadius.circular(12),
+            borderRadius: effectiveBorderRadius,
             borderSide: BorderSide(
               color: TSColor.additionalColor.red,
-              width: 2,
+              width: 4,
             ),
           ),
         ),

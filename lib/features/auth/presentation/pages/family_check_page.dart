@@ -90,6 +90,7 @@ class FamilyCheckPage extends StatelessWidget {
                       const Spacer(flex: 3),
                     ],
                   ),
+                  // END OF LOGO
                   const Spacer(flex: 1),
                   Text(
                     "Apakah anggota keluarga anda\nada yang menggunakan\nTumbuhSehat?",
@@ -111,7 +112,7 @@ class FamilyCheckPage extends StatelessWidget {
                             TSColor.monochrome.pureWhite,
                           ),
                     onPressed: () {
-                      context.push('/family-join');
+                      context.push('/join-family');
                     },
                     backgroundColor: TSColor.additionalColor.green,
                     borderColor: TSColor.additionalColor.green,
