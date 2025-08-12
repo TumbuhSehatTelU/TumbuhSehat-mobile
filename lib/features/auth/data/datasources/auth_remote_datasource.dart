@@ -22,6 +22,12 @@ abstract class AuthRemoteDataSource {
     required String password,
   });
 
+  // POST /auth/otp/request-join
+  Future<void> requestOtpForJoin(String phone);
+
+  // POST /auth/otp/verify-join
+  Future<void> verifyOtpForJoin({required String phone, required String otp});
+
   // GET /family/{familyId}
   Future<FamilyModel> getFamilyByPhone(String phone);
 

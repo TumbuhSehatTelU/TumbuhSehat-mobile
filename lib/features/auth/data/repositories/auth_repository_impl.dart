@@ -151,6 +151,37 @@ class AuthRepositoryImpl implements AuthRepository {
   }
 
   @override
+  Future<void> requestOtpForJoin(String phone) async {
+    if (await networkInfo.isConnected) {
+      try {
+        await remoteDataSource.requestOtpForJoin(phone);
+      } on ServerException {
+        rethrow;
+      }
+    } else {
+      throw ServerException();
+    }
+  }
+
+  @override
+  Future<void> verifyOtpForJoin({
+    required String phone,
+    required String otp,
+  }) async {
+    if (await networkInfo.isConnected) {
+      try {
+        await remoteDataSource.verifyOtpForJoin(phone: phone, otp: otp);
+      } on OtpException {
+        rethrow;
+      } on ServerException {
+        rethrow;
+      }
+    } else {
+      throw ServerException();
+    }
+  }
+
+  @override
   Future<Parent?> getActiveParent() async {
     final parentModel = await localDataSource.getActiveParent();
     return parentModel?.toEntity();

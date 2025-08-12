@@ -100,6 +100,47 @@ class AuthRemoteDataSourceImpl implements AuthRemoteDataSource {
   }
 
   @override
+  Future<void> requestOtpForJoin(String phone) async {
+    if (AppConfig.baseUrl.isEmpty) throw ServerException();
+
+    // POST PONE ENDPOINT
+    const endpoint = '${AppConfig.baseUrl}/auth/otp/request-join';
+    try {
+      final response = await dio.post(endpoint, data: {'phone': phone});
+      if (response.statusCode != 200) {
+        throw ServerException();
+      }
+    } on DioException {
+      throw ServerException();
+    }
+  }
+
+  @override
+  Future<void> verifyOtpForJoin({
+    required String phone,
+    required String otp,
+  }) async {
+    if (AppConfig.baseUrl.isEmpty) throw ServerException();
+
+    // POST PONE ENDPOINT
+    const endpoint = '${AppConfig.baseUrl}/auth/otp/verify-join';
+    try {
+      final response = await dio.post(
+        endpoint,
+        data: {'phone': phone, 'otp': otp},
+      );
+      if (response.statusCode != 200) {
+        throw ServerException();
+      }
+    } on DioException catch (e) {
+      if (e.response?.statusCode == 400) {
+        throw OtpException();
+      }
+      throw ServerException();
+    }
+  }
+
+  @override
   Future<FamilyModel> getFamilyByPhone(String phone) async {
     if (AppConfig.baseUrl.isEmpty) {
       throw ServerException(

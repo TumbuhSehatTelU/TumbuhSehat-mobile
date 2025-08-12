@@ -23,6 +23,10 @@ abstract class AuthRepository {
     required Parent newParentData,
   });
 
+  Future<void> requestOtpForJoin(String phone);
+
+  Future<void> verifyOtpForJoin({required String phone, required String otp});
+
   Future<Parent?> getActiveParent();
 
   Future<void> saveActiveParent({
