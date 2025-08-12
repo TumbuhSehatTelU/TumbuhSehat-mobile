@@ -14,6 +14,13 @@ import 'package:flutter/widgets.dart';
 import 'package:flutter_svg/flutter_svg.dart' as _svg;
 import 'package:vector_graphics/vector_graphics.dart' as _vg;
 
+class $AssetsFontsGen {
+  const $AssetsFontsGen();
+
+  /// Directory path: assets/fonts/OpenSans
+  $AssetsFontsOpenSansGen get openSans => const $AssetsFontsOpenSansGen();
+}
+
 class $AssetsImageGen {
   const $AssetsImageGen();
 
@@ -49,9 +56,39 @@ class $AssetsLottieGen {
   List<String> get values => [search, error];
 }
 
+class $AssetsFontsOpenSansGen {
+  const $AssetsFontsOpenSansGen();
+
+  /// File path: assets/fonts/OpenSans/OpenSans-Bold.ttf
+  String get openSansBold => 'assets/fonts/OpenSans/OpenSans-Bold.ttf';
+
+  /// File path: assets/fonts/OpenSans/OpenSans-ExtraBold.ttf
+  String get openSansExtraBold =>
+      'assets/fonts/OpenSans/OpenSans-ExtraBold.ttf';
+
+  /// File path: assets/fonts/OpenSans/OpenSans-Medium.ttf
+  String get openSansMedium => 'assets/fonts/OpenSans/OpenSans-Medium.ttf';
+
+  /// File path: assets/fonts/OpenSans/OpenSans-Regular.ttf
+  String get openSansRegular => 'assets/fonts/OpenSans/OpenSans-Regular.ttf';
+
+  /// File path: assets/fonts/OpenSans/OpenSans-SemiBold.ttf
+  String get openSansSemiBold => 'assets/fonts/OpenSans/OpenSans-SemiBold.ttf';
+
+  /// List of all assets
+  List<String> get values => [
+    openSansBold,
+    openSansExtraBold,
+    openSansMedium,
+    openSansRegular,
+    openSansSemiBold,
+  ];
+}
+
 class Assets {
   const Assets._();
 
+  static const $AssetsFontsGen fonts = $AssetsFontsGen();
   static const $AssetsImageGen image = $AssetsImageGen();
   static const $AssetsLottieGen lottie = $AssetsLottieGen();
 }

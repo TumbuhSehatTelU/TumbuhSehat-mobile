@@ -15,6 +15,9 @@ class AuthState with _$AuthState {
     required Parent activeParent,
   }) = _Authenticated;
 
+  const factory AuthState.otpVerificationRequired(String phone) =
+      _OtpVerificationRequired;
+
   const factory AuthState.unauthenticated() = _Unauthenticated;
 
   const factory AuthState.familyFound(Family family) = _FamilyFound;

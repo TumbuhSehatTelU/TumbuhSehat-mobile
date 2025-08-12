@@ -55,13 +55,14 @@ extension AuthStatePatterns on AuthState {
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeMap<TResult extends Object?>({TResult Function( _Initial value)?  initial,TResult Function( _Loading value)?  loading,TResult Function( _Authenticated value)?  authenticated,TResult Function( _Unauthenticated value)?  unauthenticated,TResult Function( _FamilyFound value)?  familyFound,TResult Function( _Failure value)?  failure,required TResult orElse(),}){
+@optionalTypeArgs TResult maybeMap<TResult extends Object?>({TResult Function( _Initial value)?  initial,TResult Function( _Loading value)?  loading,TResult Function( _Authenticated value)?  authenticated,TResult Function( _OtpVerificationRequired value)?  otpVerificationRequired,TResult Function( _Unauthenticated value)?  unauthenticated,TResult Function( _FamilyFound value)?  familyFound,TResult Function( _Failure value)?  failure,required TResult orElse(),}){
 final _that = this;
 switch (_that) {
 case _Initial() when initial != null:
 return initial(_that);case _Loading() when loading != null:
 return loading(_that);case _Authenticated() when authenticated != null:
-return authenticated(_that);case _Unauthenticated() when unauthenticated != null:
+return authenticated(_that);case _OtpVerificationRequired() when otpVerificationRequired != null:
+return otpVerificationRequired(_that);case _Unauthenticated() when unauthenticated != null:
 return unauthenticated(_that);case _FamilyFound() when familyFound != null:
 return familyFound(_that);case _Failure() when failure != null:
 return failure(_that);case _:
@@ -82,13 +83,14 @@ return failure(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult map<TResult extends Object?>({required TResult Function( _Initial value)  initial,required TResult Function( _Loading value)  loading,required TResult Function( _Authenticated value)  authenticated,required TResult Function( _Unauthenticated value)  unauthenticated,required TResult Function( _FamilyFound value)  familyFound,required TResult Function( _Failure value)  failure,}){
+@optionalTypeArgs TResult map<TResult extends Object?>({required TResult Function( _Initial value)  initial,required TResult Function( _Loading value)  loading,required TResult Function( _Authenticated value)  authenticated,required TResult Function( _OtpVerificationRequired value)  otpVerificationRequired,required TResult Function( _Unauthenticated value)  unauthenticated,required TResult Function( _FamilyFound value)  familyFound,required TResult Function( _Failure value)  failure,}){
 final _that = this;
 switch (_that) {
 case _Initial():
 return initial(_that);case _Loading():
 return loading(_that);case _Authenticated():
-return authenticated(_that);case _Unauthenticated():
+return authenticated(_that);case _OtpVerificationRequired():
+return otpVerificationRequired(_that);case _Unauthenticated():
 return unauthenticated(_that);case _FamilyFound():
 return familyFound(_that);case _Failure():
 return failure(_that);case _:
@@ -108,13 +110,14 @@ return failure(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult? mapOrNull<TResult extends Object?>({TResult? Function( _Initial value)?  initial,TResult? Function( _Loading value)?  loading,TResult? Function( _Authenticated value)?  authenticated,TResult? Function( _Unauthenticated value)?  unauthenticated,TResult? Function( _FamilyFound value)?  familyFound,TResult? Function( _Failure value)?  failure,}){
+@optionalTypeArgs TResult? mapOrNull<TResult extends Object?>({TResult? Function( _Initial value)?  initial,TResult? Function( _Loading value)?  loading,TResult? Function( _Authenticated value)?  authenticated,TResult? Function( _OtpVerificationRequired value)?  otpVerificationRequired,TResult? Function( _Unauthenticated value)?  unauthenticated,TResult? Function( _FamilyFound value)?  familyFound,TResult? Function( _Failure value)?  failure,}){
 final _that = this;
 switch (_that) {
 case _Initial() when initial != null:
 return initial(_that);case _Loading() when loading != null:
 return loading(_that);case _Authenticated() when authenticated != null:
-return authenticated(_that);case _Unauthenticated() when unauthenticated != null:
+return authenticated(_that);case _OtpVerificationRequired() when otpVerificationRequired != null:
+return otpVerificationRequired(_that);case _Unauthenticated() when unauthenticated != null:
 return unauthenticated(_that);case _FamilyFound() when familyFound != null:
 return familyFound(_that);case _Failure() when failure != null:
 return failure(_that);case _:
@@ -134,12 +137,13 @@ return failure(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeWhen<TResult extends Object?>({TResult Function()?  initial,TResult Function()?  loading,TResult Function( Family family,  Parent activeParent)?  authenticated,TResult Function()?  unauthenticated,TResult Function( Family family)?  familyFound,TResult Function( String message)?  failure,required TResult orElse(),}) {final _that = this;
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>({TResult Function()?  initial,TResult Function()?  loading,TResult Function( Family family,  Parent activeParent)?  authenticated,TResult Function( String phone)?  otpVerificationRequired,TResult Function()?  unauthenticated,TResult Function( Family family)?  familyFound,TResult Function( String message)?  failure,required TResult orElse(),}) {final _that = this;
 switch (_that) {
 case _Initial() when initial != null:
 return initial();case _Loading() when loading != null:
 return loading();case _Authenticated() when authenticated != null:
-return authenticated(_that.family,_that.activeParent);case _Unauthenticated() when unauthenticated != null:
+return authenticated(_that.family,_that.activeParent);case _OtpVerificationRequired() when otpVerificationRequired != null:
+return otpVerificationRequired(_that.phone);case _Unauthenticated() when unauthenticated != null:
 return unauthenticated();case _FamilyFound() when familyFound != null:
 return familyFound(_that.family);case _Failure() when failure != null:
 return failure(_that.message);case _:
@@ -160,12 +164,13 @@ return failure(_that.message);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult when<TResult extends Object?>({required TResult Function()  initial,required TResult Function()  loading,required TResult Function( Family family,  Parent activeParent)  authenticated,required TResult Function()  unauthenticated,required TResult Function( Family family)  familyFound,required TResult Function( String message)  failure,}) {final _that = this;
+@optionalTypeArgs TResult when<TResult extends Object?>({required TResult Function()  initial,required TResult Function()  loading,required TResult Function( Family family,  Parent activeParent)  authenticated,required TResult Function( String phone)  otpVerificationRequired,required TResult Function()  unauthenticated,required TResult Function( Family family)  familyFound,required TResult Function( String message)  failure,}) {final _that = this;
 switch (_that) {
 case _Initial():
 return initial();case _Loading():
 return loading();case _Authenticated():
-return authenticated(_that.family,_that.activeParent);case _Unauthenticated():
+return authenticated(_that.family,_that.activeParent);case _OtpVerificationRequired():
+return otpVerificationRequired(_that.phone);case _Unauthenticated():
 return unauthenticated();case _FamilyFound():
 return familyFound(_that.family);case _Failure():
 return failure(_that.message);case _:
@@ -185,12 +190,13 @@ return failure(_that.message);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>({TResult? Function()?  initial,TResult? Function()?  loading,TResult? Function( Family family,  Parent activeParent)?  authenticated,TResult? Function()?  unauthenticated,TResult? Function( Family family)?  familyFound,TResult? Function( String message)?  failure,}) {final _that = this;
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>({TResult? Function()?  initial,TResult? Function()?  loading,TResult? Function( Family family,  Parent activeParent)?  authenticated,TResult? Function( String phone)?  otpVerificationRequired,TResult? Function()?  unauthenticated,TResult? Function( Family family)?  familyFound,TResult? Function( String message)?  failure,}) {final _that = this;
 switch (_that) {
 case _Initial() when initial != null:
 return initial();case _Loading() when loading != null:
 return loading();case _Authenticated() when authenticated != null:
-return authenticated(_that.family,_that.activeParent);case _Unauthenticated() when unauthenticated != null:
+return authenticated(_that.family,_that.activeParent);case _OtpVerificationRequired() when otpVerificationRequired != null:
+return otpVerificationRequired(_that.phone);case _Unauthenticated() when unauthenticated != null:
 return unauthenticated();case _FamilyFound() when familyFound != null:
 return familyFound(_that.family);case _Failure() when failure != null:
 return failure(_that.message);case _:
@@ -349,6 +355,72 @@ $ParentCopyWith<$Res> get activeParent {
     return _then(_self.copyWith(activeParent: value));
   });
 }
+}
+
+/// @nodoc
+
+
+class _OtpVerificationRequired implements AuthState {
+  const _OtpVerificationRequired(this.phone);
+  
+
+ final  String phone;
+
+/// Create a copy of AuthState
+/// with the given fields replaced by the non-null parameter values.
+@JsonKey(includeFromJson: false, includeToJson: false)
+@pragma('vm:prefer-inline')
+_$OtpVerificationRequiredCopyWith<_OtpVerificationRequired> get copyWith => __$OtpVerificationRequiredCopyWithImpl<_OtpVerificationRequired>(this, _$identity);
+
+
+
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is _OtpVerificationRequired&&(identical(other.phone, phone) || other.phone == phone));
+}
+
+
+@override
+int get hashCode => Object.hash(runtimeType,phone);
+
+@override
+String toString() {
+  return 'AuthState.otpVerificationRequired(phone: $phone)';
+}
+
+
+}
+
+/// @nodoc
+abstract mixin class _$OtpVerificationRequiredCopyWith<$Res> implements $AuthStateCopyWith<$Res> {
+  factory _$OtpVerificationRequiredCopyWith(_OtpVerificationRequired value, $Res Function(_OtpVerificationRequired) _then) = __$OtpVerificationRequiredCopyWithImpl;
+@useResult
+$Res call({
+ String phone
+});
+
+
+
+
+}
+/// @nodoc
+class __$OtpVerificationRequiredCopyWithImpl<$Res>
+    implements _$OtpVerificationRequiredCopyWith<$Res> {
+  __$OtpVerificationRequiredCopyWithImpl(this._self, this._then);
+
+  final _OtpVerificationRequired _self;
+  final $Res Function(_OtpVerificationRequired) _then;
+
+/// Create a copy of AuthState
+/// with the given fields replaced by the non-null parameter values.
+@pragma('vm:prefer-inline') $Res call({Object? phone = null,}) {
+  return _then(_OtpVerificationRequired(
+null == phone ? _self.phone : phone // ignore: cast_nullable_to_non_nullable
+as String,
+  ));
+}
+
+
 }
 
 /// @nodoc

@@ -55,13 +55,15 @@ extension AuthEventPatterns on AuthEvent {
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeMap<TResult extends Object?>({TResult Function( AuthStatusChecked value)?  authStatusChecked,TResult Function( FamilyExistenceChecked value)?  familyExistenceChecked,TResult Function( NewFamilyRegistered value)?  newFamilyRegistered,TResult Function( LogoutRequested value)?  logoutRequested,required TResult orElse(),}){
+@optionalTypeArgs TResult maybeMap<TResult extends Object?>({TResult Function( AuthStatusChecked value)?  authStatusChecked,TResult Function( FamilyExistenceChecked value)?  familyExistenceChecked,TResult Function( NewFamilyRegistered value)?  newFamilyRegistered,TResult Function( JoinOtpRequested value)?  joinOtpRequested,TResult Function( JoinOtpVerified value)?  joinOtpVerified,TResult Function( LogoutRequested value)?  logoutRequested,required TResult orElse(),}){
 final _that = this;
 switch (_that) {
 case AuthStatusChecked() when authStatusChecked != null:
 return authStatusChecked(_that);case FamilyExistenceChecked() when familyExistenceChecked != null:
 return familyExistenceChecked(_that);case NewFamilyRegistered() when newFamilyRegistered != null:
-return newFamilyRegistered(_that);case LogoutRequested() when logoutRequested != null:
+return newFamilyRegistered(_that);case JoinOtpRequested() when joinOtpRequested != null:
+return joinOtpRequested(_that);case JoinOtpVerified() when joinOtpVerified != null:
+return joinOtpVerified(_that);case LogoutRequested() when logoutRequested != null:
 return logoutRequested(_that);case _:
   return orElse();
 
@@ -80,13 +82,15 @@ return logoutRequested(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult map<TResult extends Object?>({required TResult Function( AuthStatusChecked value)  authStatusChecked,required TResult Function( FamilyExistenceChecked value)  familyExistenceChecked,required TResult Function( NewFamilyRegistered value)  newFamilyRegistered,required TResult Function( LogoutRequested value)  logoutRequested,}){
+@optionalTypeArgs TResult map<TResult extends Object?>({required TResult Function( AuthStatusChecked value)  authStatusChecked,required TResult Function( FamilyExistenceChecked value)  familyExistenceChecked,required TResult Function( NewFamilyRegistered value)  newFamilyRegistered,required TResult Function( JoinOtpRequested value)  joinOtpRequested,required TResult Function( JoinOtpVerified value)  joinOtpVerified,required TResult Function( LogoutRequested value)  logoutRequested,}){
 final _that = this;
 switch (_that) {
 case AuthStatusChecked():
 return authStatusChecked(_that);case FamilyExistenceChecked():
 return familyExistenceChecked(_that);case NewFamilyRegistered():
-return newFamilyRegistered(_that);case LogoutRequested():
+return newFamilyRegistered(_that);case JoinOtpRequested():
+return joinOtpRequested(_that);case JoinOtpVerified():
+return joinOtpVerified(_that);case LogoutRequested():
 return logoutRequested(_that);case _:
   throw StateError('Unexpected subclass');
 
@@ -104,13 +108,15 @@ return logoutRequested(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult? mapOrNull<TResult extends Object?>({TResult? Function( AuthStatusChecked value)?  authStatusChecked,TResult? Function( FamilyExistenceChecked value)?  familyExistenceChecked,TResult? Function( NewFamilyRegistered value)?  newFamilyRegistered,TResult? Function( LogoutRequested value)?  logoutRequested,}){
+@optionalTypeArgs TResult? mapOrNull<TResult extends Object?>({TResult? Function( AuthStatusChecked value)?  authStatusChecked,TResult? Function( FamilyExistenceChecked value)?  familyExistenceChecked,TResult? Function( NewFamilyRegistered value)?  newFamilyRegistered,TResult? Function( JoinOtpRequested value)?  joinOtpRequested,TResult? Function( JoinOtpVerified value)?  joinOtpVerified,TResult? Function( LogoutRequested value)?  logoutRequested,}){
 final _that = this;
 switch (_that) {
 case AuthStatusChecked() when authStatusChecked != null:
 return authStatusChecked(_that);case FamilyExistenceChecked() when familyExistenceChecked != null:
 return familyExistenceChecked(_that);case NewFamilyRegistered() when newFamilyRegistered != null:
-return newFamilyRegistered(_that);case LogoutRequested() when logoutRequested != null:
+return newFamilyRegistered(_that);case JoinOtpRequested() when joinOtpRequested != null:
+return joinOtpRequested(_that);case JoinOtpVerified() when joinOtpVerified != null:
+return joinOtpVerified(_that);case LogoutRequested() when logoutRequested != null:
 return logoutRequested(_that);case _:
   return null;
 
@@ -128,12 +134,14 @@ return logoutRequested(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeWhen<TResult extends Object?>({TResult Function()?  authStatusChecked,TResult Function( String phone)?  familyExistenceChecked,TResult Function( String phone,  String password,  Parent newParentData,  List<Child> childrenData)?  newFamilyRegistered,TResult Function()?  logoutRequested,required TResult orElse(),}) {final _that = this;
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>({TResult Function()?  authStatusChecked,TResult Function( String phone)?  familyExistenceChecked,TResult Function( String phone,  String password,  Parent newParentData,  List<Child> childrenData)?  newFamilyRegistered,TResult Function( String phone)?  joinOtpRequested,TResult Function( String phone,  String otp)?  joinOtpVerified,TResult Function()?  logoutRequested,required TResult orElse(),}) {final _that = this;
 switch (_that) {
 case AuthStatusChecked() when authStatusChecked != null:
 return authStatusChecked();case FamilyExistenceChecked() when familyExistenceChecked != null:
 return familyExistenceChecked(_that.phone);case NewFamilyRegistered() when newFamilyRegistered != null:
-return newFamilyRegistered(_that.phone,_that.password,_that.newParentData,_that.childrenData);case LogoutRequested() when logoutRequested != null:
+return newFamilyRegistered(_that.phone,_that.password,_that.newParentData,_that.childrenData);case JoinOtpRequested() when joinOtpRequested != null:
+return joinOtpRequested(_that.phone);case JoinOtpVerified() when joinOtpVerified != null:
+return joinOtpVerified(_that.phone,_that.otp);case LogoutRequested() when logoutRequested != null:
 return logoutRequested();case _:
   return orElse();
 
@@ -152,12 +160,14 @@ return logoutRequested();case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult when<TResult extends Object?>({required TResult Function()  authStatusChecked,required TResult Function( String phone)  familyExistenceChecked,required TResult Function( String phone,  String password,  Parent newParentData,  List<Child> childrenData)  newFamilyRegistered,required TResult Function()  logoutRequested,}) {final _that = this;
+@optionalTypeArgs TResult when<TResult extends Object?>({required TResult Function()  authStatusChecked,required TResult Function( String phone)  familyExistenceChecked,required TResult Function( String phone,  String password,  Parent newParentData,  List<Child> childrenData)  newFamilyRegistered,required TResult Function( String phone)  joinOtpRequested,required TResult Function( String phone,  String otp)  joinOtpVerified,required TResult Function()  logoutRequested,}) {final _that = this;
 switch (_that) {
 case AuthStatusChecked():
 return authStatusChecked();case FamilyExistenceChecked():
 return familyExistenceChecked(_that.phone);case NewFamilyRegistered():
-return newFamilyRegistered(_that.phone,_that.password,_that.newParentData,_that.childrenData);case LogoutRequested():
+return newFamilyRegistered(_that.phone,_that.password,_that.newParentData,_that.childrenData);case JoinOtpRequested():
+return joinOtpRequested(_that.phone);case JoinOtpVerified():
+return joinOtpVerified(_that.phone,_that.otp);case LogoutRequested():
 return logoutRequested();case _:
   throw StateError('Unexpected subclass');
 
@@ -175,12 +185,14 @@ return logoutRequested();case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>({TResult? Function()?  authStatusChecked,TResult? Function( String phone)?  familyExistenceChecked,TResult? Function( String phone,  String password,  Parent newParentData,  List<Child> childrenData)?  newFamilyRegistered,TResult? Function()?  logoutRequested,}) {final _that = this;
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>({TResult? Function()?  authStatusChecked,TResult? Function( String phone)?  familyExistenceChecked,TResult? Function( String phone,  String password,  Parent newParentData,  List<Child> childrenData)?  newFamilyRegistered,TResult? Function( String phone)?  joinOtpRequested,TResult? Function( String phone,  String otp)?  joinOtpVerified,TResult? Function()?  logoutRequested,}) {final _that = this;
 switch (_that) {
 case AuthStatusChecked() when authStatusChecked != null:
 return authStatusChecked();case FamilyExistenceChecked() when familyExistenceChecked != null:
 return familyExistenceChecked(_that.phone);case NewFamilyRegistered() when newFamilyRegistered != null:
-return newFamilyRegistered(_that.phone,_that.password,_that.newParentData,_that.childrenData);case LogoutRequested() when logoutRequested != null:
+return newFamilyRegistered(_that.phone,_that.password,_that.newParentData,_that.childrenData);case JoinOtpRequested() when joinOtpRequested != null:
+return joinOtpRequested(_that.phone);case JoinOtpVerified() when joinOtpVerified != null:
+return joinOtpVerified(_that.phone,_that.otp);case LogoutRequested() when logoutRequested != null:
 return logoutRequested();case _:
   return null;
 
@@ -372,6 +384,140 @@ $ParentCopyWith<$Res> get newParentData {
     return _then(_self.copyWith(newParentData: value));
   });
 }
+}
+
+/// @nodoc
+
+
+class JoinOtpRequested implements AuthEvent {
+  const JoinOtpRequested(this.phone);
+  
+
+ final  String phone;
+
+/// Create a copy of AuthEvent
+/// with the given fields replaced by the non-null parameter values.
+@JsonKey(includeFromJson: false, includeToJson: false)
+@pragma('vm:prefer-inline')
+$JoinOtpRequestedCopyWith<JoinOtpRequested> get copyWith => _$JoinOtpRequestedCopyWithImpl<JoinOtpRequested>(this, _$identity);
+
+
+
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is JoinOtpRequested&&(identical(other.phone, phone) || other.phone == phone));
+}
+
+
+@override
+int get hashCode => Object.hash(runtimeType,phone);
+
+@override
+String toString() {
+  return 'AuthEvent.joinOtpRequested(phone: $phone)';
+}
+
+
+}
+
+/// @nodoc
+abstract mixin class $JoinOtpRequestedCopyWith<$Res> implements $AuthEventCopyWith<$Res> {
+  factory $JoinOtpRequestedCopyWith(JoinOtpRequested value, $Res Function(JoinOtpRequested) _then) = _$JoinOtpRequestedCopyWithImpl;
+@useResult
+$Res call({
+ String phone
+});
+
+
+
+
+}
+/// @nodoc
+class _$JoinOtpRequestedCopyWithImpl<$Res>
+    implements $JoinOtpRequestedCopyWith<$Res> {
+  _$JoinOtpRequestedCopyWithImpl(this._self, this._then);
+
+  final JoinOtpRequested _self;
+  final $Res Function(JoinOtpRequested) _then;
+
+/// Create a copy of AuthEvent
+/// with the given fields replaced by the non-null parameter values.
+@pragma('vm:prefer-inline') $Res call({Object? phone = null,}) {
+  return _then(JoinOtpRequested(
+null == phone ? _self.phone : phone // ignore: cast_nullable_to_non_nullable
+as String,
+  ));
+}
+
+
+}
+
+/// @nodoc
+
+
+class JoinOtpVerified implements AuthEvent {
+  const JoinOtpVerified({required this.phone, required this.otp});
+  
+
+ final  String phone;
+ final  String otp;
+
+/// Create a copy of AuthEvent
+/// with the given fields replaced by the non-null parameter values.
+@JsonKey(includeFromJson: false, includeToJson: false)
+@pragma('vm:prefer-inline')
+$JoinOtpVerifiedCopyWith<JoinOtpVerified> get copyWith => _$JoinOtpVerifiedCopyWithImpl<JoinOtpVerified>(this, _$identity);
+
+
+
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is JoinOtpVerified&&(identical(other.phone, phone) || other.phone == phone)&&(identical(other.otp, otp) || other.otp == otp));
+}
+
+
+@override
+int get hashCode => Object.hash(runtimeType,phone,otp);
+
+@override
+String toString() {
+  return 'AuthEvent.joinOtpVerified(phone: $phone, otp: $otp)';
+}
+
+
+}
+
+/// @nodoc
+abstract mixin class $JoinOtpVerifiedCopyWith<$Res> implements $AuthEventCopyWith<$Res> {
+  factory $JoinOtpVerifiedCopyWith(JoinOtpVerified value, $Res Function(JoinOtpVerified) _then) = _$JoinOtpVerifiedCopyWithImpl;
+@useResult
+$Res call({
+ String phone, String otp
+});
+
+
+
+
+}
+/// @nodoc
+class _$JoinOtpVerifiedCopyWithImpl<$Res>
+    implements $JoinOtpVerifiedCopyWith<$Res> {
+  _$JoinOtpVerifiedCopyWithImpl(this._self, this._then);
+
+  final JoinOtpVerified _self;
+  final $Res Function(JoinOtpVerified) _then;
+
+/// Create a copy of AuthEvent
+/// with the given fields replaced by the non-null parameter values.
+@pragma('vm:prefer-inline') $Res call({Object? phone = null,Object? otp = null,}) {
+  return _then(JoinOtpVerified(
+phone: null == phone ? _self.phone : phone // ignore: cast_nullable_to_non_nullable
+as String,otp: null == otp ? _self.otp : otp // ignore: cast_nullable_to_non_nullable
+as String,
+  ));
+}
+
+
 }
 
 /// @nodoc

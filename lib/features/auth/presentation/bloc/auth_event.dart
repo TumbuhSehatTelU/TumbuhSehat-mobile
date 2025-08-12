@@ -18,5 +18,12 @@ class AuthEvent with _$AuthEvent {
     required List<Child> childrenData,
   }) = NewFamilyRegistered;
 
+  const factory AuthEvent.joinOtpRequested(String phone) = JoinOtpRequested;
+
+  const factory AuthEvent.joinOtpVerified({
+    required String phone,
+    required String otp,
+  }) = JoinOtpVerified;
+
   const factory AuthEvent.logoutRequested() = LogoutRequested;
 }
