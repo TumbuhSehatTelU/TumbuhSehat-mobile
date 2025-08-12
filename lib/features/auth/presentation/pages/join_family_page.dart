@@ -1,13 +1,15 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/rendering.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 import 'package:mobile_tumbuh_sehat/app/core/di/service_locator.dart';
 import 'package:mobile_tumbuh_sehat/app/core/gen/assets.gen.dart';
 import 'package:mobile_tumbuh_sehat/app/core/theme/ts_color.dart';
 import 'package:mobile_tumbuh_sehat/app/core/theme/ts_text_style.dart';
+import 'package:mobile_tumbuh_sehat/app/core/utils/modal_utils.dart';
 import 'package:mobile_tumbuh_sehat/app/presentation/widgets/button/ts_button.dart';
 import 'package:mobile_tumbuh_sehat/app/presentation/widgets/input_field/ts_text_field.dart';
+import 'package:mobile_tumbuh_sehat/app/presentation/widgets/modal_content/generic_error_modal_content.dart';
+import 'package:mobile_tumbuh_sehat/app/presentation/widgets/modal_content/generic_loading_modal_content.dart';
 import 'package:mobile_tumbuh_sehat/app/presentation/widgets/shadow/ts_shadow.dart';
 import 'package:mobile_tumbuh_sehat/features/auth/presentation/bloc/auth_bloc.dart';
 import 'package:mobile_tumbuh_sehat/features/auth/presentation/bloc/auth_event.dart';
@@ -31,6 +33,14 @@ class _JoinFamilyPageState extends State<JoinFamilyPage> {
     super.dispose();
   }
 
+  void submitPhoneNumber() {
+    if (_formKey.currentState?.validate() ?? false) {
+      context.read<AuthBloc>().add(
+        FamilyExistenceChecked(_phoneController.text),
+      );
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
@@ -38,11 +48,66 @@ class _JoinFamilyPageState extends State<JoinFamilyPage> {
       child: Scaffold(
         body: BlocListener<AuthBloc, AuthState>(
           listener: (context, state) {
-            state.whenOrNull(
-              familyFound: (family) {
-                context.push('/otp', extra: _phoneController.text);
+            state.when(
+              initial: () {},
+              loading: () {
+                showTSModal(
+                  context: context,
+                  isDismissible: false,
+                  content: GenericLoadingModalContent(
+                    lottieAnimation: Assets.lottie.search,
+                    message: "Sedang mencari data keluarga",
+                  ),
+                );
               },
-              failure: (message) {},
+              familyFound: (family) {
+                Navigator.of(context).pop();
+                context.push('/', extra: _phoneController.text);
+              },
+              failure: (message) {
+                Navigator.of(context).pop();
+                showTSModal(
+                  context: context,
+                  isDismissible: false,
+                  content: GenericErrorModalContent(
+                    message: message,
+                    actions: [
+                      SizedBox(
+                        width: double.infinity,
+                        child: TSButton(
+                          onPressed: () => Navigator.of(context).pop(),
+                          text: 'Cari No Handphone Keluarga Lagi',
+                          backgroundColor: TSColor.secondaryGreen.primary,
+                          borderColor: TSColor.secondaryGreen.primary,
+                          contentColor: TSColor.monochrome.black,
+                          textStyle: TSFont.semiBold.large.withColor(
+                            TSColor.monochrome.black,
+                          ),
+                        ),
+                      ),
+                      const SizedBox(height: 12),
+                      SizedBox(
+                        width: double.infinity,
+                        child: TSButton(
+                          onPressed: () {
+                            Navigator.of(context).pop();
+                            context.push('/');
+                          },
+                          text: 'Buat Akun Keluarga Baru',
+                          backgroundColor: TSColor.monochrome.white,
+                          borderColor: TSColor.secondaryGreen.primary,
+                          contentColor: TSColor.monochrome.black,
+                          textStyle: TSFont.semiBold.large.withColor(
+                            TSColor.monochrome.black,
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
+                );
+              },
+              authenticated: (_, __) {},
+              unauthenticated: () {},
             );
           },
           child: SafeArea(
@@ -50,13 +115,6 @@ class _JoinFamilyPageState extends State<JoinFamilyPage> {
               builder: (context, constraints) {
                 final isTablet = constraints.maxWidth > 600;
                 final double horizontalPadding = isTablet ? 60 : 24;
-                void submitPhoneNumber() {
-                  if (_formKey.currentState?.validate() ?? false) {
-                    context.read<AuthBloc>().add(
-                      FamilyExistenceChecked(_phoneController.text),
-                    );
-                  }
-                }
 
                 return SingleChildScrollView(
                   child: Padding(
@@ -222,32 +280,20 @@ class _JoinFamilyPageState extends State<JoinFamilyPage> {
                             SizedBox(
                               height: MediaQuery.of(context).size.height * 0.05,
                             ),
-                            BlocBuilder<AuthBloc, AuthState>(
-                              builder: (context, state) {
-                                final isLoading = state.maybeWhen(
-                                  loading: () => true,
-                                  orElse: () => false,
-                                );
-                                return TSButton(
-                                  text: 'Lanjutkan',
-                                  textStyle: isTablet
-                                      ? TSFont.bold.largeForTablet.withColor(
-                                          TSColor.monochrome.black,
-                                        )
-                                      : TSFont.bold.large.withColor(
-                                          TSColor.monochrome.black,
-                                        ),
-                                  onPressed: isLoading
-                                      ? null
-                                      : submitPhoneNumber,
-                                  backgroundColor:
-                                      TSColor.secondaryGreen.primary,
-                                  borderColor: TSColor.secondaryGreen.primary,
-                                  contentColor: TSColor.monochrome.black,
-                                  customBorderRadius: 248,
-                                  boxShadow: TSShadow.elevations.weight200,
-                                );
-                              },
+                            TSButton(
+                              onPressed: submitPhoneNumber,
+                              text: 'Lanjutkan',
+                              backgroundColor: TSColor.secondaryGreen.primary,
+                              borderColor: TSColor.secondaryGreen.primary,
+                              contentColor: TSColor.monochrome.black,
+                              textStyle: isTablet
+                                  ? TSFont.bold.largeForTablet.withColor(
+                                      TSColor.monochrome.black,
+                                    )
+                                  : TSFont.bold.large.withColor(
+                                      TSColor.monochrome.black,
+                                    ),
+                              customBorderRadius: 248,
                             ),
                           ],
                         ),
