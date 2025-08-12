@@ -36,10 +36,24 @@ class $AssetsImageGen {
   ];
 }
 
+class $AssetsLottieGen {
+  const $AssetsLottieGen();
+
+  /// File path: assets/lottie/Search.json
+  String get search => 'assets/lottie/Search.json';
+
+  /// File path: assets/lottie/error.json
+  String get error => 'assets/lottie/error.json';
+
+  /// List of all assets
+  List<String> get values => [search, error];
+}
+
 class Assets {
   const Assets._();
 
   static const $AssetsImageGen image = $AssetsImageGen();
+  static const $AssetsLottieGen lottie = $AssetsLottieGen();
 }
 
 class SvgGenImage {
