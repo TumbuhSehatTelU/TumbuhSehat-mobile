@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
 
 // Extension untuk TextStyle
 extension TextStyleExtension on TextStyle {
@@ -26,7 +25,8 @@ class TSFont {
 
 class Regular {
   Regular();
-  final TextStyle h0 = GoogleFonts.openSans(
+  final TextStyle h0 = const TextStyle(
+    fontFamily: 'OpenSans',
     fontSize: 36,
     fontWeight: FontWeight.normal,
     letterSpacing: -1.5,
@@ -34,7 +34,8 @@ class Regular {
   TextStyle get h0ForTablet =>
       h0.copyWith(fontSize: h0.fontSize! * _tabletFontScale);
 
-  final TextStyle h1 = GoogleFonts.openSans(
+  final TextStyle h1 = const TextStyle(
+    fontFamily: 'OpenSans',
     fontSize: 28,
     fontWeight: FontWeight.normal,
     letterSpacing: -1.5,
@@ -42,7 +43,8 @@ class Regular {
   TextStyle get h1ForTablet =>
       h1.copyWith(fontSize: h1.fontSize! * _tabletFontScale);
 
-  final TextStyle h2 = GoogleFonts.openSans(
+  final TextStyle h2 = const TextStyle(
+    fontFamily: 'OpenSans',
     fontSize: 22,
     fontWeight: FontWeight.normal,
     letterSpacing: -1,
@@ -50,7 +52,8 @@ class Regular {
   TextStyle get h2ForTablet =>
       h2.copyWith(fontSize: h2.fontSize! * _tabletFontScale);
 
-  final TextStyle h3 = GoogleFonts.openSans(
+  final TextStyle h3 = const TextStyle(
+    fontFamily: 'OpenSans',
     fontSize: 18,
     fontWeight: FontWeight.normal,
     letterSpacing: -0.5,
@@ -58,7 +61,8 @@ class Regular {
   TextStyle get h3ForTablet =>
       h3.copyWith(fontSize: h3.fontSize! * _tabletFontScale);
 
-  final TextStyle large = GoogleFonts.openSans(
+  final TextStyle large = const TextStyle(
+    fontFamily: 'OpenSans',
     fontSize: 16,
     fontWeight: FontWeight.normal,
     letterSpacing: 0,
@@ -66,7 +70,8 @@ class Regular {
   TextStyle get largeForTablet =>
       large.copyWith(fontSize: large.fontSize! * _tabletFontScale);
 
-  final TextStyle body = GoogleFonts.openSans(
+  final TextStyle body = const TextStyle(
+    fontFamily: 'OpenSans',
     fontSize: 14,
     fontWeight: FontWeight.normal,
     letterSpacing: 0.5,
@@ -74,7 +79,8 @@ class Regular {
   TextStyle get bodyForTablet =>
       body.copyWith(fontSize: body.fontSize! * _tabletFontScale);
 
-  final TextStyle small = GoogleFonts.openSans(
+  final TextStyle small = const TextStyle(
+    fontFamily: 'OpenSans',
     fontSize: 12,
     fontWeight: FontWeight.normal,
     letterSpacing: 1,
@@ -85,7 +91,8 @@ class Regular {
 
 class Medium {
   Medium();
-  final TextStyle h0 = GoogleFonts.openSans(
+  final TextStyle h0 = const TextStyle(
+    fontFamily: 'OpenSans',
     fontSize: 36,
     fontWeight: FontWeight.w500,
     letterSpacing: -1.5,
@@ -93,7 +100,8 @@ class Medium {
   TextStyle get h0ForTablet =>
       h0.copyWith(fontSize: h0.fontSize! * _tabletFontScale);
 
-  final TextStyle h1 = GoogleFonts.openSans(
+  final TextStyle h1 = const TextStyle(
+    fontFamily: 'OpenSans',
     fontSize: 28,
     fontWeight: FontWeight.w500,
     letterSpacing: -1.5,
@@ -101,7 +109,8 @@ class Medium {
   TextStyle get h1ForTablet =>
       h1.copyWith(fontSize: h1.fontSize! * _tabletFontScale);
 
-  final TextStyle h2 = GoogleFonts.openSans(
+  final TextStyle h2 = const TextStyle(
+    fontFamily: 'OpenSans',
     fontSize: 22,
     fontWeight: FontWeight.w500,
     letterSpacing: -1,
@@ -109,7 +118,8 @@ class Medium {
   TextStyle get h2ForTablet =>
       h2.copyWith(fontSize: h2.fontSize! * _tabletFontScale);
 
-  final TextStyle h3 = GoogleFonts.openSans(
+  final TextStyle h3 = const TextStyle(
+    fontFamily: 'OpenSans',
     fontSize: 18,
     fontWeight: FontWeight.w500,
     letterSpacing: -0.5,
@@ -117,7 +127,8 @@ class Medium {
   TextStyle get h3ForTablet =>
       h3.copyWith(fontSize: h3.fontSize! * _tabletFontScale);
 
-  final TextStyle large = GoogleFonts.openSans(
+  final TextStyle large = const TextStyle(
+    fontFamily: 'OpenSans',
     fontSize: 16,
     fontWeight: FontWeight.w500,
     letterSpacing: 0,
@@ -125,7 +136,8 @@ class Medium {
   TextStyle get largeForTablet =>
       large.copyWith(fontSize: large.fontSize! * _tabletFontScale);
 
-  final TextStyle body = GoogleFonts.openSans(
+  final TextStyle body = const TextStyle(
+    fontFamily: 'OpenSans',
     fontSize: 14,
     fontWeight: FontWeight.w500,
     letterSpacing: 0.5,
@@ -133,7 +145,8 @@ class Medium {
   TextStyle get bodyForTablet =>
       body.copyWith(fontSize: body.fontSize! * _tabletFontScale);
 
-  final TextStyle small = GoogleFonts.openSans(
+  final TextStyle small = const TextStyle(
+    fontFamily: 'OpenSans',
     fontSize: 12,
     fontWeight: FontWeight.w500,
     letterSpacing: 1,
@@ -144,7 +157,8 @@ class Medium {
 
 class SemiBold {
   SemiBold();
-  final TextStyle h0 = GoogleFonts.openSans(
+  final TextStyle h0 = const TextStyle(
+    fontFamily: 'OpenSans',
     fontSize: 36,
     fontWeight: FontWeight.w600,
     letterSpacing: -1.5,
@@ -152,7 +166,8 @@ class SemiBold {
   TextStyle get h0ForTablet =>
       h0.copyWith(fontSize: h0.fontSize! * _tabletFontScale);
 
-  final TextStyle h1 = GoogleFonts.openSans(
+  final TextStyle h1 = const TextStyle(
+    fontFamily: 'OpenSans',
     fontSize: 28,
     fontWeight: FontWeight.w600,
     letterSpacing: -1.5,
@@ -160,7 +175,8 @@ class SemiBold {
   TextStyle get h1ForTablet =>
       h1.copyWith(fontSize: h1.fontSize! * _tabletFontScale);
 
-  final TextStyle h2 = GoogleFonts.openSans(
+  final TextStyle h2 = const TextStyle(
+    fontFamily: 'OpenSans',
     fontSize: 22,
     fontWeight: FontWeight.w600,
     letterSpacing: -1,
@@ -168,7 +184,8 @@ class SemiBold {
   TextStyle get h2ForTablet =>
       h2.copyWith(fontSize: h2.fontSize! * _tabletFontScale);
 
-  final TextStyle h3 = GoogleFonts.openSans(
+  final TextStyle h3 = const TextStyle(
+    fontFamily: 'OpenSans',
     fontSize: 18,
     fontWeight: FontWeight.w600,
     letterSpacing: -0.5,
@@ -176,7 +193,8 @@ class SemiBold {
   TextStyle get h3ForTablet =>
       h3.copyWith(fontSize: h3.fontSize! * _tabletFontScale);
 
-  final TextStyle large = GoogleFonts.openSans(
+  final TextStyle large = const TextStyle(
+    fontFamily: 'OpenSans',
     fontSize: 16,
     fontWeight: FontWeight.w600,
     letterSpacing: 0,
@@ -184,7 +202,8 @@ class SemiBold {
   TextStyle get largeForTablet =>
       large.copyWith(fontSize: large.fontSize! * _tabletFontScale);
 
-  final TextStyle body = GoogleFonts.openSans(
+  final TextStyle body = const TextStyle(
+    fontFamily: 'OpenSans',
     fontSize: 14,
     fontWeight: FontWeight.w600,
     letterSpacing: 0.5,
@@ -192,7 +211,8 @@ class SemiBold {
   TextStyle get bodyForTablet =>
       body.copyWith(fontSize: body.fontSize! * _tabletFontScale);
 
-  final TextStyle small = GoogleFonts.openSans(
+  final TextStyle small = const TextStyle(
+    fontFamily: 'OpenSans',
     fontSize: 12,
     fontWeight: FontWeight.w600,
     letterSpacing: 1,
@@ -203,7 +223,8 @@ class SemiBold {
 
 class Bold {
   Bold();
-  final TextStyle h0 = GoogleFonts.openSans(
+  final TextStyle h0 = const TextStyle(
+    fontFamily: 'OpenSans',
     fontSize: 36,
     fontWeight: FontWeight.bold,
     letterSpacing: -1.5,
@@ -211,7 +232,8 @@ class Bold {
   TextStyle get h0ForTablet =>
       h0.copyWith(fontSize: h0.fontSize! * _tabletFontScale);
 
-  final TextStyle h1 = GoogleFonts.openSans(
+  final TextStyle h1 = const TextStyle(
+    fontFamily: 'OpenSans',
     fontSize: 28,
     fontWeight: FontWeight.bold,
     letterSpacing: -1.5,
@@ -219,7 +241,8 @@ class Bold {
   TextStyle get h1ForTablet =>
       h1.copyWith(fontSize: h1.fontSize! * _tabletFontScale);
 
-  final TextStyle h2 = GoogleFonts.openSans(
+  final TextStyle h2 = const TextStyle(
+    fontFamily: 'OpenSans',
     fontSize: 22,
     fontWeight: FontWeight.bold,
     letterSpacing: -1,
@@ -227,7 +250,8 @@ class Bold {
   TextStyle get h2ForTablet =>
       h2.copyWith(fontSize: h2.fontSize! * _tabletFontScale);
 
-  final TextStyle h3 = GoogleFonts.openSans(
+  final TextStyle h3 = const TextStyle(
+    fontFamily: 'OpenSans',
     fontSize: 18,
     fontWeight: FontWeight.bold,
     letterSpacing: -0.5,
@@ -235,7 +259,8 @@ class Bold {
   TextStyle get h3ForTablet =>
       h3.copyWith(fontSize: h3.fontSize! * _tabletFontScale);
 
-  final TextStyle large = GoogleFonts.openSans(
+  final TextStyle large = const TextStyle(
+    fontFamily: 'OpenSans',
     fontSize: 16,
     fontWeight: FontWeight.bold,
     letterSpacing: 0,
@@ -243,7 +268,8 @@ class Bold {
   TextStyle get largeForTablet =>
       large.copyWith(fontSize: large.fontSize! * _tabletFontScale);
 
-  final TextStyle body = GoogleFonts.openSans(
+  final TextStyle body = const TextStyle(
+    fontFamily: 'OpenSans',
     fontSize: 14,
     fontWeight: FontWeight.bold,
     letterSpacing: 0.5,
@@ -251,7 +277,8 @@ class Bold {
   TextStyle get bodyForTablet =>
       body.copyWith(fontSize: body.fontSize! * _tabletFontScale);
 
-  final TextStyle small = GoogleFonts.openSans(
+  final TextStyle small = const TextStyle(
+    fontFamily: 'OpenSans',
     fontSize: 12,
     fontWeight: FontWeight.bold,
     letterSpacing: 1,
@@ -262,7 +289,8 @@ class Bold {
 
 class ExtraBold {
   ExtraBold();
-  final TextStyle h0 = GoogleFonts.openSans(
+  final TextStyle h0 = const TextStyle(
+    fontFamily: 'OpenSans',
     fontSize: 36,
     fontWeight: FontWeight.w800,
     letterSpacing: 1.5,
@@ -270,7 +298,8 @@ class ExtraBold {
   TextStyle get h0ForTablet =>
       h0.copyWith(fontSize: h0.fontSize! * _tabletFontScale);
 
-  final TextStyle h1 = GoogleFonts.openSans(
+  final TextStyle h1 = const TextStyle(
+    fontFamily: 'OpenSans',
     fontSize: 28,
     fontWeight: FontWeight.w800,
     letterSpacing: -1.5,
@@ -278,7 +307,8 @@ class ExtraBold {
   TextStyle get h1ForTablet =>
       h1.copyWith(fontSize: h1.fontSize! * _tabletFontScale);
 
-  final TextStyle h2 = GoogleFonts.openSans(
+  final TextStyle h2 = const TextStyle(
+    fontFamily: 'OpenSans',
     fontSize: 22,
     fontWeight: FontWeight.w800,
     letterSpacing: -1,
@@ -286,7 +316,8 @@ class ExtraBold {
   TextStyle get h2ForTablet =>
       h2.copyWith(fontSize: h2.fontSize! * _tabletFontScale);
 
-  final TextStyle h3 = GoogleFonts.openSans(
+  final TextStyle h3 = const TextStyle(
+    fontFamily: 'OpenSans',
     fontSize: 18,
     fontWeight: FontWeight.w800,
     letterSpacing: -0.5,
@@ -294,7 +325,8 @@ class ExtraBold {
   TextStyle get h3ForTablet =>
       h3.copyWith(fontSize: h3.fontSize! * _tabletFontScale);
 
-  final TextStyle large = GoogleFonts.openSans(
+  final TextStyle large = const TextStyle(
+    fontFamily: 'OpenSans',
     fontSize: 16,
     fontWeight: FontWeight.w800,
     letterSpacing: 0,
@@ -302,7 +334,8 @@ class ExtraBold {
   TextStyle get largeForTablet =>
       large.copyWith(fontSize: large.fontSize! * _tabletFontScale);
 
-  final TextStyle body = GoogleFonts.openSans(
+  final TextStyle body = const TextStyle(
+    fontFamily: 'OpenSans',
     fontSize: 14,
     fontWeight: FontWeight.w800,
     letterSpacing: 0.5,
@@ -310,7 +343,8 @@ class ExtraBold {
   TextStyle get bodyForTablet =>
       body.copyWith(fontSize: body.fontSize! * _tabletFontScale);
 
-  final TextStyle small = GoogleFonts.openSans(
+  final TextStyle small = const TextStyle(
+    fontFamily: 'OpenSans',
     fontSize: 12,
     fontWeight: FontWeight.w800,
     letterSpacing: 1,

@@ -33,7 +33,7 @@ class _JoinFamilyPageState extends State<JoinFamilyPage> {
     super.dispose();
   }
 
-  void submitPhoneNumber() {
+  void _submitPhoneNumber(BuildContext context) {
     if (_formKey.currentState?.validate() ?? false) {
       context.read<AuthBloc>().add(
         FamilyExistenceChecked(_phoneController.text),
@@ -83,6 +83,7 @@ class _JoinFamilyPageState extends State<JoinFamilyPage> {
                           textStyle: TSFont.semiBold.large.withColor(
                             TSColor.monochrome.black,
                           ),
+                          customBorderRadius: 248,
                         ),
                       ),
                       const SizedBox(height: 12),
@@ -100,6 +101,8 @@ class _JoinFamilyPageState extends State<JoinFamilyPage> {
                           textStyle: TSFont.semiBold.large.withColor(
                             TSColor.monochrome.black,
                           ),
+                          customBorderRadius: 248,
+                          borderWidth: 4,
                         ),
                       ),
                     ],
@@ -263,7 +266,8 @@ class _JoinFamilyPageState extends State<JoinFamilyPage> {
                               hintText: 'Contoh: 0812 3333 4444 5555',
                               keyboardType: TextInputType.phone,
                               textInputAction: TextInputAction.done,
-                              onFieldSubmitted: (_) => submitPhoneNumber(),
+                              onFieldSubmitted: (_) =>
+                                  _submitPhoneNumber(context),
                               validator: (value) {
                                 if (value == null || value.isEmpty) {
                                   return 'No Handphone tidak boleh kosong';
@@ -281,7 +285,7 @@ class _JoinFamilyPageState extends State<JoinFamilyPage> {
                               height: MediaQuery.of(context).size.height * 0.05,
                             ),
                             TSButton(
-                              onPressed: submitPhoneNumber,
+                              onPressed: () => _submitPhoneNumber(context),
                               text: 'Lanjutkan',
                               backgroundColor: TSColor.secondaryGreen.primary,
                               borderColor: TSColor.secondaryGreen.primary,
