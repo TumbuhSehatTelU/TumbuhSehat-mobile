@@ -111,6 +111,10 @@ class _JoinFamilyPageState extends State<JoinFamilyPage> {
               },
               authenticated: (_, __) {},
               unauthenticated: () {},
+              otpVerificationRequired: (String phone) {
+                Navigator.of(context).pop();
+                context.go('/verify-otp', extra: phone);
+              },
             );
           },
           child: SafeArea(

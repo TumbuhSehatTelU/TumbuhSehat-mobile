@@ -6,14 +6,16 @@ import 'package:mobile_tumbuh_sehat/app/core/theme/ts_text_style.dart';
 class TSOtpField extends StatefulWidget {
   final int length;
   final void Function(String otp) onCompleted;
+  final void Function(String value) onChanged;
   final bool autofocus;
 
   const TSOtpField({
-    super.key,
+    Key? key,
     this.length = 6,
     required this.onCompleted,
-    this.autofocus = true, required Null Function(dynamic value) onChanged,
-  });
+    required this.onChanged,
+    this.autofocus = true,
+  }) : super(key: key);
 
   @override
   State<TSOtpField> createState() => _TSOtpFieldState();
@@ -28,6 +30,14 @@ class _TSOtpFieldState extends State<TSOtpField> {
     super.initState();
     _controllers = List.generate(widget.length, (_) => TextEditingController());
     _nodes = List.generate(widget.length, (_) => FocusNode());
+
+    for (int i = 0; i < widget.length; i++) {
+      _controllers[i].addListener(() {
+        if (_controllers[i].text.isEmpty && i > 0) {
+          _nodes[i - 1].requestFocus();
+        }
+      });
+    }
 
     if (widget.autofocus) {
       WidgetsBinding.instance.addPostFrameCallback((_) {
@@ -47,11 +57,10 @@ class _TSOtpFieldState extends State<TSOtpField> {
     super.dispose();
   }
 
-  void _onTextChanged(String value, int index) {
+  void _onInputChanged(String value, int index) {
+    widget.onChanged(value);
     if (value.isNotEmpty && index < widget.length - 1) {
       _nodes[index + 1].requestFocus();
-    } else if (value.isEmpty && index > 0) {
-      _nodes[index - 1].requestFocus();
     }
 
     final otp = _controllers.map((c) => c.text).join('');
@@ -81,7 +90,6 @@ class _TSOtpFieldState extends State<TSOtpField> {
             style: TSFont.semiBold.h3.withColor(TSColor.monochrome.black),
             decoration: InputDecoration(
               filled: true,
-              // ignore: deprecated_member_use
               fillColor: TSColor.monochrome.lightGrey.withOpacity(0.2),
               counterText: "",
               border: OutlineInputBorder(
@@ -90,11 +98,13 @@ class _TSOtpFieldState extends State<TSOtpField> {
               ),
               focusedBorder: OutlineInputBorder(
                 borderRadius: BorderRadius.circular(8),
-                borderSide:
-                    BorderSide(color: TSColor.mainTosca.primary, width: 2),
+                borderSide: BorderSide(
+                  color: TSColor.mainTosca.primary,
+                  width: 2,
+                ),
               ),
             ),
-            onChanged: (value) => _onTextChanged(value, index),
+            onChanged: (value) => _onInputChanged(value, index),
           ),
         );
       }),
