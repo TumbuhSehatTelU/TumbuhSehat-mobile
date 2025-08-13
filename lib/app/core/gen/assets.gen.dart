@@ -46,6 +46,10 @@ class $AssetsImageGen {
 class $AssetsLottieGen {
   const $AssetsLottieGen();
 
+  /// File path: assets/lottie/Baby App Logo animation.json
+  String get babyAppLogoAnimation =>
+      'assets/lottie/Baby App Logo animation.json';
+
   /// File path: assets/lottie/Search.json
   String get search => 'assets/lottie/Search.json';
 
@@ -53,7 +57,7 @@ class $AssetsLottieGen {
   String get error => 'assets/lottie/error.json';
 
   /// List of all assets
-  List<String> get values => [search, error];
+  List<String> get values => [babyAppLogoAnimation, search, error];
 }
 
 class $AssetsFontsOpenSansGen {

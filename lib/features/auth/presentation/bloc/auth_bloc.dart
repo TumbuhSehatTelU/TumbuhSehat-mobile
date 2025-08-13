@@ -2,6 +2,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:mobile_tumbuh_sehat/app/core/error/exceptions.dart';
 import 'package:mobile_tumbuh_sehat/app/core/network/network_info.dart';
 import 'package:mobile_tumbuh_sehat/features/auth/domain/usecases/get_active_session_usecase.dart';
+import 'package:mobile_tumbuh_sehat/features/auth/domain/usecases/join_existing_family_usecase.dart';
 import 'package:mobile_tumbuh_sehat/features/auth/domain/usecases/register_new_family_usecase.dart';
 import 'package:mobile_tumbuh_sehat/features/auth/domain/usecases/request_otp_for_join_usecase.dart';
 import 'package:mobile_tumbuh_sehat/features/auth/domain/usecases/search_family_by_phone_usecase.dart';
@@ -12,6 +13,7 @@ import 'auth_state.dart';
 class AuthBloc extends Bloc<AuthEvent, AuthState> {
   final SearchFamilyByPhoneUseCase _searchFamilyByPhoneUseCase;
   final RegisterNewFamilyUseCase _registerNewFamilyUseCase;
+  final JoinExistingFamilyUseCase _joinExistingFamilyUseCase;
   final GetActiveSessionUseCase _getActiveSessionUseCase;
   final RequestOtpForJoinUseCase _requestOtpForJoinUseCase;
   final VerifyOtpForJoinUseCase _verifyOtpForJoinUseCase;
@@ -20,12 +22,14 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
   AuthBloc({
     required SearchFamilyByPhoneUseCase searchFamilyByPhoneUseCase,
     required RegisterNewFamilyUseCase registerNewFamilyUseCase,
+    required JoinExistingFamilyUseCase joinExistingFamilyUseCase,
     required GetActiveSessionUseCase getActiveSessionUseCase,
     required RequestOtpForJoinUseCase requestOtpForJoinUseCase,
     required VerifyOtpForJoinUseCase verifyOtpForJoinUseCase,
     required NetworkInfo networkInfo,
   }) : _searchFamilyByPhoneUseCase = searchFamilyByPhoneUseCase,
        _registerNewFamilyUseCase = registerNewFamilyUseCase,
+       _joinExistingFamilyUseCase = joinExistingFamilyUseCase,
        _getActiveSessionUseCase = getActiveSessionUseCase,
        _requestOtpForJoinUseCase = requestOtpForJoinUseCase,
        _verifyOtpForJoinUseCase = verifyOtpForJoinUseCase,
@@ -33,7 +37,8 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
        super(const AuthState.initial()) {
     on<AuthStatusChecked>(_onAuthStatusChecked);
     on<FamilyExistenceChecked>(_onFamilyExistenceChecked);
-    on<NewFamilyRegistered>(_onNewFamilyRegistered);
+    on<NewFamilySubmitted>(_onNewFamilySubmitted);
+    on<JoinFamilySubmitted>(_onJoinFamilySubmitted);
     on<JoinOtpRequested>(_onJoinOtpRequested);
     on<JoinOtpVerified>(_onJoinOtpVerified);
   }
@@ -108,8 +113,8 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
     }
   }
 
-  Future<void> _onNewFamilyRegistered(
-    NewFamilyRegistered event,
+  Future<void> _onNewFamilySubmitted(
+    NewFamilySubmitted event,
     Emitter<AuthState> emit,
   ) async {
     emit(const AuthState.loading());
@@ -134,6 +139,30 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
           ),
         );
       }
+    }
+  }
+
+  Future<void> _onJoinFamilySubmitted(
+    JoinFamilySubmitted event,
+    Emitter<AuthState> emit,
+  ) async {
+    emit(const AuthState.loading());
+    try {
+      await _joinExistingFamilyUseCase(
+        JoinExistingFamilyParams(
+          familyPhone: event.familyPhone,
+          password: event.password,
+          newParentData: event.newParentData,
+        ),
+      );
+      // Setelah berhasil, arahkan ke halaman login
+      emit(const AuthState.unauthenticated());
+    } catch (e) {
+      emit(
+        const AuthState.failure(
+          'Gagal bergabung dengan keluarga. Silakan coba lagi.',
+        ),
+      );
     }
   }
 }

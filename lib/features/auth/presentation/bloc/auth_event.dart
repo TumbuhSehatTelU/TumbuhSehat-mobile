@@ -11,12 +11,18 @@ class AuthEvent with _$AuthEvent {
   const factory AuthEvent.familyExistenceChecked(String phone) =
       FamilyExistenceChecked;
 
-  const factory AuthEvent.newFamilyRegistered({
+  const factory AuthEvent.newFamilySubmitted({
     required String phone,
     required String password,
     required Parent newParentData,
     required List<Child> childrenData,
-  }) = NewFamilyRegistered;
+  }) = NewFamilySubmitted;
+
+  const factory AuthEvent.joinFamilySubmitted({
+    required String familyPhone,
+    required String password,
+    required Parent newParentData,
+  }) = JoinFamilySubmitted;
 
   const factory AuthEvent.joinOtpRequested(String phone) = JoinOtpRequested;
 

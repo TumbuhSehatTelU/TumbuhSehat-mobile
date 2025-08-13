@@ -13,6 +13,7 @@ import 'package:mobile_tumbuh_sehat/features/auth/data/datasources/auth_remote_d
 import 'package:mobile_tumbuh_sehat/features/auth/data/repositories/auth_repository_impl.dart';
 import 'package:mobile_tumbuh_sehat/features/auth/domain/repositories/auth_repository.dart';
 import 'package:mobile_tumbuh_sehat/features/auth/domain/usecases/get_active_session_usecase.dart';
+import 'package:mobile_tumbuh_sehat/features/auth/domain/usecases/join_existing_family_usecase.dart';
 import 'package:mobile_tumbuh_sehat/features/auth/domain/usecases/register_new_family_usecase.dart';
 import 'package:mobile_tumbuh_sehat/features/auth/domain/usecases/request_otp_for_join_usecase.dart';
 import 'package:mobile_tumbuh_sehat/features/auth/domain/usecases/search_family_by_phone_usecase.dart';
@@ -31,6 +32,7 @@ Future<void> init() async {
     () => AuthBloc(
       searchFamilyByPhoneUseCase: sl(),
       registerNewFamilyUseCase: sl(),
+      joinExistingFamilyUseCase: sl(),
       getActiveSessionUseCase: sl(),
       requestOtpForJoinUseCase: sl(),
       verifyOtpForJoinUseCase: sl(),
@@ -42,6 +44,7 @@ Future<void> init() async {
   sl.registerLazySingleton(() => GetActiveSessionUseCase(sl(), sl()));
   sl.registerLazySingleton(() => SearchFamilyByPhoneUseCase(sl()));
   sl.registerLazySingleton(() => RegisterNewFamilyUseCase(sl()));
+  sl.registerLazySingleton(() => JoinExistingFamilyUseCase(sl()));
   sl.registerLazySingleton(
     () => RequestOtpForJoinUseCase(sl()),
   );
