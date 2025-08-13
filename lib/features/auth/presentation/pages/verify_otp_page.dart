@@ -68,8 +68,7 @@ class _VerifyOtpPageState extends State<VerifyOtpPage> {
         });
         _startTimer();
         context.read<AuthBloc>().add(JoinOtpRequested(widget.phone));
-      } else {
-        // Batas pengiriman ulang tercapai
+      } else {        
         showTSModal(
           context: context,
           isDismissible: false,
