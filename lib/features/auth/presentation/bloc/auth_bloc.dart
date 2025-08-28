@@ -41,6 +41,9 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
     on<JoinFamilySubmitted>(_onJoinFamilySubmitted);
     on<JoinOtpRequested>(_onJoinOtpRequested);
     on<JoinOtpVerified>(_onJoinOtpVerified);
+    on<RegistrationStep1Completed>(_onRegistrationStep1Completed);
+    on<MaternalStatusUpdated>(_onMaternalStatusUpdated);
+    on<RegistrationFinalized>(_onRegistrationFinalized);
   }
 
   Future<void> _onAuthStatusChecked(
@@ -142,6 +145,74 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
     }
   }
 
+  Future<void> _onRegistrationStep1Completed(
+    RegistrationStep1Completed event,
+    Emitter<AuthState> emit,
+  ) async {
+    emit(
+      AuthState.registrationInProgress(
+        name: event.name,
+        phone: event.phone,
+        password: event.password,
+        role: event.role,
+        dateOfBirth: event.dateOfBirth,
+      ),
+    );
+  }
+
+  Future<void> _onMaternalStatusUpdated(
+    MaternalStatusUpdated event,
+    Emitter<AuthState> emit,
+  ) async {
+    final currentState = state;
+    if (currentState is _RegistrationInProgress) {
+      emit(currentState.copyWith(maternalStatus: event.maternalStatus));
+    }
+  }
+
+  Future<void> _onRegistrationFinalized(
+    RegistrationFinalized event,
+    Emitter<AuthState> emit,
+  ) async {
+    final currentState = state;
+    if (currentState is _RegistrationInProgress) {
+      emit(const AuthState.loading());
+      try {
+        final parentData = Parent(
+          id: '',
+          name: currentState.name!,
+          role: currentState.role!,
+          dateOfBirth: currentState.dateOfBirth!,
+          maternalStatus: currentState.maternalStatus,
+        );
+
+        //JOIN FAMILY PATH
+        if (event.familyPhone != null) {
+          await _joinExistingFamilyUseCase(
+            JoinExistingFamilyParams(
+              familyPhone: event.familyPhone!,
+              password: currentState.password!,
+              newParentData: parentData,
+            ),
+          );
+          // REGISTER NEW FAMILY PATH
+        } else {
+          await _registerNewFamilyUseCase(
+            RegisterNewFamilyParams(
+              phone: currentState.phone!,
+              password: currentState.password!,
+              newParentData: parentData,
+              childrenData: event.children,
+            ),
+          );
+        }
+        emit(const AuthState.unauthenticated());
+      } catch (e) {
+        emit(const AuthState.failure('Gagal menyelesaikan pendaftaran.'));
+      }
+    }
+  }
+
   Future<void> _onJoinFamilySubmitted(
     JoinFamilySubmitted event,
     Emitter<AuthState> emit,
@@ -155,7 +226,6 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
           newParentData: event.newParentData,
         ),
       );
-      // Setelah berhasil, arahkan ke halaman login
       emit(const AuthState.unauthenticated());
     } catch (e) {
       emit(

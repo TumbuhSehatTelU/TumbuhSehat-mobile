@@ -14,7 +14,7 @@ abstract class FamilyModel with _$FamilyModel {
   const factory FamilyModel({
     required String familyId,
     required List<ParentModel> parents,
-    required List<ChildModel> children,
+    @Default([]) List<ChildModel> children,
   }) = _FamilyModel;
 
   factory FamilyModel.fromJson(Map<String, dynamic> json) =>

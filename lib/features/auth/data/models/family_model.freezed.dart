@@ -211,7 +211,7 @@ return $default(_that.familyId,_that.parents,_that.children);case _:
 @JsonSerializable()
 
 class _FamilyModel extends FamilyModel {
-  const _FamilyModel({required this.familyId, required final  List<ParentModel> parents, required final  List<ChildModel> children}): _parents = parents,_children = children,super._();
+  const _FamilyModel({required this.familyId, required final  List<ParentModel> parents, final  List<ChildModel> children = const []}): _parents = parents,_children = children,super._();
   factory _FamilyModel.fromJson(Map<String, dynamic> json) => _$FamilyModelFromJson(json);
 
 @override final  String familyId;
@@ -223,7 +223,7 @@ class _FamilyModel extends FamilyModel {
 }
 
  final  List<ChildModel> _children;
-@override List<ChildModel> get children {
+@override@JsonKey() List<ChildModel> get children {
   if (_children is EqualUnmodifiableListView) return _children;
   // ignore: implicit_dynamic_type
   return EqualUnmodifiableListView(_children);

@@ -11,9 +11,11 @@ _FamilyModel _$FamilyModelFromJson(Map<String, dynamic> json) => _FamilyModel(
   parents: (json['parents'] as List<dynamic>)
       .map((e) => ParentModel.fromJson(e as Map<String, dynamic>))
       .toList(),
-  children: (json['children'] as List<dynamic>)
-      .map((e) => ChildModel.fromJson(e as Map<String, dynamic>))
-      .toList(),
+  children:
+      (json['children'] as List<dynamic>?)
+          ?.map((e) => ChildModel.fromJson(e as Map<String, dynamic>))
+          .toList() ??
+      const [],
 );
 
 Map<String, dynamic> _$FamilyModelToJson(_FamilyModel instance) =>

@@ -55,7 +55,7 @@ extension AuthStatePatterns on AuthState {
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeMap<TResult extends Object?>({TResult Function( _Initial value)?  initial,TResult Function( _Loading value)?  loading,TResult Function( _Authenticated value)?  authenticated,TResult Function( _OtpVerificationRequired value)?  otpVerificationRequired,TResult Function( _Unauthenticated value)?  unauthenticated,TResult Function( _FamilyFound value)?  familyFound,TResult Function( _Failure value)?  failure,required TResult orElse(),}){
+@optionalTypeArgs TResult maybeMap<TResult extends Object?>({TResult Function( _Initial value)?  initial,TResult Function( _Loading value)?  loading,TResult Function( _Authenticated value)?  authenticated,TResult Function( _OtpVerificationRequired value)?  otpVerificationRequired,TResult Function( _Unauthenticated value)?  unauthenticated,TResult Function( _FamilyFound value)?  familyFound,TResult Function( _RegistrationInProgress value)?  registrationInProgress,TResult Function( _Failure value)?  failure,required TResult orElse(),}){
 final _that = this;
 switch (_that) {
 case _Initial() when initial != null:
@@ -64,7 +64,8 @@ return loading(_that);case _Authenticated() when authenticated != null:
 return authenticated(_that);case _OtpVerificationRequired() when otpVerificationRequired != null:
 return otpVerificationRequired(_that);case _Unauthenticated() when unauthenticated != null:
 return unauthenticated(_that);case _FamilyFound() when familyFound != null:
-return familyFound(_that);case _Failure() when failure != null:
+return familyFound(_that);case _RegistrationInProgress() when registrationInProgress != null:
+return registrationInProgress(_that);case _Failure() when failure != null:
 return failure(_that);case _:
   return orElse();
 
@@ -83,7 +84,7 @@ return failure(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult map<TResult extends Object?>({required TResult Function( _Initial value)  initial,required TResult Function( _Loading value)  loading,required TResult Function( _Authenticated value)  authenticated,required TResult Function( _OtpVerificationRequired value)  otpVerificationRequired,required TResult Function( _Unauthenticated value)  unauthenticated,required TResult Function( _FamilyFound value)  familyFound,required TResult Function( _Failure value)  failure,}){
+@optionalTypeArgs TResult map<TResult extends Object?>({required TResult Function( _Initial value)  initial,required TResult Function( _Loading value)  loading,required TResult Function( _Authenticated value)  authenticated,required TResult Function( _OtpVerificationRequired value)  otpVerificationRequired,required TResult Function( _Unauthenticated value)  unauthenticated,required TResult Function( _FamilyFound value)  familyFound,required TResult Function( _RegistrationInProgress value)  registrationInProgress,required TResult Function( _Failure value)  failure,}){
 final _that = this;
 switch (_that) {
 case _Initial():
@@ -92,7 +93,8 @@ return loading(_that);case _Authenticated():
 return authenticated(_that);case _OtpVerificationRequired():
 return otpVerificationRequired(_that);case _Unauthenticated():
 return unauthenticated(_that);case _FamilyFound():
-return familyFound(_that);case _Failure():
+return familyFound(_that);case _RegistrationInProgress():
+return registrationInProgress(_that);case _Failure():
 return failure(_that);case _:
   throw StateError('Unexpected subclass');
 
@@ -110,7 +112,7 @@ return failure(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult? mapOrNull<TResult extends Object?>({TResult? Function( _Initial value)?  initial,TResult? Function( _Loading value)?  loading,TResult? Function( _Authenticated value)?  authenticated,TResult? Function( _OtpVerificationRequired value)?  otpVerificationRequired,TResult? Function( _Unauthenticated value)?  unauthenticated,TResult? Function( _FamilyFound value)?  familyFound,TResult? Function( _Failure value)?  failure,}){
+@optionalTypeArgs TResult? mapOrNull<TResult extends Object?>({TResult? Function( _Initial value)?  initial,TResult? Function( _Loading value)?  loading,TResult? Function( _Authenticated value)?  authenticated,TResult? Function( _OtpVerificationRequired value)?  otpVerificationRequired,TResult? Function( _Unauthenticated value)?  unauthenticated,TResult? Function( _FamilyFound value)?  familyFound,TResult? Function( _RegistrationInProgress value)?  registrationInProgress,TResult? Function( _Failure value)?  failure,}){
 final _that = this;
 switch (_that) {
 case _Initial() when initial != null:
@@ -119,7 +121,8 @@ return loading(_that);case _Authenticated() when authenticated != null:
 return authenticated(_that);case _OtpVerificationRequired() when otpVerificationRequired != null:
 return otpVerificationRequired(_that);case _Unauthenticated() when unauthenticated != null:
 return unauthenticated(_that);case _FamilyFound() when familyFound != null:
-return familyFound(_that);case _Failure() when failure != null:
+return familyFound(_that);case _RegistrationInProgress() when registrationInProgress != null:
+return registrationInProgress(_that);case _Failure() when failure != null:
 return failure(_that);case _:
   return null;
 
@@ -137,7 +140,7 @@ return failure(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeWhen<TResult extends Object?>({TResult Function()?  initial,TResult Function()?  loading,TResult Function( Family family,  Parent activeParent)?  authenticated,TResult Function( String phone)?  otpVerificationRequired,TResult Function()?  unauthenticated,TResult Function( Family family)?  familyFound,TResult Function( String message)?  failure,required TResult orElse(),}) {final _that = this;
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>({TResult Function()?  initial,TResult Function()?  loading,TResult Function( Family family,  Parent activeParent)?  authenticated,TResult Function( String phone)?  otpVerificationRequired,TResult Function()?  unauthenticated,TResult Function( Family family)?  familyFound,TResult Function( String? name,  String? phone,  String? password,  ParentRole? role,  DateTime? dateOfBirth,  MaternalStatus? maternalStatus,  List<Child> children)?  registrationInProgress,TResult Function( String message)?  failure,required TResult orElse(),}) {final _that = this;
 switch (_that) {
 case _Initial() when initial != null:
 return initial();case _Loading() when loading != null:
@@ -145,7 +148,8 @@ return loading();case _Authenticated() when authenticated != null:
 return authenticated(_that.family,_that.activeParent);case _OtpVerificationRequired() when otpVerificationRequired != null:
 return otpVerificationRequired(_that.phone);case _Unauthenticated() when unauthenticated != null:
 return unauthenticated();case _FamilyFound() when familyFound != null:
-return familyFound(_that.family);case _Failure() when failure != null:
+return familyFound(_that.family);case _RegistrationInProgress() when registrationInProgress != null:
+return registrationInProgress(_that.name,_that.phone,_that.password,_that.role,_that.dateOfBirth,_that.maternalStatus,_that.children);case _Failure() when failure != null:
 return failure(_that.message);case _:
   return orElse();
 
@@ -164,7 +168,7 @@ return failure(_that.message);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult when<TResult extends Object?>({required TResult Function()  initial,required TResult Function()  loading,required TResult Function( Family family,  Parent activeParent)  authenticated,required TResult Function( String phone)  otpVerificationRequired,required TResult Function()  unauthenticated,required TResult Function( Family family)  familyFound,required TResult Function( String message)  failure,}) {final _that = this;
+@optionalTypeArgs TResult when<TResult extends Object?>({required TResult Function()  initial,required TResult Function()  loading,required TResult Function( Family family,  Parent activeParent)  authenticated,required TResult Function( String phone)  otpVerificationRequired,required TResult Function()  unauthenticated,required TResult Function( Family family)  familyFound,required TResult Function( String? name,  String? phone,  String? password,  ParentRole? role,  DateTime? dateOfBirth,  MaternalStatus? maternalStatus,  List<Child> children)  registrationInProgress,required TResult Function( String message)  failure,}) {final _that = this;
 switch (_that) {
 case _Initial():
 return initial();case _Loading():
@@ -172,7 +176,8 @@ return loading();case _Authenticated():
 return authenticated(_that.family,_that.activeParent);case _OtpVerificationRequired():
 return otpVerificationRequired(_that.phone);case _Unauthenticated():
 return unauthenticated();case _FamilyFound():
-return familyFound(_that.family);case _Failure():
+return familyFound(_that.family);case _RegistrationInProgress():
+return registrationInProgress(_that.name,_that.phone,_that.password,_that.role,_that.dateOfBirth,_that.maternalStatus,_that.children);case _Failure():
 return failure(_that.message);case _:
   throw StateError('Unexpected subclass');
 
@@ -190,7 +195,7 @@ return failure(_that.message);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>({TResult? Function()?  initial,TResult? Function()?  loading,TResult? Function( Family family,  Parent activeParent)?  authenticated,TResult? Function( String phone)?  otpVerificationRequired,TResult? Function()?  unauthenticated,TResult? Function( Family family)?  familyFound,TResult? Function( String message)?  failure,}) {final _that = this;
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>({TResult? Function()?  initial,TResult? Function()?  loading,TResult? Function( Family family,  Parent activeParent)?  authenticated,TResult? Function( String phone)?  otpVerificationRequired,TResult? Function()?  unauthenticated,TResult? Function( Family family)?  familyFound,TResult? Function( String? name,  String? phone,  String? password,  ParentRole? role,  DateTime? dateOfBirth,  MaternalStatus? maternalStatus,  List<Child> children)?  registrationInProgress,TResult? Function( String message)?  failure,}) {final _that = this;
 switch (_that) {
 case _Initial() when initial != null:
 return initial();case _Loading() when loading != null:
@@ -198,7 +203,8 @@ return loading();case _Authenticated() when authenticated != null:
 return authenticated(_that.family,_that.activeParent);case _OtpVerificationRequired() when otpVerificationRequired != null:
 return otpVerificationRequired(_that.phone);case _Unauthenticated() when unauthenticated != null:
 return unauthenticated();case _FamilyFound() when familyFound != null:
-return familyFound(_that.family);case _Failure() when failure != null:
+return familyFound(_that.family);case _RegistrationInProgress() when registrationInProgress != null:
+return registrationInProgress(_that.name,_that.phone,_that.password,_that.role,_that.dateOfBirth,_that.maternalStatus,_that.children);case _Failure() when failure != null:
 return failure(_that.message);case _:
   return null;
 
@@ -526,6 +532,102 @@ $FamilyCopyWith<$Res> get family {
   
   return $FamilyCopyWith<$Res>(_self.family, (value) {
     return _then(_self.copyWith(family: value));
+  });
+}
+}
+
+/// @nodoc
+
+
+class _RegistrationInProgress implements AuthState {
+  const _RegistrationInProgress({this.name, this.phone, this.password, this.role, this.dateOfBirth, this.maternalStatus, final  List<Child> children = const []}): _children = children;
+  
+
+ final  String? name;
+ final  String? phone;
+ final  String? password;
+ final  ParentRole? role;
+ final  DateTime? dateOfBirth;
+ final  MaternalStatus? maternalStatus;
+ final  List<Child> _children;
+@JsonKey() List<Child> get children {
+  if (_children is EqualUnmodifiableListView) return _children;
+  // ignore: implicit_dynamic_type
+  return EqualUnmodifiableListView(_children);
+}
+
+
+/// Create a copy of AuthState
+/// with the given fields replaced by the non-null parameter values.
+@JsonKey(includeFromJson: false, includeToJson: false)
+@pragma('vm:prefer-inline')
+_$RegistrationInProgressCopyWith<_RegistrationInProgress> get copyWith => __$RegistrationInProgressCopyWithImpl<_RegistrationInProgress>(this, _$identity);
+
+
+
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is _RegistrationInProgress&&(identical(other.name, name) || other.name == name)&&(identical(other.phone, phone) || other.phone == phone)&&(identical(other.password, password) || other.password == password)&&(identical(other.role, role) || other.role == role)&&(identical(other.dateOfBirth, dateOfBirth) || other.dateOfBirth == dateOfBirth)&&(identical(other.maternalStatus, maternalStatus) || other.maternalStatus == maternalStatus)&&const DeepCollectionEquality().equals(other._children, _children));
+}
+
+
+@override
+int get hashCode => Object.hash(runtimeType,name,phone,password,role,dateOfBirth,maternalStatus,const DeepCollectionEquality().hash(_children));
+
+@override
+String toString() {
+  return 'AuthState.registrationInProgress(name: $name, phone: $phone, password: $password, role: $role, dateOfBirth: $dateOfBirth, maternalStatus: $maternalStatus, children: $children)';
+}
+
+
+}
+
+/// @nodoc
+abstract mixin class _$RegistrationInProgressCopyWith<$Res> implements $AuthStateCopyWith<$Res> {
+  factory _$RegistrationInProgressCopyWith(_RegistrationInProgress value, $Res Function(_RegistrationInProgress) _then) = __$RegistrationInProgressCopyWithImpl;
+@useResult
+$Res call({
+ String? name, String? phone, String? password, ParentRole? role, DateTime? dateOfBirth, MaternalStatus? maternalStatus, List<Child> children
+});
+
+
+$MaternalStatusCopyWith<$Res>? get maternalStatus;
+
+}
+/// @nodoc
+class __$RegistrationInProgressCopyWithImpl<$Res>
+    implements _$RegistrationInProgressCopyWith<$Res> {
+  __$RegistrationInProgressCopyWithImpl(this._self, this._then);
+
+  final _RegistrationInProgress _self;
+  final $Res Function(_RegistrationInProgress) _then;
+
+/// Create a copy of AuthState
+/// with the given fields replaced by the non-null parameter values.
+@pragma('vm:prefer-inline') $Res call({Object? name = freezed,Object? phone = freezed,Object? password = freezed,Object? role = freezed,Object? dateOfBirth = freezed,Object? maternalStatus = freezed,Object? children = null,}) {
+  return _then(_RegistrationInProgress(
+name: freezed == name ? _self.name : name // ignore: cast_nullable_to_non_nullable
+as String?,phone: freezed == phone ? _self.phone : phone // ignore: cast_nullable_to_non_nullable
+as String?,password: freezed == password ? _self.password : password // ignore: cast_nullable_to_non_nullable
+as String?,role: freezed == role ? _self.role : role // ignore: cast_nullable_to_non_nullable
+as ParentRole?,dateOfBirth: freezed == dateOfBirth ? _self.dateOfBirth : dateOfBirth // ignore: cast_nullable_to_non_nullable
+as DateTime?,maternalStatus: freezed == maternalStatus ? _self.maternalStatus : maternalStatus // ignore: cast_nullable_to_non_nullable
+as MaternalStatus?,children: null == children ? _self._children : children // ignore: cast_nullable_to_non_nullable
+as List<Child>,
+  ));
+}
+
+/// Create a copy of AuthState
+/// with the given fields replaced by the non-null parameter values.
+@override
+@pragma('vm:prefer-inline')
+$MaternalStatusCopyWith<$Res>? get maternalStatus {
+    if (_self.maternalStatus == null) {
+    return null;
+  }
+
+  return $MaternalStatusCopyWith<$Res>(_self.maternalStatus!, (value) {
+    return _then(_self.copyWith(maternalStatus: value));
   });
 }
 }

@@ -1,5 +1,7 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:mobile_tumbuh_sehat/features/auth/domain/entities/child.dart';
+import 'package:mobile_tumbuh_sehat/features/auth/domain/entities/enums/maternal_status.dart';
+import 'package:mobile_tumbuh_sehat/features/auth/domain/entities/enums/parent_role.dart';
 import 'package:mobile_tumbuh_sehat/features/auth/domain/entities/parent.dart';
 
 part 'auth_event.freezed.dart';
@@ -30,6 +32,23 @@ class AuthEvent with _$AuthEvent {
     required String phone,
     required String otp,
   }) = JoinOtpVerified;
+
+    const factory AuthEvent.registrationStep1Completed({
+    required String name,
+    String? phone,
+    required String password,
+    required ParentRole role,
+    required DateTime dateOfBirth,
+  }) = RegistrationStep1Completed;
+
+  const factory AuthEvent.maternalStatusUpdated(MaternalStatus maternalStatus) =
+      MaternalStatusUpdated;
+
+  /// Event untuk menyelesaikan registrasi dan menyimpan semua data.
+  const factory AuthEvent.registrationFinalized({
+    String? familyPhone, // Diperlukan untuk alur join family
+    @Default([]) List<Child> children,
+  }) = RegistrationFinalized;
 
   const factory AuthEvent.logoutRequested() = LogoutRequested;
 }
